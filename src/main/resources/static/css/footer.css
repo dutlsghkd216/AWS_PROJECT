@@ -1,0 +1,47 @@
+.footer_wrap{
+    width: 100%; 
+    height: auto;
+}
+
+.footer_top{
+    height: 55px; 
+    background: #E9E9E9; 
+    border-top: 1px solid gray; 
+    border-bottom: 1px solid gray;
+}
+
+.ft_info{
+    max-width: 1260px; 
+    height: 55px; 
+    background: #E9E9E9; 
+    margin: 0 auto;
+}
+
+.ft_menu{
+    height: 55px; 
+    position: absolute; 
+    justify-content: flex-start; 
+    align-items: center; 
+    letter-spacing: -1px;
+    gap: 30px; 
+    display: inline-flex;
+}
+
+.ft_menu>div>a{
+    color: black;
+}
+
+.footer_bottom{
+    height: 105px; background: #E9E9E9;
+}
+
+.fb_info{
+    max-width: 1260px; 
+    height: 105px; 
+    background: #E9E9E9; 
+    margin: 0 auto;
+}
+
+p{
+    margin: 0; padding-top: 25px;
+}

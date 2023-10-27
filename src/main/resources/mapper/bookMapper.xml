@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.app.mapper.BookMapper">
+
+    <sql id="search">
+        <if test="search.keyword != null">
+            <where>
+                <trim prefixOverrides="OR">
+                    <foreach item="type" collection="search.types">
+                        <trim prefix="OR">
+                            <choose>
+                                <when test="type == 't'.toString()">
+                                    BOOK_TITLE LIKE CONCAT('%', #{search.keyword}, '%')
+                                </when>
+                                <when test="type == 'w'.toString()">
+                                    AUTHOR LIKE CONCAT('%', #{search.keyword}, '%')
+                                </when>
+                                <when test="type == 'p'.toString()">
+                                    PUBLISHER LIKE CONCAT('%', #{search.keyword}, '%')
+                                </when>
+                                <when test="type == 'i'.toString()">
+                                    ISBN LIKE CONCAT('%', #{search.keyword}, '%')
+                                </when>
+                            </choose>
+                        </trim>
+                    </foreach>
+                </trim>
+            </where>
+        </if>
+    </sql>
+
+    <select id="select" resultType="bookDTO">
+        SELECT ISBN, BOOK_TITLE, AUTHOR, PUBLISHER, PUB_YEAR FROM TBL_BOOK WHERE ISBN = #{isbn}
+    </select>
+
+    <select id="selectAll" resultType="bookDTO">
+        SELECT ISBN, BOOK_TITLE, AUTHOR, PUBLISHER, PUB_YEAR FROM TBL_BOOK
+        <include refid="search"/>
+        LIMIT #{cri.skip}, #{cri.amount}
+    </select>
+
+    <select id="selectAllCount" resultType="Long">
+        SELECT count(ISBN) FROM TBL_BOOK
+        <include refid="search"/>
+    </select>
+
+    <insert id="insert">
+        INSERT INTO TBL_BOOK (ISBN, BOOK_Title, AUTHOR, PUBLISHER, PUB_YEAR)
+        VALUES(#{isbn}, #{bookTitle}, #{author}, #{publisher}, #{pubYear})
+    </insert>
+
+    <delete id="delete">
+        DELETE FROM TBL_BOOK WHERE ISBN = #{isbn}
+    </delete>
+
+    <update id="update">
+        UPDATE TBL_BOOK
+        SET BOOK_TITLE = #{bookTitle}, AUTHOR = #{author}, PUBLISHER = #{publisher}
+        WHERE ISBN = #{isbn}
+    </update>
+
+</mapper>

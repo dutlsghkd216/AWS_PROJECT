@@ -1,0 +1,232 @@
+i {
+    display: inline-block;
+    position: relative;
+}
+
+.main_wrap {
+    max-width: 1260px;
+    margin: 0 auto;
+}
+
+/* 사이드바 */
+.left_con {
+    padding: 20px 0px;
+    gap: 20px;
+}
+
+.left_con h2 {
+    /* height: 122px; */
+    border-bottom: 2px solid rgb(42, 178, 196);
+    display: block;
+    /* font-size: 24px; */
+    /* margin: 0; */
+    font-weight: bold;
+    /* background-color: red; */
+    position: relative;
+    margin-bottom: 30px;
+    padding-bottom: 30px;
+
+}
+
+.body_wrap>.container {
+    display: flex;
+    padding: 20px 0px;
+    gap: 20px;
+    min-height: 400px;
+}
+
+.body_wrap>.container>.left_menu {
+    width: 200px;
+    /* background-color: pink; */
+    padding: 20px;
+    flex-shrink: 0;
+    /*너비200px 무조건 고정(축소가되는 비율 0)*/
+}
+
+.card1 {
+    height: 60px;
+    border-bottom: 1px solid gray;
+    line-height: 60px;
+    padding-left: 5px;
+    margin-top: -10px;
+}
+
+.card1 :hover {
+    color: gray;
+}
+
+.card2 {
+    height: 60px;
+    border-bottom: 1px solid gray;
+    line-height: 60px;
+    padding-left: 5px;
+}
+
+.card2 :hover {
+    color: gray;
+}
+
+/* 본문 */
+.mb_info {
+    /* background-color: gray; */
+    flex-grow: 1;
+    padding: 20px;
+}
+
+.mb_info>.title_wrap {
+    position: relative;
+    margin-bottom: 30px;
+
+    /* padding-bottom: 30px; */
+    border-bottom: 2px solid rgb(42, 178, 196);
+    /* background-color: #4c4c4c;  */
+
+}
+
+.mb_info>.title_wrap h2 {
+    margin: 0;
+    line-height: 100px;
+}
+
+.mb_info>.table_header {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 2px solid black;
+    margin-top: 30px;
+}
+
+span.bunch {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+#sFld {
+    width: 90px;
+    min-width: 85px;
+    height: 34px;
+    border: 1px solid #d1d0cf;
+    background-color: #fff;
+    line-height: 29px;
+}
+
+input {
+    width: 20px;
+    height: 33px;
+    border: 1px solid #d1d0cf;
+    line-height: 2.1em;
+    font-size: 14px;
+    vertical-align: top;
+    color: #4c4c4c;
+    padding: 0 3px;
+    margin-bottom: 10px;
+}
+
+.btn_search {
+    width: auto;
+    min-width: 50px;
+    height: 36px;
+    vertical-align: top;
+    margin-bottom: 10px;
+    margin-left: -2px;
+    line-height: 30px;
+    text-align: center;
+    color: white;
+    background-color: navy;
+    border-radius: 5px;
+    border: none;
+}
+
+.btn_write {
+    width: auto;
+    min-width: 50px;
+    height: 36px;
+    vertical-align: top;
+    margin-bottom: 10px;
+    margin-left: -2px;
+    line-height: 33px;
+    text-align: center;
+    background-color: navy;
+    border-radius: 5px;
+    border: none;
+}
+
+
+/* 공지사항 목록 */
+table,
+th,
+td {
+    border-collapse: collapse;
+    border-spacing: 0;
+    font-size: inherit;
+    word-break: break-all;
+}
+
+table {
+    width: 100%;
+    border-bottom: 5px double gray;
+}
+
+table th,
+table td {
+    border-bottom: 1px solid lightgray;
+    padding: 7px 10px;
+    border-left: 0;
+    border-right: 0;
+    text-align: center;
+}
+
+thead {
+    display: table-header-group;
+    vertical-align: middle;
+    border-color: inherit;
+    background-color: rgb(240, 240, 240);
+}
+
+tbody {
+    display: table-row-group;
+    vertical-align: middle;
+    border-color: inherit;
+}
+
+tr {
+    display: table-row;
+    vertical-align: inherit;
+    border-color: inherit;
+    height: 50px;
+}
+
+.tdt {}
+
+.check_b {}
+
+/* 페이징 */
+.dataTables_paginate {
+    height: 90px;
+    /* border: 1px solid black; */
+    overflow: hidden;
+    text-align: center;
+    font-size: 0;
+    line-height: 105px;
+}
+
+.dataTables_paginate a.paginate_button {
+    cursor: pointer;
+    display: inline-block;
+    zoom: 1.2;
+    display: inline;
+    line-height: 24px;
+    padding: 3px 12px;
+    -webkit-transition: all 120ms ease;
+    -moz-transition: all 120ms ease;
+    -ms-transition: all 120ms ease;
+    -o-transition: all 120ms ease;
+    transition: all 120ms ease;
+    font-size: 13px;
+    border: 1px solid #d9d9d9;
+    background: #fafafa;
+    margin-left: -1px;
+    color: #555;
+    -moz-background-clip: padding-box;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box
+}

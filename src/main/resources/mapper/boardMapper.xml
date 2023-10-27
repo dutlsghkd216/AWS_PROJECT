@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.app.mapper.BoardMapper">
+
+    <sql id="search">
+        <if test="search.keyword != null">
+            <where>
+                <trim prefixOverrides="OR">
+                    <foreach item="type" collection="search.types">
+                        <trim prefix="OR">
+                            <choose>
+                                <when test="type == 't'.toString()">
+                                    AN_TITLE LIKE CONCAT('%', #{search.keyword}, '%')
+                                </when>
+                                <when test="type == 'w'.toString()">
+                                    AN_CONTENT LIKE CONCAT('%', #{search.keyword}, '%')
+                                </when>
+                            </choose>
+                        </trim>
+                    </foreach>
+                </trim>
+            </where>
+        </if>
+    </sql>
+
+    <select id="select" resultType="boardDTO">
+        SELECT * FROM TBL_ANNOUNCEMENT WHERE AN_ID = #{anId}
+    </select>
+
+
+    <select id="selectAll" resultType="boardDTO" >
+        SELECT * FROM TBL_ANNOUNCEMENT
+        <include refid="search"/>
+        ORDER BY AN_ID DESC LIMIT #{cri.skip}, #{cri.amount}
+    </select>
+
+
+    <select id="selectCountAll" resultType="Long">
+        SELECT COUNT(AN_ID) FROM TBL_ANNOUNCEMENT
+        <include refid="search"/>
+    </select>
+
+    <insert id="insert">
+        insert into tbl_announcement(an_title,user_id,an_content,an_register_date, an_update_date)
+        value(#{anTitle}, #{userId}, #{anContent},now(),now());
+    </insert>
+
+    <delete id="delete">
+        DELETE FROM TBL_ANNOUNCEMENT WHERE AN_ID = #{anId}
+    </delete>
+
+    <update id="update">
+        UPDATE TBL_ANNOUNCEMENT
+        SET an_title = #{anTitle}, an_content=#{anContent}, an_update_date = now()
+        WHERE an_id = #{anId}
+    </update>
+
+</mapper>

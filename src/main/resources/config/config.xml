@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0/EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <typeAliases>
+        <typeAlias type="com.example.app.domain.dto.BookDTO" alias="bookDTO"></typeAlias>
+        <typeAlias type="com.example.app.domain.dto.BoardDTO" alias="boardDTO"></typeAlias>
+        <typeAlias type="com.example.app.domain.dto.UserDTO" alias="userDTO"></typeAlias>
+        <typeAlias type="com.example.app.domain.dto.ReviewDTO" alias="reviewDTO"></typeAlias>
+        <typeAlias type="com.example.app.domain.dto.WishDTO" alias="wishDTO"></typeAlias>
+        <typeAlias type="com.example.app.domain.dto.LendDTO" alias="lendDTO"></typeAlias>
+    </typeAliases>
+</configuration>

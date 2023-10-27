@@ -1,0 +1,82 @@
+.mb_info_top {
+    display: flex;
+    margin: 0 auto;
+    border-top: 2px solid rgba(200, 200, 200, 0.7);
+    border-bottom: 1px solid rgba(200, 200, 200, 0.7);
+}
+
+.mbt_t {
+    width: 100%;
+    text-align: left;
+    font-size: 25px;
+    font-weight: bold;
+    padding: 10px 10px;
+}
+
+.mbt_wd,
+.mbt_file {
+    display: flex;
+    justify-content: flex-start;
+    align-content: center;
+    border-bottom: 1px solid rgba(200, 200, 200, 0.7);
+}
+
+.mbt_w,
+.mbt_v,
+.mbt_f {
+    text-align: center;
+    color: gray;
+    padding: 10px 10px;
+
+}
+
+.mbt_ww,
+.mbt_ff {
+    width: 10%;
+    text-align: left;
+    padding: 10px 10px;
+}
+
+.mbt_views {
+    display: flex;
+    margin-left: 660px;
+}
+
+.mbt_vv {
+    padding: 10px 10px;
+}
+
+.mbt_file {}
+
+.mb_info_bottom {
+    margin-top: 20px;
+}
+
+.mbb_w {
+    height: 250px;
+    border: 1px solid rgba(200, 200, 200, 0.7);
+    padding: 15px 15px;
+}
+
+.modifybtn {
+    margin: 20px 10px;
+    text-align: center;
+    align-items: center;
+
+}
+
+.mdf_btn {
+    width: 110px;
+    height: 40px;
+    font-size: 15px;
+    text-align: center;
+    margin-left: 10px;
+    border: none;
+    border-radius: 30px;
+    background-color: navy;
+}
+
+.mdf_btn>a {
+    color: white;
+    font-weight: bold;
+}

@@ -1,0 +1,115 @@
+
+/* 본문내용 */
+
+.lend_search {
+    padding-top: 50px;
+    border-bottom: 1px solid gray;
+    margin-bottom: 50px;
+}
+.search2 {
+    height: 600px;
+    padding-top: 50px;
+    border-bottom: 1px solid gray;
+    margin-bottom: 50px;
+}
+.lend_tbl{
+    /* border: 1px solid black; */
+    border-collapse: collapse;
+    margin-bottom: 30px;
+    width: 100%;
+    height: 200px;
+}
+.lend_tbl>tr>th{
+    border: 1px solid black;
+}
+
+
+.lend_search>input {
+    font-size: 24px;
+    width: 900px;
+    height: 70px;
+    padding: 10px;
+    margin-bottom: 20px;
+    margin-left: 30px;
+    border-style: solid;
+    border-image: linear-gradient(to right, #3cb13a 0%, #6466c3 100%);
+    border-image-slice: 1;
+    background: #fff;
+    border-image-width: 20px;
+    border-radius: 15px;
+    outline: none;
+    float: left;
+}
+.btngroup{
+    width: 250px;
+    margin: auto;
+}
+.btngroup2{
+    width: 120px;
+    margin: auto;   
+}
+
+.btn1 {
+    font-size: 20px;
+    width: 120px;
+    height: 50px;
+    margin: auto;
+    display: block;
+    border-radius: 15px;
+    background-color: gray;
+    display: inline-block;
+}
+.btn2 {
+    font-size: 20px;
+    width: 120px;
+    height: 50px;
+    margin: auto;
+    display: block;
+    border-radius: 15px;
+    background-color: gray;
+    display: inline-block;
+
+}
+
+.doc-body>h3 {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    font-size: 24px;
+}
+
+.doc-body>ul {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.doc-body>ul>li {
+    font-size: 18px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+
+.sm_box>.con {
+    background-color: beige;
+}
+
+.con {
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.con>li {
+    font-size: 18px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.con2 {
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.con2>li {
+    font-size: 18px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}

@@ -1,0 +1,252 @@
+.main_wrap {
+  width: 100%;
+  height: auto;
+}
+
+.main_top {
+  height: auto;
+  border-bottom: 2px solid navy;
+}
+
+.mt_index {
+  max-width: 1260px;
+  height: 90px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: nowrap;
+  /* border-left: 1px solid gray;
+  border-right: 1px solid gray; */
+}
+
+.mt_index>h1 {
+  margin: 15px;
+}
+
+.mt_index2 {
+  width: 1260px;
+  margin: 5px 0 10px;
+  /* border-left: 1px solid gray;
+  border-right: 1px solid gray; */
+}
+
+.mt_index2>ul {
+  overflow: hidden;
+  margin: 0;
+  padding-left: 15px;
+  padding-bottom: 20px;
+}
+
+.mt_index2>ul>li:first-child {
+  margin-left: 0;
+  padding-left: 0;
+  background: none;
+}
+
+.mt_index2>ul>li {
+  float: left;
+  margin-left: 8px;
+  padding-left: 14px;
+  background: url(./img/sub_con4.png) no-repeat 0px;
+  color: gray;
+}
+
+.mt_index2>ul>li>a {
+  color: gray;
+}
+
+.mt_info {
+  max-width: 1260px;
+  height: 40px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: nowrap;
+  /* border-left: 1px solid gray;
+  border-right: 1px solid gray; */
+}
+
+.mt_info>ul {
+  margin: 0;
+}
+
+.mt_info>ul>li {
+  width: 160px;
+  height: 40px;
+}
+
+.mt_info>ul>li>a {
+  color: gray;
+}
+
+.mt_menu {
+  padding-left: 0px;
+  display: flex;
+  font-weight: bolder;
+}
+
+.mt_m {}
+
+.mt_menu>li>a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  color: inherit;
+  /* 링크 색상 상속 */
+}
+
+.mt_menu>li>a:hover {
+  color: white;
+  background-color: navy;
+  /* 마우스 호버 시 배경색 변경 */
+}
+
+.main_bottom {
+  height: auto;
+
+}
+
+.mb_info {
+  max-width: 1260px;
+  /* height: 900px; */
+  margin: 0 auto;
+}
+
+/* border-left: 1px solid gray;
+  border-right: 1px solid gray; */
+.mb_info2 {
+  flex-grow: 1;
+  padding: 20px;
+  max-width: 1260px;
+  height: 720px;
+  margin: 0 auto;
+}
+
+.mb_info>.table_header1 {
+  display: flex;
+  border-bottom: 2px solid black;
+  margin-top: 40px;
+}
+
+/* 전체 {회원수} 건 */
+.all_count {
+  line-height: 60px;
+}
+
+/* 회원 검색창 */
+.mt_search_area {
+  height: 40px;
+  margin-bottom: 20px;
+  margin: 0 160px 30px 160px;
+}
+
+/* 삭제 버튼 */
+.add_btn,
+.delete_btn {
+  width: 110px;
+  height: 40px;
+  margin-left: 10px;
+  line-height: 40px;
+  border: none;
+  border-radius: 15px;
+  text-align: center;
+  font-weight: bold;
+  background-color: navy;
+}
+
+.add_btn>a,
+.delete_btn>a,
+.moreinfo_btn>a {
+  font-size: 15px;
+  color: white;
+}
+
+.s_c {
+  display: flex;
+  gap: 5px;
+  flex-wrap: nowrap;
+}
+
+.moreinfo_btn {
+  width: 100px;
+  height: 40px;
+  line-height: 40px;
+  border: none;
+  border-radius: 15px;
+  text-align: center;
+  font-weight: bold;
+  background-color: rgb(85, 85, 85);
+}
+
+
+.search-results {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.search-results>.row {
+  width: 500px;
+  margin: 40px 0px 0px 60px;
+}
+
+.text-rightbtn {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.radio1 {
+  width: 40px;
+  height: 18px;
+  margin-bottom: 0;
+}
+
+.lendbtn {
+  width: 60px;
+  height: 40px;
+  margin: 0;
+  padding: 0;
+  background-color: navy;
+  border: none;
+  border-radius: 30px;
+  color: white;
+}
+
+.reserve_btn>button {
+  width: 60px;
+  height: 40px;
+  margin: 0;
+  padding: 0;
+  background-color: navy;
+  border: none;
+  border-radius: 30px;
+  color: white;
+}
+
+/* 예제 스타일링 */
+.lend_btn button,
+.reserve_btn button {
+  /* 스타일 속성 추가 */
+  background-color: navy;
+  /* 버튼 배경색 */
+  color: #fff;
+  /* 텍스트 색상 */
+  border: none;
+  /* 테두리 없음 */
+  padding: 5px 10px;
+  /* 여백 설정 */
+  cursor: pointer;
+  /* 커서 모양 설정 */
+  transition: background-color 0.3s ease;
+  /* 애니메이션 효과 설정 */
+
+}
+
+.lend_btn button:hover,
+.reserve_btn button:hover {
+  background-color: gray;
+  /* 호버 상태 스타일 */
+}

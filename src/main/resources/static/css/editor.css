@@ -1,0 +1,42 @@
+.editor-menu {
+    display: flex;
+    max-width: 1260px;
+    height: 30px;
+    background-color: rgb(247, 247, 247);
+    border: 1px solid #D6D6D6;
+    border-bottom: none;
+}
+
+.editor-menu>select,
+.editor-menu>button {
+    border: none;
+    background-color: rgb(247, 247, 247);
+}
+
+.editor-menu>select {
+    width: 110px;
+}
+
+.editor-menu>button {
+    width: 40px;
+}
+
+div#editor {
+    max-width: 1260px;
+    height: 200px;
+    padding: 20px;
+    border: 1px solid #D6D6D6;
+}
+
+#img-selector {
+    display: none;
+}
+
+#editor img {
+    max-width: 100%;
+}
+
+button.active {
+    background-color: gray;
+    color: #FFF;
+}

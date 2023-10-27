@@ -1,0 +1,135 @@
+.main_wrap {
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+}
+
+/* 백그라운드 이미지 */
+.main_top {
+  position: relative;
+  display: flex;
+  max-width: 100%;
+  height: 100vh;
+  z-index: -1;
+}
+
+.mt_slides {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mt_slides img {
+  width: 100vw;
+  height: 100vh;
+  margin: 0 auto;
+
+}
+
+
+/* 배너글씨와 검색창 */
+.mt_info {
+  width: 700px;
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: white;
+  z-index: 1;
+  /* 이미지 슬라이드 위에 표시하기 위해 설정 */
+}
+
+@font-face {
+  font-family: 'HakgyoansimGaeulsopungB';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-2@1.0/HakgyoansimGaeulsopungB.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+}
+
+.mt_text_box {
+  font-family: 'HakgyoansimGaeulsopungB';
+  color: white;
+  margin-bottom: 10px;
+}
+
+.c_box1 {
+  font-size: 40px;
+  font-weight: 300;
+}
+
+.c_box2 {
+  font-size: 90px;
+}
+
+.mt_search_area {
+  margin-top: 20px;
+  margin: 0 auto;
+  border: 3px solid white;
+}
+
+
+.s_c {
+  height: 50px;
+  display: flex;
+  flex-wrap: nowrap;
+  opacity: 0.8;
+}
+
+
+.search_option,
+option {
+  text-align: center;
+  border: none;
+}
+
+.sc_input {
+  width: 90%;
+  text-align: center;
+  border: none;
+}
+
+.sc_btn {
+  width: 70px;
+  border: none;
+  background-color: white;
+
+}
+
+.mt_notice_area {
+  display: flex;
+  position: relative;
+  gap: 70px;
+  justify-content: center;
+  align-content: center;
+  text-align: center;
+}
+
+.n_area {
+  width: 170px;
+  height: 170px;
+  margin-top: 90px;
+  line-height: 30px;
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.8);
+  /* box-shadow: 6px 2px 2px 0px gray; */
+  border-radius: 50%;
+}
+
+.n_area>a {
+  color: black;
+  font-weight: bold;
+}
+
+
+.n_area:nth-child(1):hover,
+.n_area:nth-child(2):hover,
+.n_area:nth-child(3):hover {
+  background-color: gray;
+}
+
+.n_area:nth-child(1)>a:hover,
+.n_area:nth-child(2)>a:hover,
+.n_area:nth-child(3)>a:hover {
+  color: white;
+}

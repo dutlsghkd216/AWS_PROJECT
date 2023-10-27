@@ -1,0 +1,186 @@
+.subpage {
+    position: relative;
+    padding-top: 131px;
+}
+.sub-visual{
+    position: relative;
+    height: 140px;
+    background-image: url("./img/sub-visual.gif");
+    border-top: 1px solid #e5e5e5;
+}
+
+.doc-info {
+    width: 1260px;
+    margin: 0 auto;
+    position: relative;
+    padding: 0 0 0 270px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.doc-title {
+    position: relative;
+    padding: 10px 0 15px 0;
+    padding-top: 37px;
+    /* border: 1px solid; */
+}
+
+.doc-title>h3 {
+    font-size: 32px;
+    padding-top: 25px;
+    text-align: center;
+}
+
+.doc-title>ol {
+    margin-top: -6px;
+    list-style: none;
+    margin: 0 auto;
+    width: 265px;
+}
+
+.doc-title>ol>li {
+    display: inline;
+    font-size: 17px;
+    float: left;
+}
+
+.doc-title>ol>li>a {
+    padding: 0 5px;
+}
+
+
+/* 왼쪽 사이드바 */
+.section {
+    position: relative;
+    max-width: 1260px;
+    height: 1000px;
+    margin: 0 auto;
+    padding-top: 10px;
+}
+
+.lnb {
+    width: 280px;
+    padding: 0 0 60px;
+    position: relative;
+    /* float: left; */
+    text-align: center;
+    /* z-index: 66660; */
+}
+
+.lnb>h2 {
+    width: 220px !important;
+    height: 140px;
+    margin-top: -150px;
+    display: block;
+    background: url(./img/lnb-bg-new.png) repeat-y 1px;
+}
+
+.lnb>h2>b {
+    display: block;
+    color: #fff;
+    font-size: 24px;
+    line-height: 140px;
+    margin: 0;
+    text-align: center;
+    font-weight: bold;
+}
+
+.lnb>ul {
+    width: 219px;
+    margin-right: 40px;
+    overflow: hidden;
+}
+
+.lnb>ul>li {
+    border: 1px solid gray;
+}
+.lnb>ul>li>a{
+    font-size: 16px;
+    font-weight: 400;
+    display: block;
+    background: #fff;
+    color:black;
+    padding: 17px 40px 17px 20px;
+    position: relative;
+}
+.lnb>ul>li>a:hover{
+    background-color: gray;
+    color: white;
+}
+.lnb > a> .span{
+    display: inline-block;
+}
+.wrap{
+    margin: 0 auto;
+    /* border: 1px solid black; */
+    width: 1200px;
+}
+/* 게시판영역 */
+.content {
+    box-sizing: border-box;
+    margin-top: 30px;
+    /* padding-bottom: 50px; */
+    width: 1260px;
+    /* float: right; */
+    border: 2px black;
+}
+.title-box{
+    margin: 0 auto;
+    box-sizing: border-box;
+    display: inline-block;
+    border-style: solid;
+    border-image: linear-gradient(to right, #3cb13a 0%, #6466c3 100%);
+    border-image-slice: 1;
+    background: #fff;
+    border-image-width: 20px;
+    padding: 15px;
+    position: relative;
+    width: 100%;
+}
+.title-box input {
+    width: 100%;
+    height: 70px;
+    line-height: 70px;
+    padding: 0;
+    color: #333;
+    font-size: 24px;
+    border: 0;
+    cursor: text;
+    box-sizing: border-box;
+    padding-left: 20px;
+}
+.doc dl{
+    /* margin: 0 1.5% 10px 2%;
+    margin: 0;
+    padding: 0;
+    line-height: 150%;
+    word-break: keep-all;
+    font-size: 15px;
+    font-weight: normal;
+    color: #464646; */
+    display: flex;
+    justify-content: space-between;
+    margin: 0 1.5% 10px 2%;
+    padding: 0;
+    line-height: 150%;
+    word-break: keep-all;
+    font-size: 15px;
+    font-weight: normal;
+    color: #464646;
+}
+.section dl dt{
+    /* float: left;
+    width: 80px;
+    color: #000;
+    font-weight: bold;
+    height: 38px;
+    line-height: 38px; */
+    width: 80px;
+    color: #000;
+    font-weight: bold;
+    height: 38px;
+    line-height: 38px;
+}
+dt, dd{
+    word-break: keep-all;
+}

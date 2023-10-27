@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Nanum+Gothic:wght@400;700;800&family=Nanum+Myeongjo:wght@400;700;800&family=Nanum+Pen+Script&family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap">
+    <link rel="stylesheet" href="css/editor.css">
+
+</head>
+
+<body>
+<div class="editor-menu">
+    <select id="select-font-name">
+        <option value="">글씨체</option>
+        <option value="Black Han Sans">Black Han Sans</option>
+        <option value="Noto Sans KR">Noto Sans</option>
+        <option value="Nanum Gothic">Nanum Gothic</option>
+        <option value="Nanum Myeongjo">Nanum Myeongjo</option>
+        <option value="Nanum Pen Script">Nanum Pen Script</option>
+    </select>
+    <select id="select-font-size">
+        <option value="">글씨 크기</option>
+        <option value="1">10px</option>
+        <option value="2">13px</option>
+        <option value="3">16px</option>
+        <option value="4">18px</option>
+        <option value="5">24px</option>
+        <option value="6">32px</option>
+        <option value="7">48px</option>
+    </select>
+    <select id="select-font-color">
+        <option value="">글씨 색상</option>
+        <option value="#000000">검정</option>
+        <option value="#FFFFFF">흰색</option>
+        <option value="#CCCCCC">회색</option>
+        <option value="#F03E3E">빨강</option>
+        <option value="#1971C2">파랑</option>
+        <option value="#37B24D">녹색</option>
+    </select>
+    <select id="select-font-background">
+        <option value="rgba(0, 0, 0, 0)">형광펜</option>
+        <option value="#000000">검정</option>
+        <option value="#FFFFFF">흰색</option>
+        <option value="#CCCCCC">회색</option>
+        <option value="#F03E3E">빨강</option>
+        <option value="#1971C2">파랑</option>
+        <option value="#37B24D">녹색</option>
+    </select>
+    <button id="btn-bold">
+        <b>B</b>
+    </button>
+    <button id="btn-italic">
+        <i>I</i>
+    </button>
+    <button id="btn-underline">
+        <u>U</u>
+    </button>
+    <button id="btn-strike">
+        <s>S</s>
+    </button>
+    <button id="btn-ordered-list">
+        OL
+    </button>
+    <button id="btn-unordered-list">
+        UL
+    </button>
+    <button id="btn-image">
+        IMG
+    </button>
+</div>
+<div id="editor" contenteditable="true">
+    <input id="img-selector" type="file" accept="image/*" />
+</div>
+<script src="js/editor.js"></script>
+</body>
+
+</html>

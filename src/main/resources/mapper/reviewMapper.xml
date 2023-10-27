@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.app.mapper.ReviewMapper">
+
+    <sql id="search">
+        <if test="search.keyword != null">
+            <where>
+                <trim prefixOverrides="OR">
+                    <foreach item="type" collection="search.types">
+                        <trim prefix="OR">
+                            <choose>
+                                <when test="type == 't'.toString()">
+                                    REV_TITLE LIKE CONCAT('%', #{search.keyword}, '%')
+                                </when>
+                                <when test="type == 'w'.toString()">
+                                    USER_ID LIKE CONCAT('%', #{search.keyword}, '%')
+                                </when>
+                                <when test="type == 'c'.toString()">
+                                    REV_CONTENT LIKE CONCAT('%', #{search.keyword}, '%')
+                                </when>
+                            </choose>
+                        </trim>
+                    </foreach>
+                </trim>
+            </where>
+        </if>
+    </sql>
+
+    <select id="select" resultType="reviewDTO">
+        SELECT * FROM TBL_REVIEW WHERE REV_ID = #{revId}
+    </select>
+
+
+    <select id="selectAll" resultType="reviewDTO" >
+        SELECT * FROM TBL_REVIEW
+        <include refid="search"/>
+        ORDER BY REV_ID DESC LIMIT #{cri.skip}, #{cri.amount}
+    </select>
+
+
+    <select id="selectCountAll" resultType="Long">
+        SELECT COUNT(REV_ID) FROM TBL_REVIEW
+        <include refid="search"/>
+    </select>
+
+    <insert id="insert">
+        insert into TBL_REVIEW(rev_title,user_id,rev_content,rev_register_date, rev_update_date)
+        value(#{revTitle}, #{userId}, #{revContent},now(),now());
+    </insert>
+
+    <delete id="delete">
+        DELETE FROM TBL_REVIEW WHERE REV_ID = #{revId}
+    </delete>
+
+    <update id="update">
+        UPDATE TBL_REVIEW
+        SET rev_title = #{revTitle}, rev_content=#{revContent}, rev_update_date = now()
+        WHERE rev_id = #{revId}
+    </update>
+
+</mapper>

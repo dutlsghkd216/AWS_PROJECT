@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.app.mapper.UserMapper">
+    <select id="findByUid" resultType="userDTO">
+        SELECT * FROM TBL_USER WHERE USER_ID=#{userId}
+    </select>
+
+    <select id="findAll" resultType="userDTO">
+        SELECT * FROM TBL_USER
+    </select>
+
+    <select id="findPW" resultType="String">
+        SELECT USER_PW FROM TBL_USER WHERE USER_ID=#{userId}
+    </select>
+
+
+    <insert id="register">
+        INSERT INTO TBL_USER(USER_ID,USER_PW,USER_NAME,USER_EMAIL,USER_BIRTH,USER_ROLE, USER_REGISTER_DATE,EMAIL_PREFIX,EMAIL_DNS)
+        VALUES(#{userId}, #{userPw}, #{userName}, #{userEmail}, #{userBirth}, #{userRole}, NOW(),#{emailPrefix},#{emailDns})
+    </insert>
+
+    <delete id="delete">
+        DELETE FROM TBL_USER WHERE USER_ID=#{userId}
+    </delete>
+
+    <update id="update">
+        UPDATE TBL_USER
+        SET USER_EMAIL = #{userEmail}, EMAIL_PREFIX = #{emailPrefix}, EMAIL_DNS = #{emailDns}
+        WHERE USER_ID = #{userId}
+    </update>
+
+    <update id="updatePW">
+        UPDATE TBL_USER
+        SET USER_PW = #{userPw}
+        WHERE USER_ID = #{userId}
+    </update>
+</mapper>

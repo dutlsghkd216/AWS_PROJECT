@@ -1,0 +1,198 @@
+.header_wrap {
+    height: auto;
+}
+
+.header_top {
+    height: 40px;
+}
+
+.ht_info {
+    max-width: 1260px;
+    height: 40px;
+    margin: 0 auto;
+}
+
+.tnb_menu {
+    display: inline-flex;
+    float: right;
+    gap: 40px;
+    padding-top: 10px;
+}
+
+.tnb_menu>a {
+    color: black;
+    display: flex;
+    gap: 5px;
+}
+
+.header_bottom {
+    height: 90px;
+    border-top: 0.2px solid rgba(200, 200, 200, 0.5);
+    border-bottom: 0.2px solid rgba(200, 200, 200, 0.5);
+}
+
+.hb_info {
+    max-width: 1260px;
+    margin: 0 auto;
+}
+
+.gnb {
+    max-width: 1260px;
+    height: 90px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: nowrap;
+}
+
+.gnb_menu {
+    display: flex;
+    height: 90px;
+    margin: 0;
+    gap: 40px;
+    justify-content: flex-end;
+    align-items: center;
+    font-weight: bolder;
+}
+
+.gnb_menu>li>a {
+    color: black;
+}
+
+.gnb_m {
+    display: none;
+    position: absolute;
+    top: 132px;
+    left: 0;
+    width: 100%;
+    z-index: 1;
+    /* 하위메뉴판 뒷배경 백그라운드 색상 */
+    background-color: rgba(85, 85, 85, 0.7);
+}
+
+/* 하위메뉴- 자료검색, 대여안내, 열린공간, 도서관 안내, 나의 도서관 글씨 색상 */
+.gnb_m1>a {
+    color: white;
+}
+
+.gnb_mm {
+    width: 1260px;
+    margin: 0 auto;
+
+}
+
+.gnb_mmm {
+    width: 900px;
+    margin: 0 auto;
+    padding: 20px 0px 10px 35px;
+    overflow: hidden;
+}
+
+.gnb_mmm>.gnb_m1 {
+    padding-left: 7px;
+    height: 30px;
+    font-size: 21px;
+}
+
+.gnb_mmm>li {
+    float: left;
+    height: 107px;
+    margin: 0 20px 20px;
+}
+
+.gnb_mmm>li>a {
+    display: inline-block;
+    width: 125px;
+    height: 107px;
+    text-align: center;
+    letter-spacing: -1px;
+    line-height: 30px;
+}
+
+.gnb_m5-3 {}
+
+/* 하위메뉴- 사각형 선 */
+.gnb_m1-1,
+.gnb_m1-2,
+.gnb_m1-3,
+.gnb_m2-1,
+.gnb_m2-2,
+.gnb_m2-3,
+.gnb_m3-1,
+.gnb_m3-2,
+.gnb_m4-1,
+.gnb_m4-2,
+.gnb_m4-3,
+.gnb_m5-1,
+.gnb_m5-2,
+.gnb_m5-3 {
+    border: 4px solid rgba(255, 255, 255, 0%);
+    border-radius: 25px;
+    /* 사각형 안에 백그라운드 색상 */
+    background-color: white;
+}
+
+/* 하위메뉴- 사각형 안에 글씨 색상 */
+.gnb_m1-1>a,
+.gnb_m1-2>a,
+.gnb_m1-3>a,
+.gnb_m2-1>a,
+.gnb_m2-2>a,
+.gnb_m2-3>a,
+.gnb_m3-1>a,
+.gnb_m3-2>a,
+.gnb_m4-1>a,
+.gnb_m4-2>a,
+.gnb_m4-3>a,
+.gnb_m5-1>a,
+.gnb_m5-2>a,
+.gnb_m5-3>a {
+    color: rgba(60, 60, 60, 1);
+}
+
+/* 하위메뉴 빈칸 */
+.gnb_m3-3 {
+    border: 4px solid rgba(255, 255, 255, 0%);
+}
+
+/* 메뉴 항목에 마우스를 올리면 하위 메뉴 표시 */
+.gnb_menu:hover .gnb_m {
+    display: block;
+}
+
+/* 특정 하위 메뉴 항목에 대한 예시 */
+.gnb_m1-1:hover,
+.gnb_m1-2:hover,
+.gnb_m1-3:hover,
+.gnb_m2-1:hover,
+.gnb_m2-2:hover,
+.gnb_m2-3:hover,
+.gnb_m3-1:hover,
+.gnb_m3-2:hover,
+.gnb_m4-1:hover,
+.gnb_m4-2:hover,
+.gnb_m4-3:hover,
+.gnb_m5-1:hover,
+.gnb_m5-2:hover,
+.gnb_m5-3:hover {
+    background-color: rgba(40, 40, 40, 0.8);
+}
+
+
+.gnb_m1-1>a:hover,
+.gnb_m1-2>a:hover,
+.gnb_m1-3>a:hover,
+.gnb_m2-1>a:hover,
+.gnb_m2-2>a:hover,
+.gnb_m2-3>a:hover,
+.gnb_m3-1>a:hover,
+.gnb_m3-2>a:hover,
+.gnb_m4-1>a:hover,
+.gnb_m4-2>a:hover,
+.gnb_m4-3>a:hover,
+.gnb_m5-1>a:hover,
+.gnb_m5-2>a:hover,
+.gnb_m5-3>a:hover {
+    color: white;
+}

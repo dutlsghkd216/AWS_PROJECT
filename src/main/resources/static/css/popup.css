@@ -1,0 +1,112 @@
+    /*popup*/
+    .popup_layer {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 10000;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.4);
+    }
+
+    /*팝업 박스*/
+    .popup_box {
+        position: relative;
+        top: 50%;
+        left: 50%;
+        overflow: auto;
+        height: auto;
+        width: 600px;
+        transform: translate(-50%, -50%);
+        z-index: 1002;
+        box-sizing: border-box;
+        background: #fff;
+        border-radius: 15px;
+        box-shadow: 2px 5px 10px 0px rgba(0, 0, 0, 0.35);
+        -webkit-box-shadow: 2px 5px 10px 0px rgba(0, 0, 0, 0.35);
+        -moz-box-shadow: 2px 5px 10px 0px rgba(0, 0, 0, 0.35);
+    }
+
+    /*컨텐츠 영역*/
+    .popup_box .popup_cont {
+        padding: 40px 50px 20px 50px;
+        line-height: 1.4rem;
+        font-size: 14px;
+    }
+
+    .bookinfo1 {
+        display: flex;
+        height: 60px;
+        gap: 20px;
+        border-bottom: 1px solid rgb(200, 200, 200, 0.8);
+    }
+
+    .bi_text {}
+
+    .bi_title {
+        width: 20%;
+        text-align: center;
+        font-weight: bold;
+        color: gray;
+        background-color: #f1f1f1;
+        line-height: 60px;
+    }
+
+    .bi_text>input {
+        width: 350px;
+        height: 35px;
+        margin-top: 10px;
+        font-size: 18px;
+    }
+
+    #signup_year,
+    #signup_month,
+    #signup_day {
+        width: 90px;
+        height: 30px;
+        margin: 0 auto;
+        font-size: 15px;
+        text-align: center;
+    }
+
+
+
+    /*버튼영역*/
+
+    .pop_btn {
+        width: 200px;
+        height: 60px;
+        border: none;
+        border-radius: 15px;
+        background-color: rgb(91, 91, 91);
+    }
+
+    .popup_box .popup_btn {
+        display: flex;
+        margin: 10px 0 40px 0;
+        justify-content: center;
+        gap: 40px;
+    }
+
+    .popup_box .popup_btn a {
+        position: relative;
+        font-size: 17px;
+        text-align: center;
+        vertical-align: middle;
+        text-decoration: none;
+        color: white;
+        padding: 20px 50px;
+        font-weight: bold;
+
+    }
+
+    /*오버레이 뒷배경*/
+    .popup_overlay {
+        position: fixed;
+        top: 0px;
+        right: 0;
+        left: 0;
+        bottom: 0;
+        z-index: 1001;
+        background: rgba(0, 0, 0, 0.5);
+    }

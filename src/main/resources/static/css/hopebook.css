@@ -1,0 +1,196 @@
+.circle_step {
+    overflow: hidden;
+}
+
+.txtArea {
+    display: table;
+    width: 100%;
+}
+
+.circle_step>li {
+    float: left;
+    width: 100%;
+    padding: 20px 20px 20px 265px;
+    box-sizing: border-box;
+    position: relative;
+    border-bottom: 1px solid #ddd;
+}
+
+.boxArea1 {
+    background-color: #05a1af;
+}
+
+.boxArea {
+    position: absolute;
+    left: 25px;
+    top: 15%;
+    display: block;
+    width: 170px;
+    height: 170px;
+    padding-top: 25px;
+    border-radius: 100%;
+    text-align: center;
+    color: white;
+    box-sizing: border-box;
+}
+
+.circle_step>li .boxArea1::after {
+    content: "";
+    position: absolute;
+    left: 41%;
+    /* bottom: 25px; */
+    width: 50px;
+    height: 50px;
+    margin-left: -9px;
+    background: url(/css/img/wantbook01.png);
+}
+
+.circle_step>li .boxArea2 {
+    background-color: #1577c9;
+}
+
+.circle_step>li .boxArea2::after {
+    content: "";
+    position: absolute;
+    left: 60%;
+    bottom: 15px;
+    width: 80px;
+    height: 70px;
+    margin-left: -50px;
+    background: url(/css/img/wantbook02.png);
+    background-size: cover;
+}
+
+.circle_step>li .boxArea3 {
+    background-color: #9c81bd;
+    overflow: hidden;
+}
+
+.circle_step>li .boxArea3::after {
+    content: "";
+    position: absolute;
+    left: 60%;
+    bottom: 15px;
+    width: 75px;
+    height: 75px;
+    margin-left: -50px;
+    background: url(/css/img/wantbook03.png);
+    background-size: cover;
+}
+
+.circle_list {
+    display: table-cell;
+    height: 192px;
+    vertical-align: middle;
+}
+
+.txt1 {
+    display: inline-block;
+    font-size: 0.941em;
+    padding-bottom: 3px;
+    color: #fff;
+    border-bottom: 1px solid #fff;
+}
+
+.txt2 {
+    font-size: 1.64em;
+    color: #fff;
+    font-weight: 600;
+    padding-top: 3px;
+}
+
+.doc-body ul.con {
+    padding-left: 0;
+    padding-bottom: 10px;
+}
+
+.doc-body h4 {
+    font-size: 20px;
+}
+
+.circle_list ul.con>li {
+    /* font-size: 16px;
+    letter-spacing: -0;
+    background: url(/css/img/con_icon.gif);
+    padding: 3px 0 3px 23px; */
+}
+
+
+/* 희망도서신청하기 버튼 */
+.hopebtn {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    margin: 40px 0 40px 0;
+}
+
+.hope_btn {
+    width: 200px;
+    height: 60px;
+    background-color: navy;
+    border-radius: 20px;
+    border: none;
+}
+
+.hope_btn>a {
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+
+/* 희망도서신청 상세 페이지 */
+.hopeadd_table {
+    max-width: 900px;
+    margin: 30px auto;
+}
+
+.hope_title {
+    margin-left: 10px;
+    margin-bottom: 20px;
+    color: navy;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.ha_tb {
+    display: flex;
+    height: 65px;
+    justify-content: center;
+    border-bottom: 1px solid rgba(200, 200, 200, 0.8);
+}
+
+.ha_tb_title {
+    width: 30%;
+    line-height: 65px;
+    text-align: center;
+    font-weight: bold;
+    color: rgb(90, 90, 90);
+    background-color: rgb(230, 230, 230);
+}
+
+.ha_tb_text {}
+
+.text_input {
+    width: 600px;
+    height: 40px;
+    margin: 10px;
+    border-radius: 10px;
+}
+
+.hopeadd_btn {
+    display: flex;
+    justify-content: center;
+    margin: 30px 0 30px 0;
+}
+
+.ha_btn {
+    width: 200px;
+    height: 50px;
+    font-size: 20px;
+    font-weight: bold;
+    background-color: navy;
+    color: white;
+    border-radius: 15px;
+    border: none;
+}

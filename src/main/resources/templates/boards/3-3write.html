@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security/">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <link rel="stylesheet" href="/css/basic.css">
+  <link rel="stylesheet" href="/css/sub_header.css">
+  <link rel="stylesheet" href="/css/sub_main.css">
+  <link rel="stylesheet" href="/css/notice.css">
+  <link rel="stylesheet" href="/css/write.css">
+  <link rel="stylesheet" href="/css/editor.css">
+  <link rel="stylesheet" href="/css/sidebar.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Nanum+Gothic:wght@400;700;800&family=Nanum+Myeongjo:wght@400;700;800&family=Nanum+Pen+Script&family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap">
+  <link rel="stylesheet" href="/css/footer.css">
+
+</head>
+<body>
+<div class="wrapper">
+  <header class="header_wrap">
+    <div class="header_top">
+      <div class="ht_info">
+        <div class="tnb_menu">
+          <a sec:authorize="isAnonymous()" th:href="@{/security/login}">로그인</a>
+          <a sec:authorize="isAnonymous()" th:href="@{/security/register}">회원가입</a>
+          <a sec:authorize="isAuthenticated()" href=""><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                                            style="padding-top: 3px;" class="bi bi-person-fill" viewBox="0 0 16 16">
+            <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3Zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" />
+          </svg><span sec:authorize="isAuthenticated()" th:text="${#authentication.name}" ></span>님 환영합니다</a>
+          <a sec:authorize="isAuthenticated()" th:href="@{/security/logout}">로그아웃</a>
+          <a sec:authorize="hasRole('ADMIN')" th:href="@{/admin/adminsetting}" >관리자페이지</a>
+
+        </div>
+      </div>
+    </div>
+    <div class="header_bottom">
+      <div class="hb_info">
+        <div class="gnb">
+          <a href="/main"><img class="BeomeoLogoB1" src="/img/beomeo_logo_b.png"></a>
+          <!--new start 10월 13일 수정-->
+          <ul class="gnb_menu">
+            <li><a href="/books/1-1search">자료검색</a>
+              <div class="gnb_m">
+                <div class="gnb_mm">
+                  <ul class="gnb_mmm">
+                    <li class="gnb_m1"><a th:href="@{/books/1-1search}"
+                                          title=""><span>자료검색</span></a></li>
+                    <li class="gnb_m1"><a th:href="@{/booksPolicy/lendPolicy}"
+                                          title=""><span>대여안내</span></a></li>
+                    <li class="gnb_m1"><a th:href="@{/boards/notice}" title=""><span>열린공간</span></a>
+                    </li>
+                    <li class="gnb_m1"><a th:href="@{/introduction/intro}"
+                                          title=""><span>도서관 소개</span></a></li>
+                    <li class="gnb_m1"><a th:href="@{/security/checkpw}"
+                                          title=""><span>나의 도서관</span></a></li>
+                    <li class="gnb_m1-1"><a th:href="@{/books/1-1search}" title="통합자료검색" onclick="checkLogin()"><span><svg
+                            class="bi bi-search" fill="currentColor" height="40"
+                            style="padding-top: 15px;" viewBox="0 0 16 16" width="40"
+                            xmlns="http://www.w3.org/2000/svg">
+                                         <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                                        </svg><br>통합자료검색</span></a></li>
+                    <li class="gnb_m2-1"><a th:href="@{/booksPolicy/lendPolicy}" title="도서대출"><span><svg
+                            class="bi bi-upc-scan" fill="currentColor" height="40"
+                            style="padding-top: 15px;" viewBox="0 0 16 16" width="40"
+                            xmlns="http://www.w3.org/2000/svg">
+                        <path d="M1.5 1a.5.5 0 0 0-.5.5v3a.5.5 0 0 1-1 0v-3A1.5 1.5 0 0 1 1.5 0h3a.5.5 0 0 1 0 1h-3zM11 .5a.5.5 0 0 1 .5-.5h3A1.5 1.5 0 0 1 16 1.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 1-.5-.5zM.5 11a.5.5 0 0 1 .5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 1 0 1h-3A1.5 1.5 0 0 1 0 14.5v-3a.5.5 0 0 1 .5-.5zm15 0a.5.5 0 0 1 .5.5v3a1.5 1.5 0 0 1-1.5 1.5h-3a.5.5 0 0 1 0-1h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 1 .5-.5zM3 4.5a.5.5 0 0 1 1 0v7a.5.5 0 0 1-1 0v-7zm2 0a.5.5 0 0 1 1 0v7a.5.5 0 0 1-1 0v-7zm2 0a.5.5 0 0 1 1 0v7a.5.5 0 0 1-1 0v-7zm2 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-7zm3 0a.5.5 0 0 1 1 0v7a.5.5 0 0 1-1 0v-7z"/>
+                      </svg><br>도서대출</span></a></li>
+                    <li class="gnb_m3-1"><a th:href="@{/boards/notice}" title="공지사항"><span><svg
+                            class="bi bi-ui-checks-grid" fill="currentColor" height="40"
+                            style="padding-top: 15px;" viewBox="0 0 16 16"
+                            width="40" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M2 10h3a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1zm9-9h3a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-3a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zm0 9a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1h-3zm0-10a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h3a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2h-3zM2 9a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h3a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H2zm7 2a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2h-3a2 2 0 0 1-2-2v-3zM0 2a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm5.354.854a.5.5 0 1 0-.708-.708L3 3.793l-.646-.647a.5.5 0 1 0-.708.708l1 1a.5.5 0 0 0 .708 0l2-2z"/>
+                      </svg><br>공지사항</span></a></li>
+                    <li class="gnb_m4-1"><a th:href="@{/introduction/intro}" title="인사말"><span><svg
+                            class="bi bi-chat-quote-fill" fill="currentColor" height="40"
+                            style="padding-top: 15px;" viewBox="0 0 16 16"
+                            width="40" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M16 8c0 3.866-3.582 7-8 7a9.06 9.06 0 0 1-2.347-.306c-.584.296-1.925.864-4.181 1.234-.2.032-.352-.176-.273-.362.354-.836.674-1.95.77-2.966C.744 11.37 0 9.76 0 8c0-3.866 3.582-7 8-7s8 3.134 8 7zM7.194 6.766a1.688 1.688 0 0 0-.227-.272 1.467 1.467 0 0 0-.469-.324l-.008-.004A1.785 1.785 0 0 0 5.734 6C4.776 6 4 6.746 4 7.667c0 .92.776 1.666 1.734 1.666.343 0 .662-.095.931-.26-.137.389-.39.804-.81 1.22a.405.405 0 0 0 .011.59c.173.16.447.155.614-.01 1.334-1.329 1.37-2.758.941-3.706a2.461 2.461 0 0 0-.227-.4zM11 9.073c-.136.389-.39.804-.81 1.22a.405.405 0 0 0 .012.59c.172.16.446.155.613-.01 1.334-1.329 1.37-2.758.942-3.706a2.466 2.466 0 0 0-.228-.4 1.686 1.686 0 0 0-.227-.273 1.466 1.466 0 0 0-.469-.324l-.008-.004A1.785 1.785 0 0 0 10.07 6c-.957 0-1.734.746-1.734 1.667 0 .92.777 1.666 1.734 1.666.343 0 .662-.095.931-.26z"/>
+                      </svg><br>인사말</span></a></li>
+                    <li class="gnb_m5-1"><a th:href="@{/security/checkpw}" title="나의정보수정"><span><svg
+                            class="bi bi-person-fill-lock" fill="currentColor" height="40"
+                            style="padding-top: 15px;" viewBox="0 0 16 16"
+                            width="40" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M11 5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm-9 8c0 1 1 1 1 1h5v-1a1.9 1.9 0 0 1 .01-.2 4.49 4.49 0 0 1 1.534-3.693C9.077 9.038 8.564 9 8 9c-5 0-6 3-6 4Zm7 0a1 1 0 0 1 1-1v-1a2 2 0 1 1 4 0v1a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1v-2Zm3-3a1 1 0 0 0-1 1v1h2v-1a1 1 0 0 0-1-1Z"/>
+                      </svg><br>나의 정보수정</span></a></li>
+                    <li class="gnb_m1-2"><a th:href="@{/books/recommendBook}" title="추천도서"><span><svg
+                            class="bi bi-bookmark-star-fill" fill="currentColor" height="40"
+                            style="padding-top: 15px;" viewBox="0 0 16 16"
+                            width="40" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M2 15.5V2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.74.439L8 13.069l-5.26 2.87A.5.5 0 0 1 2 15.5zM8.16 4.1a.178.178 0 0 0-.32 0l-.634 1.285a.178.178 0 0 1-.134.098l-1.42.206a.178.178 0 0 0-.098.303L6.58 6.993c.042.041.061.1.051.158L6.39 8.565a.178.178 0 0 0 .258.187l1.27-.668a.178.178 0 0 1 .165 0l1.27.668a.178.178 0 0 0 .257-.187L9.368 7.15a.178.178 0 0 1 .05-.158l1.028-1.001a.178.178 0 0 0-.098-.303l-1.42-.206a.178.178 0 0 1-.134-.098L8.16 4.1z"
+                              fill-rule="evenodd"/>
+                      </svg><br>추천도서</span></a></li>
+                    <li class="gnb_m2-2"><a th:href="@{/booksPolicy/returnPolicy}"
+                                            title="도서반납"><span><svg
+                            class="bi bi-repeat" fill="currentColor" height="40"
+                            style="padding-top: 15px;" viewBox="0 0 16 16" width="40"
+                            xmlns="http://www.w3.org/2000/svg">
+                        <path d="M11 5.466V4H5a4 4 0 0 0-3.584 5.777.5.5 0 1 1-.896.446A5 5 0 0 1 5 3h6V1.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384l-2.36 1.966a.25.25 0 0 1-.41-.192Zm3.81.086a.5.5 0 0 1 .67.225A5 5 0 0 1 11 13H5v1.466a.25.25 0 0 1-.41.192l-2.36-1.966a.25.25 0 0 1 0-.384l2.36-1.966a.25.25 0 0 1 .41.192V12h6a4 4 0 0 0 3.585-5.777.5.5 0 0 1 .225-.67Z"/>
+                      </svg><br>도서반납</span></a></li>
+                    <li class="gnb_m3-2"><a th:href="@{/reviews/3-2review}" title="도서리뷰"><span><svg
+                            class="bi bi-journal-bookmark-fill" fill="currentColor" height="40"
+                            style="padding-top: 15px;" viewBox="0 0 16 16"
+                            width="40" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M6 1h6v7a.5.5 0 0 1-.757.429L9 7.083 6.757 8.43A.5.5 0 0 1 6 8V1z"
+                              fill-rule="evenodd"/>
+                        <path d="M3 0h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-1h1v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v1H1V2a2 2 0 0 1 2-2z"/>
+                        <path d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1z"/>
+                      </svg><br>도서리뷰</span></a></li>
+                    <li class="gnb_m4-2"><a th:href="@{/introduction/OPtime}" title="이용시간"><span><svg
+                            class="bi bi-alarm" fill="currentColor" height="40"
+                            style="padding-top: 15px;" viewBox="0 0 16 16" width="40"
+                            xmlns="http://www.w3.org/2000/svg">
+                        <path d="M8.5 5.5a.5.5 0 0 0-1 0v3.362l-1.429 2.38a.5.5 0 1 0 .858.515l1.5-2.5A.5.5 0 0 0 8.5 9V5.5z"/>
+                        <path d="M6.5 0a.5.5 0 0 0 0 1H7v1.07a7.001 7.001 0 0 0-3.273 12.474l-.602.602a.5.5 0 0 0 .707.708l.746-.746A6.97 6.97 0 0 0 8 16a6.97 6.97 0 0 0 3.422-.892l.746.746a.5.5 0 0 0 .707-.708l-.601-.602A7.001 7.001 0 0 0 9 2.07V1h.5a.5.5 0 0 0 0-1h-3zm1.038 3.018a6.093 6.093 0 0 1 .924 0 6 6 0 1 1-.924 0zM0 3.5c0 .753.333 1.429.86 1.887A8.035 8.035 0 0 1 4.387 1.86 2.5 2.5 0 0 0 0 3.5zM13.5 1c-.753 0-1.429.333-1.887.86a8.035 8.035 0 0 1 3.527 3.527A2.5 2.5 0 0 0 13.5 1z"/>
+                      </svg><br>이용시간</span></a></li>
+                    <li class="gnb_m5-2"><a th:href="@{/mypage/mySchedule}" title="나의책계획"><span><svg
+                            class="bi bi-person-video3" fill="currentColor" height="40"
+                            style="padding-top: 15px;" viewBox="0 0 16 16"
+                            width="40" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M14 9.5a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm-6 5.7c0 .8.8.8.8.8h6.4s.8 0 .8-.8-.8-3.2-4-3.2-4 2.4-4 3.2Z"/>
+                        <path d="M2 2a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h5.243c.122-.326.295-.668.526-1H2a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v7.81c.353.23.656.496.91.783.059-.187.09-.386.09-.593V4a2 2 0 0 0-2-2H2Z"/>
+                      </svg><br>나의 책 계획</span></a></li>
+                    <li class="gnb_m1-3"><a th:href="@{/books/wishBook}" title="희망도서신청"><span><svg
+                            class="bi bi-bookmark-plus-fill" fill="currentColor" height="40"
+                            style="padding-top: 15px;" viewBox="0 0 16 16"
+                            width="40" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M2 15.5V2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.74.439L8 13.069l-5.26 2.87A.5.5 0 0 1 2 15.5zm6.5-11a.5.5 0 0 0-1 0V6H6a.5.5 0 0 0 0 1h1.5v1.5a.5.5 0 0 0 1 0V7H10a.5.5 0 0 0 0-1H8.5V4.5z"
+                              fill-rule="evenodd"/>
+                      </svg><br>희망도서신청</span></a></li>
+                    <li class="gnb_m2-3"><a th:href="@{/booksPolicy/reservationPolicy}" title="도서예약"><span><svg
+                            class="bi bi-cart-plus-fill" fill="currentColor" height="40"
+                            style="padding-top: 15px;" viewBox="0 0 16 16"
+                            width="40" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zM9 5.5V7h1.5a.5.5 0 0 1 0 1H9v1.5a.5.5 0 0 1-1 0V8H6.5a.5.5 0 0 1 0-1H8V5.5a.5.5 0 0 1 1 0z"/>
+                      </svg><br>도서예약</span></a></li>
+                    <li class="gnb_m3-3"><a href="" title=""><span><!--이거 지우지마세요--></span></a></li>
+                    <li class="gnb_m4-3"><a th:href="@{/introduction/map}" title="찾아오시는길"><span><svg
+                            class="bi bi-map" fill="currentColor" height="40"
+                            style="padding-top: 15px;" viewBox="0 0 16 16" width="40"
+                            xmlns="http://www.w3.org/2000/svg">
+                        <path d="M15.817.113A.5.5 0 0 1 16 .5v14a.5.5 0 0 1-.402.49l-5 1a.502.502 0 0 1-.196 0L5.5 15.01l-4.902.98A.5.5 0 0 1 0 15.5v-14a.5.5 0 0 1 .402-.49l5-1a.5.5 0 0 1 .196 0L10.5.99l4.902-.98a.5.5 0 0 1 .415.103zM10 1.91l-4-.8v12.98l4 .8V1.91zm1 12.98 4-.8V1.11l-4 .8v12.98zm-6-.8V1.11l-4 .8v12.98l4-.8z"
+                              fill-rule="evenodd"/>
+                      </svg><br>찾아오시는 길</span></a></li>
+                    <li class="gnb_m5-3"><a th:href="@{/mypage/mylist}" title="나의 리스트"><span><svg
+                            xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor"
+                            style="padding-top: 15px;" class="bi bi-list-check" viewBox="0 0 16 16">
+                              <path fill-rule="evenodd"
+                                    d="M5 11.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM3.854 2.146a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 1 1 .708-.708L2 3.293l1.146-1.147a.5.5 0 0 1 .708 0zm0 4a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 1 1 .708-.708L2 7.293l1.146-1.147a.5.5 0 0 1 .708 0zm0 4a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 0 1 .708-.708l.146.147 1.146-1.147a.5.5 0 0 1 .708 0z" />
+                            </svg><br>나의 리스트</span></a></li>
+                  </ul>
+                </div>
+              </div>
+            </li>
+            <li><a th:href="@{/booksPolicy/lendPolicy}">대여안내</a></li>
+            <li><a th:href="@{/boards/notice}">열린공간</a></li>
+            <li><a th:href="@{/introduction/intro}">도서관 소개</a></li>
+            <li><a th:href="@{/security/checkpw}">나의 도서관</a></li>
+            <!--new start 10월 13일 메뉴바 수정-->
+            <li><a href="">
+              <svg class="bi bi-list" fill="currentColor" height="35" style="padding-top: 6px;"
+                   viewBox="0 0 16 16" width="35" xmlns="http://www.w3.org/2000/svg">
+                <path d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"
+                      fill-rule="evenodd"/>
+              </svg>
+            </a></li>
+            <!--new end-->
+          </ul>
+          <!--new end-->
+        </div>
+      </div>
+    </div>
+    <div class="sidebar close">
+      <div class="logo-details">
+        <div class="logo-d">
+          <input type="checkbox" name="" id="menuicon">
+          <label for="menuicon">
+            <span></span>
+            <span></span>
+            <span></span>
+          </label>
+        </div>
+        <span class="logo_name">수성구립<br>범어도서관</span>
+      </div>
+      <ul class="nav-links">
+        <li>
+          <div class="iocn-link">
+            <a th:href="@{/books/1-1search}">
+              <i><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
+                      style="padding-top: 15px;" class="bi bi-search" viewBox="0 0 16 16">
+                <path
+                        d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+              </svg></i>
+              <span class="link_name">자료검색</span>
+            </a>
+            <i class='bx bxs-chevron-down arrow'></i>
+          </div>
+          <ul class="sub-menu">
+            <li><a class="link_name" th:href="@{/books/1-1search}">자료검색</a></li>
+            <li><a th:href="@{/books/1-1search}">통합자료검색</a></li>
+            <li><a href="/books/recommendBook">추천도서</a></li>
+            <li><a th:href="@{/books/wishBook}">희망도서신청</a></li>
+          </ul>
+        </li>
+        <li>
+          <div class="iocn-link">
+            <a href="/bookPolicy/lendPolicy">
+              <i><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
+                      style="padding-top: 15px;" class="bi bi-upc-scan" viewBox="0 0 16 16">
+                <path
+                        d="M1.5 1a.5.5 0 0 0-.5.5v3a.5.5 0 0 1-1 0v-3A1.5 1.5 0 0 1 1.5 0h3a.5.5 0 0 1 0 1h-3zM11 .5a.5.5 0 0 1 .5-.5h3A1.5 1.5 0 0 1 16 1.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 1-.5-.5zM.5 11a.5.5 0 0 1 .5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 1 0 1h-3A1.5 1.5 0 0 1 0 14.5v-3a.5.5 0 0 1 .5-.5zm15 0a.5.5 0 0 1 .5.5v3a1.5 1.5 0 0 1-1.5 1.5h-3a.5.5 0 0 1 0-1h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 1 .5-.5zM3 4.5a.5.5 0 0 1 1 0v7a.5.5 0 0 1-1 0v-7zm2 0a.5.5 0 0 1 1 0v7a.5.5 0 0 1-1 0v-7zm2 0a.5.5 0 0 1 1 0v7a.5.5 0 0 1-1 0v-7zm2 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-7zm3 0a.5.5 0 0 1 1 0v7a.5.5 0 0 1-1 0v-7z" />
+              </svg></i>
+              <span class="link_name">대여안내</span>
+            </a>
+            <i class='bx bxs-chevron-down arrow'></i>
+          </div>
+          <ul class="sub-menu">
+            <li><a class="link_name" >대여안내</a></li>
+            <li><a href="/booksPolicy/lendPolicy">도서대출</a></li>
+            <li><a href="/booksPolicy/returnPolicy">도서반납</a></li>
+            <li><a href="/booksPolicy/reservationPolicy">도서예약</a></li>
+          </ul>
+        </li>
+        <li>
+          <div class="iocn-link">
+            <a th:href="@{/boards/notice}">
+              <i><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
+                      style="padding-top: 15px;" class="bi bi-ui-checks-grid" viewBox="0 0 16 16">
+                <path
+                        d="M2 10h3a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1zm9-9h3a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-3a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zm0 9a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1h-3zm0-10a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h3a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2h-3zM2 9a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h3a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H2zm7 2a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2h-3a2 2 0 0 1-2-2v-3zM0 2a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm5.354.854a.5.5 0 1 0-.708-.708L3 3.793l-.646-.647a.5.5 0 1 0-.708.708l1 1a.5.5 0 0 0 .708 0l2-2z" />
+              </svg></i>
+              <span class="link_name">열린공간</span>
+            </a>
+            <i class='bx bxs-chevron-down arrow'></i>
+          </div>
+          <ul class="sub-menu">
+            <li><a class="link_name" href="#">열린공간</a></li>
+            <li><a th:href="@{/boards/notice}">공지사항</a></li>
+            <li><a th:href="@{/reviews/3-2review}">도서리뷰</a></li>
+          </ul>
+        </li>
+        <li>
+          <div class="iocn-link">
+            <a href="/introduction/intro">
+              <i><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
+                      style="padding-top: 15px;" class="bi bi-chat-quote-fill" viewBox="0 0 16 16">
+                <path
+                        d="M16 8c0 3.866-3.582 7-8 7a9.06 9.06 0 0 1-2.347-.306c-.584.296-1.925.864-4.181 1.234-.2.032-.352-.176-.273-.362.354-.836.674-1.95.77-2.966C.744 11.37 0 9.76 0 8c0-3.866 3.582-7 8-7s8 3.134 8 7zM7.194 6.766a1.688 1.688 0 0 0-.227-.272 1.467 1.467 0 0 0-.469-.324l-.008-.004A1.785 1.785 0 0 0 5.734 6C4.776 6 4 6.746 4 7.667c0 .92.776 1.666 1.734 1.666.343 0 .662-.095.931-.26-.137.389-.39.804-.81 1.22a.405.405 0 0 0 .011.59c.173.16.447.155.614-.01 1.334-1.329 1.37-2.758.941-3.706a2.461 2.461 0 0 0-.227-.4zM11 9.073c-.136.389-.39.804-.81 1.22a.405.405 0 0 0 .012.59c.172.16.446.155.613-.01 1.334-1.329 1.37-2.758.942-3.706a2.466 2.466 0 0 0-.228-.4 1.686 1.686 0 0 0-.227-.273 1.466 1.466 0 0 0-.469-.324l-.008-.004A1.785 1.785 0 0 0 10.07 6c-.957 0-1.734.746-1.734 1.667 0 .92.777 1.666 1.734 1.666.343 0 .662-.095.931-.26z" />
+              </svg></i>
+              <span class="link_name">도서관 소개</span>
+            </a>
+            <i class='bx bxs-chevron-down arrow'></i>
+          </div>
+          <ul class="sub-menu">
+            <li><a class="link_name" href="#">도서관 소개</a></li>
+            <li><a href="/introduction/intro">인사말</a></li>
+            <li><a href="/introduction/OPtime">이용시간</a></li>
+            <li><a href="/introduction/map">찾아오시는 길</a></li>
+          </ul>
+        </li>
+        <li>
+          <div class="iocn-link">
+            <a th:href="@{/security/checkpw}">
+              <i><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
+                      style="padding-top: 15px;" class="bi bi-person-fill-lock" viewBox="0 0 16 16">
+                <path
+                        d="M11 5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm-9 8c0 1 1 1 1 1h5v-1a1.9 1.9 0 0 1 .01-.2 4.49 4.49 0 0 1 1.534-3.693C9.077 9.038 8.564 9 8 9c-5 0-6 3-6 4Zm7 0a1 1 0 0 1 1-1v-1a2 2 0 1 1 4 0v1a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1v-2Zm3-3a1 1 0 0 0-1 1v1h2v-1a1 1 0 0 0-1-1Z" />
+              </svg></i>
+              <span class="link_name">나의 도서관</span>
+            </a>
+            <i class='bx bxs-chevron-down arrow'></i>
+          </div>
+          <ul class="sub-menu">
+            <li><a class="link_name" href="#">나의 도서관</a></li>
+            <li><a th:href="@{/security/checkpw}">마이페이지</a></li>
+            <li><a href="/mypage/myschedule">나의 책계획</a></li>
+            <li><a th:href="@{/mypage/mylist}">나의 리스트</a></li>
+          </ul>
+        </li>
+        <div class="profile-details">
+          <div class="profile-content">
+            <i style="margin-right: 20px;"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30"
+                                                style="margin-top: 5px;" fill="white" class="bi bi-box-arrow-in-right" viewBox="0 0 16 16">
+              <path fill-rule="evenodd"
+                    d="M6 3.5a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-2a.5.5 0 0 0-1 0v2A1.5 1.5 0 0 0 6.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-8A1.5 1.5 0 0 0 5 3.5v2a.5.5 0 0 0 1 0v-2z" />
+              <path fill-rule="evenodd"
+                    d="M11.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H1.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z" />
+            </svg></i>
+          </div>
+          <div class="name-job">
+            <div class="profile_name"><a th:href="@{/security/login}">로그인</a></div>
+          </div>
+        </div>
+        </li>
+      </ul>
+    </div>
+  </header>
+  <div class="main_wrap">
+    <div class="main_top">
+      <div class="mt_index">
+        <h1>공지사항</h1>
+      </div>
+      <div class="mt_index2">
+        <ul>
+          <li class="home"><a href="/main"><img src=" /img/navi_home_icon.gif" alt="Home"></a></li>
+          <li><a href="/boards/notice">열린공간</a></li>
+          <li><a href="/reviews/3-2review">도서리뷰</a></li>
+          <li>글쓰기</li>
+
+        </ul>
+      </div>
+      <div class="mt_info">
+        <ul class="mt_menu">
+          <li class="mt_m"><a href="/boards/notice">공지사항</a></li>
+          <li class="mt_m"><a href="/reviews/3-2review">도서리뷰</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="main_bottom">
+      <div class="mb_info">
+        <div class="content">
+          <h2>글쓰기</h2>
+          <div class="form">
+            <form th:action="@{/boards/write}" method="post" th:object="${boardDTO}" id="registForm">
+              <div class="fields">
+<!--                <div class="field">-->
+<!--                  <h4>작성자</h4>-->
+<!--                  <input name="writer"  type="text" th:text="${#authentication.name}" readonly/>-->
+<!--                </div>-->
+                <div class="field">
+                  <h4>제목</h4>
+                  <input name="title" placeholder="Title" type="text" th:field="*{anTitle}" />
+                </div>
+                <div class="field2">
+                  <h4>파일 첨부</h4>
+                  <input name="title" placeholder="Title" type="file" />
+                </div>
+                <div class="field">
+                  <h4>내용</h4>
+                  <!--new start 10월 15일 추가-->
+                  <div class="editor-menu">
+                    <select id="select-font-name">
+                      <option value="">글씨체</option>
+                      <option value="Black Han Sans">Black Han Sans</option>
+                      <option value="Noto Sans KR">Noto Sans</option>
+                      <option value="Nanum Gothic">Nanum Gothic</option>
+                      <option value="Nanum Myeongjo">Nanum Myeongjo</option>
+                      <option value="Nanum Pen Script">Nanum Pen Script</option>
+                    </select>
+                    <select id="select-font-size">
+                      <option value="">글씨 크기</option>
+                      <option value="1">10px</option>
+                      <option value="2">13px</option>
+                      <option value="3">16px</option>
+                      <option value="4">18px</option>
+                      <option value="5">24px</option>
+                      <option value="6">32px</option>
+                      <option value="7">48px</option>
+                    </select>
+                    <select id="select-font-color">
+                      <option value="">글씨 색상</option>
+                      <option value="#000000">검정</option>
+                      <option value="#FFFFFF">흰색</option>
+                      <option value="#CCCCCC">회색</option>
+                      <option value="#F03E3E">빨강</option>
+                      <option value="#1971C2">파랑</option>
+                      <option value="#37B24D">녹색</option>
+                    </select>
+                    <select id="select-font-background">
+                      <option value="rgba(0, 0, 0, 0)">형광펜</option>
+                      <option value="#000000">검정</option>
+                      <option value="#FFFFFF">흰색</option>
+                      <option value="#CCCCCC">회색</option>
+                      <option value="#F03E3E">빨강</option>
+                      <option value="#1971C2">파랑</option>
+                      <option value="#37B24D">녹색</option>
+                    </select>
+                    <button id="btn-bold">
+                      <b>B</b>
+                    </button>
+                    <button id="btn-italic">
+                      <i>I</i>
+                    </button>
+                    <button id="btn-underline">
+                      <u>U</u>
+                    </button>
+                    <button id="btn-strike">
+                      <s>S</s>
+                    </button>
+                    <button id="btn-ordered-list">
+                      OL
+                    </button>
+                    <button id="btn-unordered-list">
+                      UL
+                    </button>
+                    <button id="btn-image">
+                      IMG
+                    </button>
+                  </div>
+                  <div id="editor" contenteditable="true">
+                    <input id="img-selector" type="file" accept="image/*"  th:field="*{anContent}"/>
+                  </div>
+                  <!--new end-->
+                  <!--                    <textarea style="min-height: 270px; width: 100%;font-size: 15px;" name="content" placeholder="Content" th:field="*{anContent}"></textarea>-->
+                </div>
+              </div>
+              <div class="actions_special">
+                <input type="submit" id="btn_submit" class="regbtn" value="등록" />
+                <a th:href="@{notice}" class="cancelbtn">취소</a>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer class="footer_wrap">
+    <div class="footer_top">
+      <div class="ft_info">
+        <div class="ft_menu">
+          <div ><a href="">개인정보처리방침</a></div>
+          <div ><a href="">영상정보처리방침</a></div>
+          <div ><a href="">이용약관</a></div>
+          <div ><a href="">도서관서비스헌장</a></div>
+          <div ><a href="">저작권보호정책</a></div>
+          <div ><a href="">뷰어다운로드</a></div>
+        </div>
+      </div>
+    </div>
+    <div class="footer_bottom">
+      <div class="fb_info">
+        <p> 대구 수성구 달구벌대로 2451 (범어동, 범어도서관) 전화 053-668-1600 팩스 053-668-1609<br/>Copyright ⓒ 수성구립 범어도서관. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+</div>
+<script defer src="/js/editor.js"></script>
+</body>
+</html>

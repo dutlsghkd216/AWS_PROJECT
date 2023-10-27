@@ -1,0 +1,52 @@
+body {
+	margin: 0;
+	padding: 0;
+}
+
+h2 {
+	margin-top: 40px;
+	text-align: center;
+}
+
+.carousel {
+	display: flex;
+	justify-content: space-around;
+	margin: 50px auto 70px;
+}
+
+.carousel .carousel-item {
+	width: 340px;
+}
+
+
+.card {
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+	max-width: 455px;
+	margin: auto;
+	text-align: center;
+	border-radius: 10px;
+	height: 450px;
+}
+
+.img-area>img {
+	width: 200px;
+	height: 250px;
+	margin-top: 30px;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5);
+}
+
+h4 {
+	font-size: 20px;
+	line-height: 1.5;
+	margin: 15px 0 0 0;
+	font-weight: bold;
+}
+
+.card p {
+	font-size: 15px;
+	padding-top: 15px;
+}
+
+.container {
+	padding: 2px 16px;
+}

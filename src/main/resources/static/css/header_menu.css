@@ -1,0 +1,48 @@
+.header_wrap{
+    height: 132px; 
+    /* 상단메뉴바고정 */
+    /* position: fixed; 
+    top: 0; 
+    width: 100%;  */
+}
+
+.header_wrap>.header_top{
+    height: 40px;
+}
+
+.ht_info{
+    max-width:1260px; 
+    height: 40px; 
+    margin: 0 auto;
+}
+
+.tnb_menu{
+    display: inline-flex; 
+    float: right; 
+    gap: 15px; 
+    padding-top: 10px;
+}
+
+.header_wrap>.header_bottom{
+    height: 90px; 
+    border-top: 1px solid lightgray; 
+    border-bottom: 1px solid lightgray;
+}
+
+.hb_info{}
+
+.gnb{
+    max-width: 1260px; 
+    height: 90px; 
+    margin: 0 auto; 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center;
+}
+
+.gnb_menu{
+    height: 30px; 
+    display: flex; 
+    gap: 15px; 
+    justify-content: flex-end;
+}
