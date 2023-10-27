@@ -98,7 +98,7 @@ i {
 .mb_info>.table_header1 {
     display: flex;
     border-bottom: 2px solid black;
-    margin-top: 70px;
+    margin-top: 40px;
 }
 
 span.bunch {
@@ -116,7 +116,7 @@ span.bunch {
 }
 
 input {
-    width: 40px;
+    width: 20px;
     height: 33px;
     border: 1px solid #d1d0cf;
     line-height: 2.1em;

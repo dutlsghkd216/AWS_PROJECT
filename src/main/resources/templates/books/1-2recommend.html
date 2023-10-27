@@ -8,9 +8,8 @@
     <link rel="stylesheet" href="/css/basic.css">
     <link rel="stylesheet" href="/css/sub_header.css">
     <link rel="stylesheet" href="/css/sub_main.css">
-    <link rel="stylesheet" href="/css/notice.css"> 
-    <link rel="stylesheet" href="/css/datasearchbody.css"> 
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/notice.css">
+    <link rel="stylesheet" href="/css/card.css">
     <link rel="stylesheet" href="/css/footer.css">
     <link rel="stylesheet" href="/css/sidebar.css">
 
@@ -314,65 +313,139 @@
                   </ul>
               </div>
           </div>
+          <!-- 10월 26일 수정 -->
           <div class="main_bottom">
-              <div class="mb_info2" style="height: auto;">
-                  <h2>이달의 추천도서</h2>
-                  <div class="carousel" id="carousel">
-                      <div class="carousel-item">
-                          <div class="card">
-                              <div class="img-area"><img src="/img/9791171170418.jpg" alt=""></div>
-                              <div class="container">
-                                  <h4>일론 머스크</h4>
-                                  <p>월터 아이작슨</p>
-                                  <p style="color: gray;">미래는 꿈꾸는 것이 아니라 만드는 것, 그가 상상하면 모두 현실이 된다!</p>
-                              </div>
+              <div class="mb_info_title">이달의 추천도서</div>
+              <div class="mb_info2" style="height: auto;display: flex;justify-content: center;align-items: center;">
+                  <div class="container">
+                      <div class="card">
+                          <div class="imgBx">
+                              <div class="imgBx_title">소설</div>
+                              <img src="/img/9788954699075.jpg" alt="">
+                              <div class="double-down"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                                            fill="currentColor" style="margin-top: 15px;" class="bi bi-chevron-double-down" viewBox="0 0 16 16">
+                                  <path fill-rule="evenodd"
+                                        d="M1.646 6.646a.5.5 0 0 1 .708 0L8 12.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
+                                  <path fill-rule="evenodd"
+                                        d="M1.646 2.646a.5.5 0 0 1 .708 0L8 8.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
+                              </svg></div>
+                          </div>
+                          <div class="content">
+                              <h4><b>도시와 그 불확실한 벽</b></h4>
+                              <p>무라카미 하루키 · 문학동네</p>
+                              <p style="color: gray;">첫 발표 이후 43년, 하루키적 상상력의 모든 것이 담긴 결정적 세계!</p>
+                              <button class="content_btn">대여</button>
+                              <button class="content_btn">예약</button>
                           </div>
                       </div>
-                      <div class="carousel-item">
-                          <div class="card">
-                              <div class="img-area"><img src="/img/9791192908236.jpg" alt=""></div>
-                              <div class="container">
-                                  <h4><b>아메리칸 프로메테우스</b></h4>
-                                  <p>카이 버드, Martin J.Sherwin</p>
-                                  <p style="color: gray;">과학자와 그가 생산한 지식의 책임을 묻다!</p>
-                              </div>
+                      <div class="card">
+                          <div class="imgBx">
+                              <div class="imgBx_title">시</div>
+                              <img src="/img/9791157280292.jpg" alt="">
+                              <div class="double-down"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                                            fill="currentColor" style="margin-top: 15px;" class="bi bi-chevron-double-down" viewBox="0 0 16 16">
+                                  <path fill-rule="evenodd"
+                                        d="M1.646 6.646a.5.5 0 0 1 .708 0L8 12.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
+                                  <path fill-rule="evenodd"
+                                        d="M1.646 2.646a.5.5 0 0 1 .708 0L8 8.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
+                              </svg></div>
+                          </div>
+                          <div class="content">
+                              <h4><b>꽃을 보듯 너를 본다</b></h4>
+                              <p>나태주 · 지혜</p>
+                              <p style="color: gray;">평범한 것에 아름다움을 보는 눈, 별 볼일 없다고 생각했던 무언가를 다시보게 하는 힘이 이 시집에 있다.</p>
+                              <button class="content_btn">대여</button>
+                              <button class="content_btn">예약</button>
                           </div>
                       </div>
-                      <div class="carousel-item">
-                          <div class="card">
-                              <div class="img-area"><img src="/img/9788954699075.jpg" alt=""></div>
-                              <div class="container">
-                                  <h4><b>도시와 그 불확실한 벽</b></h4>
-                                  <p>무라카미 하루키</p>
-                                  <p style="color: gray;">첫 발표 이후 43년, 하루키적 상상력의 모든 것이 담긴 결정적 세계!</p>
-                              </div>
+                      <div class="card">
+                          <div class="imgBx">
+                              <div class="imgBx_title">인문</div>
+                              <img src="/img/9791167740984.jpg" alt="">
+                              <div class="double-down"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                                            fill="currentColor" style="margin-top: 15px;" class="bi bi-chevron-double-down" viewBox="0 0 16 16">
+                                  <path fill-rule="evenodd"
+                                        d="M1.646 6.646a.5.5 0 0 1 .708 0L8 12.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
+                                  <path fill-rule="evenodd"
+                                        d="M1.646 2.646a.5.5 0 0 1 .708 0L8 8.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
+                              </svg></div>
+                          </div>
+                          <div class="content">
+                              <h4><b>도둑맞은 집중력</b></h4>
+                              <p>요한 하리 · 어크로스</p>
+                              <p style="color: gray;">전 세계 모든 곳에서, 집중하는 우리의 능력은 붕괴하고 있다... </p>
+                              <button class="content_btn">대여</button>
+                              <button class="content_btn">예약</button>
+                          </div>
+                      </div>
+                      <div class="card">
+                          <div class="imgBx">
+                              <div class="imgBx_title">경제 · 경영</div>
+                              <img src="/img/9791171170418.jpg" alt="">
+                              <div class="double-down"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                                            fill="currentColor" style="margin-top: 15px;" class="bi bi-chevron-double-down" viewBox="0 0 16 16">
+                                  <path fill-rule="evenodd"
+                                        d="M1.646 6.646a.5.5 0 0 1 .708 0L8 12.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
+                                  <path fill-rule="evenodd"
+                                        d="M1.646 2.646a.5.5 0 0 1 .708 0L8 8.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
+                              </svg></div>
+                          </div>
+                          <div class="content">
+                              <h4><b>일론 머스크</b></h4>
+                              <p>월터 아이작슨 · 21세기북스</p>
+                              <p style="color: gray;">미래는 꿈꾸는 것이 아니라 만드는 것, 그가 상상하면 모두 현실이 된다!</p>
+                              <button class="content_btn">대여</button>
+                              <button class="content_btn">예약</button>
+                          </div>
+                      </div>
+                      <div class="card">
+                          <div class="imgBx">
+                              <div class="imgBx_title">자연 · 과학</div>
+                              <img src="/img/9791192908236.jpg" alt="">
+                              <div class="double-down"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                                            fill="currentColor" style="margin-top: 15px;" class="bi bi-chevron-double-down" viewBox="0 0 16 16">
+                                  <path fill-rule="evenodd"
+                                        d="M1.646 6.646a.5.5 0 0 1 .708 0L8 12.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
+                                  <path fill-rule="evenodd"
+                                        d="M1.646 2.646a.5.5 0 0 1 .708 0L8 8.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
+                              </svg></div>
+                          </div>
+                          <div class="content">
+                              <h4><b>아메리칸 프로메테우스</b></h4>
+                              <p>카이 버드 외 · 사이언스북스</p>
+                              <p style="color: gray;">과학자와 그가 생산한 지식의 책임을 묻다!</p>
+                              <button class="content_btn">대여</button>
+                              <button class="content_btn">예약</button>
+                          </div>
+                      </div>
+                      <div class="card">
+                          <div class="imgBx">
+                              <div class="imgBx_title">자기계발</div>
+                              <img src="/img/9791192389325.jpg" alt="">
+                              <div class="double-down"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                                            fill="currentColor" style="margin-top: 15px;" class="bi bi-chevron-double-down" viewBox="0 0 16 16">
+                                  <path fill-rule="evenodd"
+                                        d="M1.646 6.646a.5.5 0 0 1 .708 0L8 12.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
+                                  <path fill-rule="evenodd"
+                                        d="M1.646 2.646a.5.5 0 0 1 .708 0L8 8.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
+                              </svg></div>
+                          </div>
+                          <div class="content">
+                              <h4><b>퓨처 셀프</b></h4>
+                              <p>벤저민 하디 · 상상스퀘어</p>
+                              <p style="color: gray;">살 날이 얼마 남지 않은 ‘미래의 내’가 현재로 시간 여행을 왔다고 상상해보자... </p>
+                              <button class="content_btn">대여</button>
+                              <button class="content_btn">예약</button>
                           </div>
                       </div>
                   </div>
               </div>
           </div>
-      </div>
-      <footer class="footer_wrap">
-          <div class="footer_top">
-              <div class="ft_info">
-                  <div class="ft_menu">
-                      <div><a href="">개인정보처리방침</a></div>
-                      <div><a href="">영상정보처리방침</a></div>
-                      <div><a href="">이용약관</a></div>
-                      <div><a href="">도서관서비스헌장</a></div>
-                      <div><a href="">저작권보호정책</a></div>
-                      <div><a href="">뷰어다운로드</a></div>
-                  </div>
-              </div>
-          </div>
-          <div class="footer_bottom">
-              <div class="fb_info">
-                  <p> 대구 수성구 달구벌대로 2451 (범어동, 범어도서관) 전화 053-668-1600 팩스 053-668-1609<br />Copyright ⓒ 수성구립 범어도서관. All rights
-                      reserved.</p>
-              </div>
+          <!--  -->
           </div>
       </footer>
   </div>
+<script src="/js/sidebar.js"></script>
 </body>
 
 </html>

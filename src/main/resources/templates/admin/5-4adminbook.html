@@ -295,13 +295,14 @@
         </ul>
       </div>
     </header>ain_wrap">
+    <div class="main_wrap">
       <div class="main_top">
         <div class="mt_index">
           <h1>도서정보관리</h1>
         </div>
         <div class="mt_index2">
           <ul>
-            <li class="home"><a href=""><img src="css/img/navi_home_icon.gif" alt="Home"></a></li>
+            <li class="home"><a href=""><img src="/img/navi_home_icon.gif" alt="Home"></a></li>
             <li><a href="">관리자 페이지</a></li>
             <li><a href="">회원정보관리</a></li>
           </ul>
@@ -311,26 +312,27 @@
             <li class="mt_m"><a href="5-3adminsetting.html">회원정보관리</a>
             </li>
             <li class="mt_m" style="background-color: navy;"><a href="5-4adminbook.html"
-                style="color: white">도서정보관리</a></li>
+                                                                style="color: white">도서정보관리</a></li>
           </ul>
         </div>
       </div>
       <div class="main_bottom">
         <div class="mb_info">
           <div class="table_header1">
-            <div class="all_count">전체 ${총회원수} 건</div>
+            <div class="all_count">전체 <span th:text="${totalPostCount}"></span> 건</div>
             <div class="mt_search_area">
-              <form class="search_click">
+              <form class="search_click" th:action="@{/admin/5-4adminbook}" method="get">
+                <input type="hidden" name="page" th:value="${criteria.pageNum}">
                 <div class="s_c" style="height: 40px;">
-                  <select name="search_option" style="width: 100px; height: 40px; text-align: center;">
-                    <option value="title">전체</option>
-                    <option value="title">제목</option>
-                    <option value="author">저자</option>
-                    <option value="author">출판사</option>
-                    <option value="author">ISBN</option>
+                  <select name="type" style="width: 100px; height: 40px; text-align: center;">
+                    <option value="twpi" th:selected="${search.type == 'twpi'}">전체</option>
+                    <option value="t" th:selected="${search.type == 't'}">제목</option>
+                    <option value="w" th:selected="${search.type == 'w'}">저자</option>
+                    <option value="p" th:selected="${search.type == 'p'}">출판사</option>
+                    <option value="i" th:selected="${search.type == 'i'}">ISBN</option>
                   </select>
-                  <input type="search" name="search_query" placeholder="검색어를 입력해주세요"
-                    style="width: 300px; height: 40px; text-align: center;">
+                  <input type="text" name="keyword" th:value="${search.keyword}" placeholder="검색어를 입력해주세요"
+                         style="width: 300px; height: 40px; text-align: center;">
                   <button style="width:100px; height: 40px;">검색</button>
                 </div>
               </form>
@@ -339,156 +341,99 @@
               <a href="">도서 추가</a>
             </div>
             <div class="delete_btn">
-              <a href="">도서 삭제</a>
+              <!--              <a href="">도서 삭제</a>-->
+              <input type="button" value="도서 삭제" class="btn btn-outline-info" onclick="deleteValue();">
             </div>
           </div>
           <table>
             <thead>
-              <tr>
-                <th>선택</th>
-                <th>ISBN</th>
-                <th>제목</th>
-                <th>저자</th>
-                <th>출판사</th>
-                <th>출판년도</th>
-                <th>상세정보</th>
-              </tr>
+            <tr>
+              <th>선택</th>
+              <th>ISBN</th>
+              <th>제목</th>
+              <th>저자</th>
+              <th>출판사</th>
+              <th>출판년도</th>
+              <th>상세정보</th>
+            </tr>
             </thead>
             <tbody>
-              <tr>
-                <td><input type="checkbox"></td>
-                <td>${isbn}</td>
-                <td class="tdt">${title}</td>
-                <td>${writer}</td>
-                <td>${office}</td>
-                <td>${date}</td>
+            <th:block th:each="listBook:${listBook}">
+              <tr th:object="${listBook}">
+                <td><input type="checkbox" th:value="*{isbn}" name="RowCheck"></td>
+                <td class="id1" th:text="*{isbn}"></td>
+                <td class="tdt" th:text="*{bookTitle}"></td>
+                <td th:text="*{author}"></td>
+                <td th:text="*{publisher}"></td>
+                <td th:text="*{pubYear}"></td>
                 <td><button class="moreinfo_btn"><a href="">상세정보</a></button></td>
-                <div class="container">
-                  <div class="modal-btn-box">
-                    <button type="button" id="modal-open">모달창 열기</button>
-                  </div>
-                  <div class="popup-wrap" id="popup">
-                    <div class="popup">
-                      <div class="popup-head">
-                        <span class="head-title">
-                          MuziMuzi</span>
-                      </div>
-                      <div class="popup-body">
-                        <div class="body-content">
-                          <div class="body-titlebox">
-                            <h1>Confirm Modal</h1>
-                          </div>
-                          <div class="body-contentbox">
-                            <p>컨테이너 박스가 있고 그 안에
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="popup-foot">
-                        <span class="pop-btn confirm" id="confirm">확인</span>
-                        <span class="pop-btn close" id="close">창 닫기</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-        </tr>
-        <tr>
-          <td><input type="checkbox"></td>
-          <td>${isbn}</td>
-          <td class="tdt">${title}</td>
-          <td>${writer}</td>
-          <td>${office}</td>
-          <td>${date}</td>
-          <td><button class="moreinfo_btn"><a href="">상세정보</a></button></td>
-        </tr>
-        <tr>
-          <td><input type="checkbox"></td>
-          <td>${isbn}</td>
-          <td class="tdt">${title}</td>
-          <td>${writer}</td>
-          <td>${office}</td>
-          <td>${date}</td>
-          <td><button class="moreinfo_btn"><a href="">상세정보</a></button></td>
-        </tr>
-        <tr>
-          <td><input type="checkbox"></td>
-          <td>${isbn}</td>
-          <td class="tdt">${title}</td>
-          <td>${writer}</td>
-          <td>${office}</td>
-          <td>${date}</td>
-          <td><button class="moreinfo_btn"><a href="">상세정보</a></button></td>
-        </tr>
-        <tr>
-          <td><input type="checkbox"></td>
-          <td>${isbn}</td>
-          <td class="tdt">${title}</td>
-          <td>${writer}</td>
-          <td>${office}</td>
-          <td>${date}</td>
-          <td><button class="moreinfo_btn"><a href="">상세정보</a></button></td>
-        </tr>
-        <tr>
-          <td><input type="checkbox"></td>
-          <td>${isbn}</td>
-          <td class="tdt">${title}</td>
-          <td>${writer}</td>
-          <td>${office}</td>
-          <td>${date}</td>
-          <td><button class="moreinfo_btn"><a href="">상세정보</a></button></td>
-        </tr>
-        <tr>
-          <td><input type="checkbox"></td>
-          <td>${isbn}</td>
-          <td class="tdt">${title}</td>
-          <td>${writer}</td>
-          <td>${office}</td>
-          <td>${date}</td>
-          <td><button class="moreinfo_btn"><a href="">상세정보</a></button></td>
-        </tr>
-        <tr>
-          <td><input type="checkbox"></td>
-          <td>${isbn}</td>
-          <td class="tdt">${title}</td>
-          <td>${writer}</td>
-          <td>${office}</td>
-          <td>${date}</td>
-          <td><button class="moreinfo_btn"><a href="">상세정보</a></button></td>
-        </tr>
-        <tr>
-          <td><input type="checkbox"></td>
-          <td>${isbn}</td>
-          <td class="tdt">${title}</td>
-          <td>${writer}</td>
-          <td>${office}</td>
-          <td>${date}</td>
-          <td><button class="moreinfo_btn"><a href="">상세정보</a></button></td>
-        </tr>
-        <tr>
-          <td><input type="checkbox"></td>
-          <td>${isbn}</td>
-          <td class="tdt">${title}</td>
-          <td>${writer}</td>
-          <td>${office}</td>
-          <td>${date}</td>
-          <td><button class="moreinfo_btn"><a href="">상세정보</a></button></td>
-        </tr>
-        </tbody>
-        </table>
-        <div id="board_paging" class="dataTables_paginate">
-          <span>
-            <a href class="paginate_button current" title="1페이지" keyvalue="1">1</a>
-            <a href class="paginate_button" title="2페이지" keyvalue="2">2</a>
-            <a href class="paginate_button" title="3페이지" keyvalue="3">3</a>
-            <a href class="paginate_button" title="4페이지" keyvalue="4">4</a>
-            <a href class="paginate_button" title="5페이지" keyvalue="5">5</a>
-            <a href class="paginate_button" title="6페이지" keyvalue="6">6</a>
-            <a href class="paginate_button" title="7페이지" keyvalue="7">7</a>
-            <a href class="paginate_button" title="8페이지" keyvalue="8">8</a>
-            <a href class="paginate_button" title="9페이지" keyvalue="9">9</a>
-            <a href class="paginate_button" title="10페이지" keyvalue="10">10</a>
-          </span>
+                <!--                <div class="container">-->
+                <!--                  <div class="modal-btn-box">-->
+                <!--                    <button type="button" id="modal-open">모달창 열기</button>-->
+                <!--                  </div>-->
+                <!--                  <div class="popup-wrap" id="popup">-->
+                <!--                    <div class="popup">-->
+                <!--                      <div class="popup-head">-->
+                <!--                        <span class="head-title">-->
+                <!--                          MuziMuzi</span>-->
+                <!--                      </div>-->
+                <!--                      <div class="popup-body">-->
+                <!--                        <div class="body-content">-->
+                <!--                          <div class="body-titlebox">-->
+                <!--                            <h1>Confirm Modal</h1>-->
+                <!--                          </div>-->
+                <!--                          <div class="body-contentbox">-->
+                <!--                            <p>컨테이너 박스가 있고 그 안에-->
+                <!--                            </p>-->
+                <!--                          </div>-->
+                <!--                        </div>-->
+                <!--                      </div>-->
+                <!--                      <div class="popup-foot">-->
+                <!--                        <span class="pop-btn confirm" id="confirm">확인</span>-->
+                <!--                        <span class="pop-btn close" id="close">창 닫기</span>-->
+                <!--                      </div>-->
+                <!--                    </div>-->
+                <!--                  </div>-->
+                <!--                </div>-->
+              </tr>
+            </th:block>
+            </tbody>
+          </table>
         </div>
+        <div id="board_paging" class="pageInfo_wrap" th:object="${criteria}">
+          <div class="pageInfo_area">
+            <ul id="pageInfo" class="pageInfo">
+              <!-- 이전페이지 버튼 -->
+              <li class="pageInfo_btn previous" th:if="${pageMaker.prev}">
+                <a class="paginate_button"
+                   th:href="@{/admin/5-4adminbook(pageNum=${pageMaker.startPage-1}, amount=${pageMaker.criteria.amount}, type=${search.type}, keyword=${search.keyword})}">
+                  < </a>
+              </li>
+
+              <!-- 페이지 번호 버튼 -->
+              <li th:each="num : ${#numbers.sequence(pageMaker.startPage, pageMaker.endPage)}"
+                  class="pageInfo_btn"
+                  th:style="${num == pageMaker.criteria.pageNum} ? 'font-weight: bold;' : ''">
+                <a class="paginate_button"
+                   th:href="@{/admin/5-4adminbook(pageNum=${num}, amount=${pageMaker.criteria.amount}, type=${search.type}, keyword=${search.keyword})}"
+                   th:text="${num}"></a>
+              </li>
+
+              <!-- 다음페이지 버튼 -->
+              <li class="pageInfo_btn next" th:if="${pageMaker.next}">
+                <a class="paginate_button"
+                   th:href="@{/admin/5-4adminbook(pageNum=${pageMaker.endPage+1}, amount=${pageMaker.criteria.amount}, type=${search.type}, keyword=${search.keyword})}">
+                  > </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <form id="moveForm" method="get">
+          <!-- pageNum 값을 숫자로 변환하여 대체 -->
+          <input type="hidden" name="pageNum" th:attr="value=${pageMaker.criteria.pageNum}">
+          <!-- amount 값을 숫자로 변환하여 대체 -->
+          <input type="hidden" name="amount" th:attr="value=${pageMaker.criteria.amount}">
+        </form>
       </div>
     </div>
   </div>
@@ -512,8 +457,18 @@
       </div>
     </div>
   </footer>
-  </div>
-  <script src="js/bookinfopopup.js"></script>
+  <script src="/js/bookinfopopup.js"></script>
 </body>
+<script>
+  $(document).ready(function(){
+    var chkObj = document.getElementsByName("RowCheck");
+    var rowCnt = chkObj.length;
 
+    $("input[name='RowCheck']").click(function(){
+      if($("input[name='RowCheck']:checked").length == rowCnt) {
+        $("
+      }
+    }
+  }
+</script>
 </html>

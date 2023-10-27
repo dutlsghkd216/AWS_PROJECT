@@ -51,15 +51,8 @@
     margin: 0 auto; 
     text-align: center;
 }
-#signup_info {
-    padding: 0px;
-    border: none;
-    border-bottom: 1px solid #CFCFCF;
-    width: 470px;
-    height: 30px;
-}
 
-.signup_id{
+#signup_info, .signup_id{
     padding: 0px;
     border: none;
     border-bottom: 1px solid #CFCFCF;
@@ -107,7 +100,7 @@
     height: 30px;
 }
 
-.signup_email, #signup_email_prefix{
+#signup_email, #signup_email_prefix{
     padding: 0px;
     border: none;
     border-bottom: 1px solid #CFCFCF;
@@ -179,13 +172,3 @@ input.agree {
     text-align: center;
 }
 
-label.signup_info_form {
-    display: flex;
-}
-input#userBirth {
-    padding: 0px;
-    border: none;
-    border-bottom: 1px solid #CFCFCF;
-    width: 70px;
-    height: 30px;
-}

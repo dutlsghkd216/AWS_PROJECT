@@ -66,7 +66,7 @@
     top: 132px;
     left: 0;
     width: 100%;
-    z-index: 1;
+    z-index: 100;
     /* 하위메뉴판 뒷배경 백그라운드 색상 */
     background-color: rgba(85, 85, 85, 0.7);
 }

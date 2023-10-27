@@ -121,7 +121,7 @@
   flex-grow: 1;
   padding: 20px;
   max-width: 1260px;
-  height: 720px;
+  height: auto;
   margin: 0 auto;
 }
 
@@ -204,7 +204,7 @@
   margin-bottom: 0;
 }
 
-.lendbtn {
+.lend_btn>button {
   width: 60px;
   height: 40px;
   margin: 0;
@@ -242,7 +242,6 @@
   /* 커서 모양 설정 */
   transition: background-color 0.3s ease;
   /* 애니메이션 효과 설정 */
-
 }
 
 .lend_btn button:hover,

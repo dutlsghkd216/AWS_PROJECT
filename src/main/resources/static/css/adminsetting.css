@@ -200,16 +200,21 @@ tr {
 .check_b {}
 
 /* 페이징 */
-.dataTables_paginate {
-    height: 90px;
-    /* border: 1px solid black; */
-    overflow: hidden;
-    text-align: center;
-    font-size: 0;
-    line-height: 105px;
+.pageInfo_area > ul {
+    display: flex; /* 부모 요소를 플렉스 컨테이너로 설정합니다. */
+    list-style: none; /* 목록 기호를 숨깁니다. */
+    padding: 0; /* 목록의 패딩을 제거합니다. */
+    justify-content: center;
 }
 
-.dataTables_paginate a.paginate_button {
+.pageInfo_area>ul li {
+    height: 90px;
+    /* border: 1px solid black; */
+    text-align: center;
+    font-size: 0;
+    /* line-height: 105px; */
+}
+.paginate_button {
     cursor: pointer;
     display: inline-block;
     zoom: 1.2;
@@ -230,3 +235,4 @@ tr {
     -webkit-background-clip: padding-box;
     background-clip: padding-box
 }
+

@@ -299,6 +299,8 @@
         <div class=login_form>
           <form class="form" th:action="@{/security/login}" method="post">
             <p class="form-title">로그인</p>
+            <!--로그인에러-->
+            <p th:if="${session.Msg}" th:text="${session.Msg}"></p>
             <div class="input-container">
               <input type="test" name="userId" id="userId" placeholder="아이디를 입력해주세요">
               <span>

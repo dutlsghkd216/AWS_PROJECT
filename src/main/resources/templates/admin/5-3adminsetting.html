@@ -308,165 +308,146 @@
         </div>
         <div class="mt_info">
           <ul class="mt_menu">
-            <li class="mt_m" style="background-color: navy;"><a href="5-3adminsetting.html"
-                style="color: white">회원정보관리</a>
+            <li class="mt_m" style="background-color: navy;"><a sec:authorize="hasRole('ADMIN')" th:href="@{/admin/adminsetting}"
+                                                                style="color: white">회원정보관리</a>
             </li>
-            <li class="mt_m"><a href="5-4adminbook.html">도서정보관리</a></li>
+            <li class="mt_m"><a href="/admin/5-4adminbook">도서정보관리</a></li>
           </ul>
         </div>
       </div>
       <div class="main_bottom">
         <div class="mb_info">
           <div class="table_header1">
-            <div class="all_count">전체 ${총회원수} 건</div>
+            <div class="all_count">전체 <span th:text="${totalPostCount}"></span> 건</div>
             <div class="mt_search_area">
-              <form class="search_click">
+              <form class="search_click" th:action="@{/admin/adminsetting}" method="get">
+                <input type="hidden" name="page" th:value="${criteria.pageNum}">
                 <div class="s_c" style="height: 40px;">
-                  <select name="search_option" style="width: 100px; height: 40px; text-align: center;">
-                    <option value="title">전체</option>
-                    <option value="title">일반회원</option>
-                    <option value="author">관리자</option>
+                  <select name="type" style="width: 100px; height: 40px; text-align: center;">
+                    <option value="ua" th:selected="${search.type == 'ua'}">전체</option>
+                    <option value="u" th:selected="${search.type == 'u'}">일반회원</option>
+                    <option value="a"  th:selected="${search.type == 'a'}">관리자</option>
                   </select>
-                  <input type="search" name="search_query" placeholder="검색어를 입력해주세요"
-                    style="width: 300px; height: 40px; text-align: center;">
-                  <button style="width:100px; height: 40px;">검색</button>
+                  <input type="text" name="keyword"  th:value="${search.keyword}" placeholder="검색어를 입력해주세요"
+                         style="width: 300px; height: 40px; text-align: center;">
+                  <button type="submit" style="width:100px; height: 40px;">검색</button>
                 </div>
               </form>
             </div>
+
             <div class="delete_btn">
-              <a href="">삭제</a>
+              <a>삭제</a>
             </div>
+
           </div>
           <table>
             <thead>
-              <tr>
-                <th>선택</th>
-                <th>번호</th>
-                <th>유형</th>
-                <th>아이디</th>
-                <th>이름</th>
-                <th>생년월일</th>
-                <th>이메일</th>
-                <th>최초가입일</th>
-              </tr>
+            <tr>
+              <th>선택</th>
+              <th>아이디</th>
+              <th>이메일</th>
+              <th>이름</th>
+              <th>생년월일</th>
+              <th>최초가입일</th>
+              <th>상세정보</th>
+            </tr>
             </thead>
             <tbody>
-              <tr>
-                <td><input type="checkbox"></td>
-                <td class="id1">${number}</td>
-                <td class="tdt">${type}</td>
-                <td>${id}</td>
-                <td>${name}</td>
-                <td>${birth}</td>
-                <td>${email}</td>
-                <td>${date}</td>
+            <th:block th:each="listUser:${listUser}">
+              <tr th:object="${listUser}">
+                <td><input type="checkbox" th:value="*{userId}"></td>
+                <td class="id1" th:text="*{userId}"></td>
+                <td class="tdt" th:text="*{userEmail}"></td>
+                <td th:text="*{userName}"></td>
+                <td th:text="*{userBirth}"></td>
+                <td th:text="*{userRegisterDate}"></td>
+                <td><button class="moreinfo_btn" ><a href="javascript:openPop()">상세정보</a></button></td>
+                <!--                  <a href="javascript:openPop()">상세정보</a>-->
               </tr>
-              <tr>
-                <td><input type="checkbox"></td>
-                <td class="id1">${number}</td>
-                <td class="tdt">${type}</td>
-                <td>${id}</td>
-                <td>${name}</td>
-                <td>${birth}</td>
-                <td>${email}</td>
-                <td>${date}</td>
-              </tr>
-              <tr>
-                <td><input type="checkbox"></td>
-                <td class="id1">${number}</td>
-                <td class="tdt">${type}</td>
-                <td>${id}</td>
-                <td>${name}</td>
-                <td>${birth}</td>
-                <td>${email}</td>
-                <td>${date}</td>
-              </tr>
-              <tr>
-                <td><input type="checkbox"></td>
-                <td class="id1">${number}</td>
-                <td class="tdt">${type}</td>
-                <td>${id}</td>
-                <td>${name}</td>
-                <td>${birth}</td>
-                <td>${email}</td>
-                <td>${date}</td>
-              </tr>
-              <tr>
-                <td><input type="checkbox"></td>
-                <td class="id1">${number}</td>
-                <td class="tdt">${type}</td>
-                <td>${id}</td>
-                <td>${name}</td>
-                <td>${birth}</td>
-                <td>${email}</td>
-                <td>${date}</td>
-              </tr>
-              <tr>
-                <td><input type="checkbox"></td>
-                <td class="id1">${number}</td>
-                <td class="tdt">${type}</td>
-                <td>${id}</td>
-                <td>${name}</td>
-                <td>${birth}</td>
-                <td>${email}</td>
-                <td>${date}</td>
-              </tr>
-              <tr>
-                <td><input type="checkbox"></td>
-                <td class="id1">${number}</td>
-                <td class="tdt">${type}</td>
-                <td>${id}</td>
-                <td>${name}</td>
-                <td>${birth}</td>
-                <td>${email}</td>
-                <td>${date}</td>
-              </tr>
-              <tr>
-                <td><input type="checkbox"></td>
-                <td class="id1">${number}</td>
-                <td class="tdt">${type}</td>
-                <td>${id}</td>
-                <td>${name}</td>
-                <td>${birth}</td>
-                <td>${email}</td>
-                <td>${date}</td>
-              </tr>
-              <tr>
-                <td><input type="checkbox"></td>
-                <td class="id1">${number}</td>
-                <td class="tdt">${type}</td>
-                <td>${id}</td>
-                <td>${name}</td>
-                <td>${birth}</td>
-                <td>${email}</td>
-                <td>${date}</td>
-              </tr>
-              <tr>
-                <td><input type="checkbox"></td>
-                <td class="id1">${number}</td>
-                <td class="tdt">${type}</td>
-                <td>${id}</td>
-                <td>${name}</td>
-                <td>${birth}</td>
-                <td>${email}</td>
-                <td>${date}</td>
-              </tr>
+              <!--10월 18일 팝업창 추가-->
+              <div class="popup_layer" id="popup_layer" style="display: none;">
+                <div class="popup_box">
+                  <!--팝업 컨텐츠 영역-->
+                  <div class="popup_cont">
+                    <div>
+                      <h3>▼ 상세정보를 입력해 주세요.</h3>
+                    </div>
+                    <div class="bookinfo1" style="border-top: 2px solid rgb(82, 82, 82);">
+                      <div class="bi_title">아이디</div>
+                      <div class="bi_text"><input type="text" th:value="${listUser.userId}"></div>
+                    </div>
+                    <div class="bookinfo1">
+                      <div class="bi_title">이름</div>
+                      <div class="bi_text"><input type="text"  id="userNameField"></div>
+                    </div>
+                    <div class="bookinfo1">
+                      <div class="bi_title">이메일</div>
+                      <div class="bi_text"><input type="text" id="userEmailField"></div>
+                    </div>
+                    <div class="bookinfo1">
+                      <div class="bi_title">생년월일</div>
+                      <div class="bi_text"><input type="text" id="userBirthField"></div>
+                    </div>
+                    <div class="bookinfo1">
+                      <div class="bi_title">유형</div>
+                      <div class="bi_text"><input type="text" id="userRoleField"></div>
+                    </div>
+                    <div class="bookinfo1">
+                      <div class="bi_title">최초가입일</div>
+                      <div class="bi_text"><input type="text" id="userRegisterDateField"></div>
+                    </div>
+                    <div class="bookinfo1" style="border-bottom: 4px double gray;">
+                      <div class="bi_title">대여현황</div>
+                      <div class="bi_text"><input type="text"></div>
+                    </div>
+
+                  </div>
+                  <!--팝업 버튼 영역-->
+                  <div class="popup_btn">
+                    <button class="pop_btn"><a href="javascript:closePop();">저장</a></button>
+                    <button class="pop_btn"><a href="javascript:closePop();">닫기</a></button>
+                  </div>
+
+                </div>
+              </div>
+              <!---->
+            </th:block>
             </tbody>
           </table>
-          <div id="board_paging" class="dataTables_paginate">
-            <span>
-              <a href class="paginate_button current" title="1페이지" keyvalue="1">1</a>
-              <a href class="paginate_button" title="2페이지" keyvalue="2">2</a>
-              <a href class="paginate_button" title="3페이지" keyvalue="3">3</a>
-              <a href class="paginate_button" title="4페이지" keyvalue="4">4</a>
-              <a href class="paginate_button" title="5페이지" keyvalue="5">5</a>
-              <a href class="paginate_button" title="6페이지" keyvalue="6">6</a>
-              <a href class="paginate_button" title="7페이지" keyvalue="7">7</a>
-              <a href class="paginate_button" title="8페이지" keyvalue="8">8</a>
-              <a href class="paginate_button" title="9페이지" keyvalue="9">9</a>
-              <a href class="paginate_button" title="10페이지" keyvalue="10">10</a>
-            </span>
+          <div id="user_paging" class="dataTables_paginate" th:object="${criteria}">
+            <div class="pageInfo_area">
+              <ul id="pageInfo" class="pageInfo">
+                <!-- 이전페이지 버튼 -->
+                <li class="pageInfo_btn previous" th:if="${pageMaker.prev}">
+                  <a class="paginate_button"
+                     th:href="@{/admin/adminsetting(pageNum=${pageMaker.startPage-1}, amount=${pageMaker.criteria.amount}, type=${search.type}, keyword=${search.keyword})}">
+                    < </a>
+                </li>
+
+                <!-- 페이지 번호 버튼 -->
+                <li th:each="num : ${#numbers.sequence(pageMaker.startPage, pageMaker.endPage)}"
+                    class="pageInfo_btn"
+                    th:style="${num == pageMaker.criteria.pageNum} ? 'font-weight: bold;' : ''">
+                  <a class="paginate_button"
+                     th:href="@{/admin/adminsetting(pageNum=${num}, amount=${pageMaker.criteria.amount}, type=${search.type}, keyword=${search.keyword})}"
+                     th:text="${num}"></a>
+                </li>
+
+                <!-- 다음페이지 버튼 -->
+                <li class="pageInfo_btn next" th:if="${pageMaker.next}">
+                  <a class="paginate_button"
+                     th:href="@{/admin/adminsetting(pageNum=${pageMaker.endPage+1}, amount=${pageMaker.criteria.amount}, type=${search.type}, keyword=${search.keyword})}">
+                    > </a>
+                </li>
+              </ul>
+            </div>
           </div>
+          <form id="moveForm" method="get">
+            <!-- pageNum 값을 숫자로 변환하여 대체 -->
+            <input type="hidden" name="pageNum" th:attr="value=${pageMaker.criteria.pageNum}">
+            <!-- amount 값을 숫자로 변환하여 대체 -->
+            <input type="hidden" name="amount" th:attr="value=${pageMaker.criteria.amount}">
+          </form>
         </div>
       </div>
     </div>
@@ -491,6 +472,15 @@
       </div>
     </footer>
   </div>
+  <script src="/js/popup.js"></script>
 </body>
+<script>
+  $(document).on('click', '.moreinfo_btn', function() {
+    var userId = $(this).data('user-id');
+    openPop(userId);
+});
 
+
+
+</script>
 </html>

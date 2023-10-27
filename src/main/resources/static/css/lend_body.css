@@ -1,4 +1,3 @@
-
 /* 본문내용 */
 
 .lend_search {
@@ -6,20 +5,23 @@
     border-bottom: 1px solid gray;
     margin-bottom: 50px;
 }
+
 .search2 {
     height: 600px;
     padding-top: 50px;
     border-bottom: 1px solid gray;
     margin-bottom: 50px;
 }
-.lend_tbl{
+
+.lend_tbl {
     /* border: 1px solid black; */
     border-collapse: collapse;
     margin-bottom: 30px;
     width: 100%;
     height: 200px;
 }
-.lend_tbl>tr>th{
+
+.lend_tbl>tr>th {
     border: 1px solid black;
 }
 
@@ -40,13 +42,15 @@
     outline: none;
     float: left;
 }
-.btngroup{
+
+.btngroup {
     width: 250px;
     margin: auto;
 }
-.btngroup2{
+
+.btngroup2 {
     width: 120px;
-    margin: auto;   
+    margin: auto;
 }
 
 .btn1 {
@@ -59,6 +63,7 @@
     background-color: gray;
     display: inline-block;
 }
+
 .btn2 {
     font-size: 20px;
     width: 120px;
@@ -89,9 +94,7 @@
 }
 
 
-.sm_box>.con {
-    background-color: beige;
-}
+.sm_box>.con {}
 
 .con {
     padding-top: 15px;
@@ -103,6 +106,7 @@
     margin-top: 10px;
     margin-bottom: 10px;
 }
+
 .con2 {
     padding-top: 15px;
     padding-bottom: 15px;

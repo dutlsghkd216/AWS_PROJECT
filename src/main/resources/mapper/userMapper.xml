@@ -1,18 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.app.mapper.UserMapper">
+
+    <sql id="search">
+        <if test="search.keyword != null">
+            <where>
+                <trim prefixOverrides="OR">
+                    <foreach item="type" collection="search.types">
+                        <trim prefix="OR">
+                            <choose>
+                                <when test="type == 'u'.toString()">
+                                    USER_ROLE='ROLE_USER' AND USER_NAME LIKE CONCAT('%', #{search.keyword}, '%')
+                                </when>
+                                <when test="type == 'a'.toString()">
+                                    USER_ROLE='ROLE_ADMIN' AND USER_NAME LIKE CONCAT('%', #{search.keyword}, '%')
+                                </when>
+                            </choose>
+                        </trim>
+                    </foreach>
+                </trim>
+            </where>
+        </if>
+    </sql>
+
     <select id="findByUid" resultType="userDTO">
         SELECT * FROM TBL_USER WHERE USER_ID=#{userId}
     </select>
 
     <select id="findAll" resultType="userDTO">
         SELECT * FROM TBL_USER
+        <include refid="search"/>
+        ORDER BY USER_ID DESC LIMIT #{cri.skip}, #{cri.amount}
+    </select>
+
+    <select id="findByUide" resultType="userDTO">
+        SELECT * FROM TBL_USER WHERE USER_ID=#{userId}
     </select>
 
     <select id="findPW" resultType="String">
         SELECT USER_PW FROM TBL_USER WHERE USER_ID=#{userId}
     </select>
 
+    <select id="selectAllCount" resultType="Long">
+        SELECT count(user_id) FROM TBL_USER
+        <include refid="search"/>
+    </select>
 
     <insert id="register">
         INSERT INTO TBL_USER(USER_ID,USER_PW,USER_NAME,USER_EMAIL,USER_BIRTH,USER_ROLE, USER_REGISTER_DATE,EMAIL_PREFIX,EMAIL_DNS)

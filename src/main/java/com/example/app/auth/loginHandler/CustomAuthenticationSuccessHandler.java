@@ -1,6 +1,7 @@
 package com.example.app.auth.loginHandler;
 
 import com.example.app.auth.PrincipalDetails;
+import com.example.app.domain.dto.UserDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
