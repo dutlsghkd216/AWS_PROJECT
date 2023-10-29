@@ -291,6 +291,9 @@ input.agree {
     border: none;
     background-color: navy;
     border-radius: 15px;
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
 }
 
 .mb_signup_btn>a {
