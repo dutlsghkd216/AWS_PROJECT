@@ -19,7 +19,7 @@ import java.util.List;
 
 @Controller
 @AllArgsConstructor
-@RequestMapping("/boards/*")
+@RequestMapping("/boards")
 public class BoardController {
     private final BoardService boardService;
 

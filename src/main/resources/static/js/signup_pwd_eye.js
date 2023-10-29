@@ -19,8 +19,8 @@ toggleIcons.forEach((icon, index) => {
     toggleIcon.setAttribute(
       "src",
       inputField.getAttribute("type") === "password"
-        ? "eye-off.svg" // 비밀번호 표시 아이콘
-        : "eye.svg" // 비밀번호 숨김 아이콘
+        ? "/img/eye-off.svg" // 비밀번호 표시 아이콘
+        : "/img/eye.svg" // 비밀번호 숨김 아이콘
     );
 
     // 입력 필드의 type 속성을 변경하여 비밀번호를 표시/숨김 토글합니다.

@@ -41,7 +41,7 @@
     </select>
 
     <insert id="insert">
-        insert into tbl_announcement(an_title,user_id,an_content,an_register_date, an_update_date)
+        insert into TBL_ANNOUNCEMENT(an_title,user_id,an_content,an_register_date, an_update_date)
         value(#{anTitle}, #{userId}, #{anContent},now(),now());
     </insert>
 
