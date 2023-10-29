@@ -2,7 +2,10 @@ package com.example.app.controller;
 
 import com.example.app.auth.PrincipalDetails;
 import com.example.app.domain.dto.BookDTO;
+import com.example.app.domain.dto.Search;
 import com.example.app.domain.dto.UserDTO;
+import com.example.app.domain.paging.Criteria;
+import com.example.app.domain.paging.PageMakerDTO;
 import com.example.app.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.apache.catalina.User;
@@ -26,9 +29,24 @@ public class UserController {
     private final UserService userService;
     private final PasswordEncoder passwordEncoder;
 
-    @GetMapping("/all")
-    public List<UserDTO> getAllUsers(){
-        return userService.getAllUser();
+//    @GetMapping("/all")
+//    public List<UserDTO> getAllUsers(){
+//        return userService.getAllUser();
+//    }
+
+    @GetMapping("/admin/adminsetting")
+    public String goAdminSetting(Search search, Criteria criteria, Model model){
+        List<UserDTO> list = userService.getAllUser(criteria, search);
+        model.addAttribute("listUser",list);
+        Long total = userService.getTotal(search);
+
+        PageMakerDTO pageMaker = new PageMakerDTO(criteria, total);
+
+        Long totalPostCount = userService.getTotal(search);
+        model.addAttribute("totalPostCount", totalPostCount);
+        model.addAttribute("pageMaker", pageMaker);
+        System.out.println("listUser:" + list);
+        return "admin/5-3adminsetting";
     }
 
     @GetMapping(value={"/mypage/read","/mypage/5-1myInfo"})
