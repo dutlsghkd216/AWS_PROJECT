@@ -46,6 +46,11 @@
     flex-wrap: nowrap;
 }
 
+.Logo {
+    width: 120px;
+    height: 45px;
+}
+
 .gnb_menu {
     display: flex;
     height: 90px;
