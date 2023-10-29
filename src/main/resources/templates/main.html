@@ -33,12 +33,12 @@
                     </svg><span sec:authorize="isAuthenticated()" th:text="${#authentication.name}" ></span>님 환영합니다</a>
                     <a sec:authorize="isAuthenticated()" th:href="@{/security/logout}">로그아웃</a>
                     <a sec:authorize="hasRole('ADMIN')" th:href="@{/admin/adminsetting}" >관리자페이지</a>
-
                 </div>
             </div>
         </div>
         <div class="header_bottom">
             <div class="hb_info">
+                <div class="gnb">
                     <a th:href="@{/main}"><img class="Logo" src="/img/logo03.png"></a>
                     <!--new start 10월 13일 수정-->
                     <ul class="gnb_menu">

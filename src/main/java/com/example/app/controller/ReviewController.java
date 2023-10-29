@@ -21,7 +21,7 @@ import java.util.List;
 
 @Controller
 @AllArgsConstructor
-@RequestMapping("/reviews/*")
+@RequestMapping("/reviews")
 public class ReviewController {
     private final ReviewService reviewService;
 
