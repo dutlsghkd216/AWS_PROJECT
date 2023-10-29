@@ -204,15 +204,15 @@
   margin-bottom: 0;
 }
 
-.lend_btn>button {
-  width: 60px;
-  height: 40px;
-  margin: 0;
-  padding: 0;
-  background-color: navy;
-  border: none;
-  border-radius: 30px;
-  color: white;
+button.lendbtn {
+    width: 60px;
+    height: 40px;
+    margin: 0;
+    padding: 0;
+    background-color: navy;
+    border: none;
+    border-radius: 30px;
+    color: white;
 }
 
 .reserve_btn>button {

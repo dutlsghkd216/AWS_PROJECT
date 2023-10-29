@@ -202,3 +202,11 @@ input.agree {
     font-size: 15px;
     text-align: center;
 }
+
+button#extend-button {
+    background: none;
+    color: white;
+    border: none;
+    font-weight: bold;
+    font-size: 15px;
+}

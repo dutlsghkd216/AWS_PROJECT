@@ -243,7 +243,7 @@
 
                 <!-- 페이지 번호 버튼 -->
                 <li th:each="num : ${#numbers.sequence(pageMaker.startPage, pageMaker.endPage)}"
-                    class="pageInfo_btn" th:classappend="${num == pageMaker.criteria.pageNum} ? 'active' : ''">
+                    class="pageInfo_btn" th:style="${num == pageMaker.criteria.pageNum} ? 'font-weight: bold;' : ''">>
                   <a class="paginate_button" th:href="@{3-2review(pageNum=${num}, amount=${pageMaker.criteria.amount}, type=${search.type}, keyword=${search.keyword})}" th:text="${num}"></a>
                 </li>
 
