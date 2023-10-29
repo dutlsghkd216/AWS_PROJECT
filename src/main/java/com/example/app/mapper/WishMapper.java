@@ -8,7 +8,7 @@ import java.util.List;
 @Mapper
 public interface WishMapper {
 
-    // 신청 도서 정보 추가ㄹ
+    // 신청 도서 정보 추가
     public void insert(WishDTO wishDTO);
 
     // 신청 내역 조회

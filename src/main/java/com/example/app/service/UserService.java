@@ -1,8 +1,6 @@
 package com.example.app.service;
 
-import com.example.app.domain.dto.Search;
 import com.example.app.domain.dto.UserDTO;
-import com.example.app.domain.paging.Criteria;
 import com.example.app.mapper.UserMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.access.AccessDeniedException;
@@ -28,21 +26,14 @@ public class UserService {
         return userMapper.findByUid(userId);
     }
 
-//  ------------------------------------------------------------------------------
-    // 회원 목록 조회         여기 코드 수정함!!!!!!!!!!!!!!!!!!!!!
-    public List<UserDTO> getAllUser(Criteria criteria, Search search) {
+    // 회원 목록 조회
+    public List<UserDTO> getAllUser() {
         // 권한 확인 로직 (여기서는 예시로 ROLE_ADMIN을 가진 사용자만 조회 가능하도록)
         if (!isAdmin()) {
             throw new AccessDeniedException("권한이 없습니다.");
         }
-        return userMapper.findAll(criteria, search);
+        return userMapper.findAll();
     }
-
-    // 게시글 전체 개수 조회 코드 추가
-    public Long getTotal(Search search){
-        return userMapper.selectAllCount(search);
-    }
-//-------------------------------------------------------------------
 
     // 회원 등록
     public void write(UserDTO userDTO) {

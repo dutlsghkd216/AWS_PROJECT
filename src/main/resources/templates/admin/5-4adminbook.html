@@ -302,17 +302,17 @@
         </div>
         <div class="mt_index2">
           <ul>
-            <li class="home"><a href="/main"><img src="/img/navi_home_icon.gif" alt="Home"></a></li>
-            <li><a th:href="@{/admin/adminsetting}">관리자 페이지</a></li>
-            <li><a th:href="@{/admin/adminsetting}">회원정보관리</a></li>
+            <li class="home"><a href=""><img src="/img/navi_home_icon.gif" alt="Home"></a></li>
+            <li><a href="">관리자 페이지</a></li>
+            <li><a href="">회원정보관리</a></li>
           </ul>
         </div>
         <div class="mt_info">
           <ul class="mt_menu">
-            <li class="mt_m" style="background-color: navy;"><a sec:authorize="hasRole('ADMIN')" th:href="@{/admin/adminsetting}"
-                                                                style="color: white">회원정보관리</a>
+            <li class="mt_m"><a href="5-3adminsetting.html">회원정보관리</a>
             </li>
-            <li class="mt_m"><a sec:authorize="hasRole('ADMIN')" th:href="@{/admin/5-4adminbook}">도서정보관리</a></li>
+            <li class="mt_m" style="background-color: navy;"><a href="5-4adminbook.html"
+                                                                style="color: white">도서정보관리</a></li>
           </ul>
         </div>
       </div>
@@ -341,8 +341,8 @@
               <a href="">도서 추가</a>
             </div>
             <div class="delete_btn">
-              <a href="">도서 삭제</a>
-<!--              <input type="button" value="도서 삭제" class="btn btn-outline-info" onclick="deleteValue();">-->
+              <!--              <a href="">도서 삭제</a>-->
+              <input type="button" value="도서 삭제" class="btn btn-outline-info" onclick="deleteValue();">
             </div>
           </div>
           <table>
