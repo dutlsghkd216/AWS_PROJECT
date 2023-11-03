@@ -30,31 +30,31 @@
     </sql>
 
     <select id="select" resultType="bookDTO">
-        SELECT ISBN, BOOK_TITLE, AUTHOR, PUBLISHER, PUB_YEAR FROM TBL_BOOK WHERE ISBN = #{isbn}
+        SELECT ISBN, BOOK_TITLE, AUTHOR, PUBLISHER, PUB_YEAR FROM tbl_book WHERE ISBN = #{isbn}
     </select>
 
     <select id="selectAll" resultType="bookDTO">
-        SELECT ISBN, BOOK_TITLE, AUTHOR, PUBLISHER, PUB_YEAR FROM TBL_BOOK
+        SELECT ISBN, BOOK_TITLE, AUTHOR, PUBLISHER, PUB_YEAR FROM tbl_book
         <include refid="search"/>
         LIMIT #{cri.skip}, #{cri.amount}
     </select>
 
     <select id="selectAllCount" resultType="Long">
-        SELECT count(ISBN) FROM TBL_BOOK
+        SELECT count(ISBN) FROM tbl_book
         <include refid="search"/>
     </select>
 
     <insert id="insert">
-        INSERT INTO TBL_BOOK (ISBN, BOOK_Title, AUTHOR, PUBLISHER, PUB_YEAR)
+        INSERT INTO tbl_book (ISBN, BOOK_Title, AUTHOR, PUBLISHER, PUB_YEAR)
         VALUES(#{isbn}, #{bookTitle}, #{author}, #{publisher}, #{pubYear})
     </insert>
 
     <delete id="delete">
-        DELETE FROM TBL_BOOK WHERE ISBN = #{isbn}
+        DELETE FROM tbl_book WHERE ISBN = #{isbn}
     </delete>
 
     <update id="update">
-        UPDATE TBL_BOOK
+        UPDATE tbl_book
         SET BOOK_TITLE = #{bookTitle}, AUTHOR = #{author}, PUBLISHER = #{publisher}
         WHERE ISBN = #{isbn}
     </update>

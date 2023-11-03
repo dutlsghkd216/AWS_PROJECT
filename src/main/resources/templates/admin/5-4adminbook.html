@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="/css/adminsetting.css">
   <link rel="stylesheet" href="/css/bookinfopopup.css">
   <link rel="stylesheet" href="/css/footer.css">
+  <link rel="stylesheet" href="/css/sidebar.css">
 
 
 </head>
@@ -180,7 +181,7 @@
               <span></span>
             </label>
           </div>
-          <span class="logo_name">수성구립<br>범어도서관</span>
+          <span class="logo_name">비대면<br>도서관</span>
         </div>
         <ul class="nav-links">
           <li>
@@ -294,7 +295,7 @@
           </li>
         </ul>
       </div>
-    </header>ain_wrap">
+    </header>
     <div class="main_wrap">
       <div class="main_top">
         <div class="mt_index">
@@ -304,14 +305,14 @@
           <ul>
             <li class="home"><a href=""><img src="/img/navi_home_icon.gif" alt="Home"></a></li>
             <li><a href="">관리자 페이지</a></li>
-            <li><a href="">회원정보관리</a></li>
+            <li><a href="">도서정보관리</a></li>
           </ul>
         </div>
         <div class="mt_info">
           <ul class="mt_menu">
-            <li class="mt_m"><a href="5-3adminsetting.html">회원정보관리</a>
+            <li class="mt_m"><a th:href="@{/admin/adminsetting}">회원정보관리</a>
             </li>
-            <li class="mt_m" style="background-color: navy;"><a href="5-4adminbook.html"
+            <li class="mt_m" style="background-color: navy;"><a th:href="@{/admin/5-4adminbook}"
                                                                 style="color: white">도서정보관리</a></li>
           </ul>
         </div>
@@ -342,7 +343,7 @@
             </div>
             <div class="delete_btn">
               <!--              <a href="">도서 삭제</a>-->
-              <input type="button" value="도서 삭제" class="btn btn-outline-info" onclick="deleteValue();">
+              <input type="button" value="도서 삭제" class="btn btn-outline-info" onclick="deleteValue();" style="color: white;background-color: navy;border: none;width: 100px;margin: 5px;font-weight: bold;font-size: 15px;border-radius: 10px;">
             </div>
           </div>
           <table>
@@ -457,7 +458,7 @@
       </div>
     </div>
   </footer>
-  <script src="/js/bookinfopopup.js"></script>
+  <script type="text/javascript" src="/js/bookinfopopup.js"></script>
 </body>
 <script>
   $(document).ready(function(){

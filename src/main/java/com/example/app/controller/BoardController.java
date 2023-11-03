@@ -5,12 +5,12 @@ import com.example.app.domain.dto.Search;
 import com.example.app.domain.paging.Criteria;
 import com.example.app.domain.paging.PageMakerDTO;
 import com.example.app.service.BoardService;
-
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
 
@@ -76,7 +76,7 @@ public class BoardController {
         boardDTO.setUserId(username);
         boardService.write(boardDTO);
         redirectAttributes.addFlashAttribute("anId", boardDTO.getAnId());
-        return new RedirectView("notice");
+        return new RedirectView("/boards/notice");
     }
 
     // 게시글 삭제

@@ -386,9 +386,9 @@
                 </table>
                 <div class="pageInfo_wrap" th:object="${criteria}">
                     <div class="pageInfo_area">
-                        <ul id="pageInfo" class="pageInfo">
+                        <ul id="pageInfo" class="pageInfo" style="display: flex;list-style: none;padding: 0;justify-content: center;">
                             <!-- 이전페이지 버튼 -->
-                            <li class="pageInfo_btn previous" th:if="${pageMaker.prev}">
+                            <li class="pageInfo_btn previous" th:if="${pageMaker.prev}" style="height: 90px;text-align: center;font-size: 0;">
                                 <a class="paginate_button"
                                    th:href="@{notice(pageNum=${pageMaker.startPage-1}, amount=${pageMaker.criteria.amount}, type=${search.type}, keyword=${search.keyword})}">
                                     < </a>
@@ -397,14 +397,14 @@
                             <!-- 페이지 번호 버튼 -->
                             <li th:each="num : ${#numbers.sequence(pageMaker.startPage, pageMaker.endPage)}"
                                 class="pageInfo_btn"
-                                th:style="${num == pageMaker.criteria.pageNum} ? 'font-weight: bold;' : ''">
+                                th:style="${num == pageMaker.criteria.pageNum} ? 'font-weight: bold;' : ''" style="height: 90px;text-align: center;font-size: 0;">
                                 <a class="paginate_button"
                                    th:href="@{notice(pageNum=${num}, amount=${pageMaker.criteria.amount}, type=${search.type}, keyword=${search.keyword})}"
                                    th:text="${num}"></a>
                             </li>
 
                             <!-- 다음페이지 버튼 -->
-                            <li class="pageInfo_btn next" th:if="${pageMaker.next}">
+                            <li class="pageInfo_btn next" th:if="${pageMaker.next}" style="height: 90px;text-align: center;font-size: 0;">
                                 <a class="paginate_button"
                                    th:href="@{notice(pageNum=${pageMaker.endPage + 1}, amount=${pageMaker.criteria.amount}, type=${search.type}, keyword=${search.keyword})}">
                                     > </a>

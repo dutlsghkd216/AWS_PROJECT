@@ -59,11 +59,14 @@ public class BookController {
         model.addAttribute("pageMaker", pageMaker);
     }
 
+
+
     //    도서 조회
     @GetMapping(value={"read","modify"})
     public void getBook(String isbn, Model model){
         model.addAttribute(bookService.getBook(isbn));
     }
+
     //    도서 추가
     @PostMapping("write")
     public RedirectView write(BookDTO bookDTO, RedirectAttributes redirectAttributes){

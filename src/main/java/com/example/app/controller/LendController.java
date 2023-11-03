@@ -7,9 +7,11 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import org.springframework.web.servlet.view.RedirectView;
 
 import java.security.Principal;
 import java.util.List;
@@ -23,11 +25,12 @@ public class LendController {
 
 
     @PostMapping("/books/lend")
-    public String postLend(LendDTO lendDTO,Principal principal){
+    public String postLend(LendDTO lendDTO, RedirectAttributes redirectAttributes,Principal principal){
         String username = principal.getName();
         lendDTO.setUserId(username);
         lendService.write(lendDTO);
-        return "books/1-1search";
+    //        redirectAttributes.addFlashAttribute("message", "Book has been successfully lent.");
+        return "redirect:1-1search";
     }
 
     @GetMapping("/mypage/mylist")

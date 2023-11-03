@@ -15,6 +15,7 @@ import java.util.List;
 @Controller
 @RequiredArgsConstructor
 public class AdminController {
+    //    private final UserService userService;
     private final BookService bookService;
 
     // 관리자 페이지 도서 목록
@@ -41,4 +42,6 @@ public class AdminController {
         model.addAttribute("totalPostCount", totalPostCount);
         model.addAttribute("pageMaker", pageMaker);
     }
+
+
 }

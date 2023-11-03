@@ -1,6 +1,5 @@
 package com.example.app.mapper;
 
-import com.example.app.domain.dto.BoardDTO;
 import com.example.app.domain.dto.ReviewDTO;
 import com.example.app.domain.dto.Search;
 import com.example.app.domain.paging.Criteria;

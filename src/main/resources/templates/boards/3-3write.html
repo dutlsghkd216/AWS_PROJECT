@@ -342,70 +342,70 @@
                 <div class="field">
                   <h4>내용</h4>
                   <!--new start 10월 15일 추가-->
-                  <div class="editor-menu">
-                    <select id="select-font-name">
-                      <option value="">글씨체</option>
-                      <option value="Black Han Sans">Black Han Sans</option>
-                      <option value="Noto Sans KR">Noto Sans</option>
-                      <option value="Nanum Gothic">Nanum Gothic</option>
-                      <option value="Nanum Myeongjo">Nanum Myeongjo</option>
-                      <option value="Nanum Pen Script">Nanum Pen Script</option>
-                    </select>
-                    <select id="select-font-size">
-                      <option value="">글씨 크기</option>
-                      <option value="1">10px</option>
-                      <option value="2">13px</option>
-                      <option value="3">16px</option>
-                      <option value="4">18px</option>
-                      <option value="5">24px</option>
-                      <option value="6">32px</option>
-                      <option value="7">48px</option>
-                    </select>
-                    <select id="select-font-color">
-                      <option value="">글씨 색상</option>
-                      <option value="#000000">검정</option>
-                      <option value="#FFFFFF">흰색</option>
-                      <option value="#CCCCCC">회색</option>
-                      <option value="#F03E3E">빨강</option>
-                      <option value="#1971C2">파랑</option>
-                      <option value="#37B24D">녹색</option>
-                    </select>
-                    <select id="select-font-background">
-                      <option value="rgba(0, 0, 0, 0)">형광펜</option>
-                      <option value="#000000">검정</option>
-                      <option value="#FFFFFF">흰색</option>
-                      <option value="#CCCCCC">회색</option>
-                      <option value="#F03E3E">빨강</option>
-                      <option value="#1971C2">파랑</option>
-                      <option value="#37B24D">녹색</option>
-                    </select>
-                    <button id="btn-bold">
-                      <b>B</b>
-                    </button>
-                    <button id="btn-italic">
-                      <i>I</i>
-                    </button>
-                    <button id="btn-underline">
-                      <u>U</u>
-                    </button>
-                    <button id="btn-strike">
-                      <s>S</s>
-                    </button>
-                    <button id="btn-ordered-list">
-                      OL
-                    </button>
-                    <button id="btn-unordered-list">
-                      UL
-                    </button>
-                    <button id="btn-image">
-                      IMG
-                    </button>
-                  </div>
-                  <div id="editor" contenteditable="true">
-                    <input id="img-selector" type="file" accept="image/*"  th:field="*{anContent}"/>
-                  </div>
+<!--                  <div class="editor-menu">-->
+<!--                    <select id="select-font-name">-->
+<!--                      <option value="">글씨체</option>-->
+<!--                      <option value="Black Han Sans">Black Han Sans</option>-->
+<!--                      <option value="Noto Sans KR">Noto Sans</option>-->
+<!--                      <option value="Nanum Gothic">Nanum Gothic</option>-->
+<!--                      <option value="Nanum Myeongjo">Nanum Myeongjo</option>-->
+<!--                      <option value="Nanum Pen Script">Nanum Pen Script</option>-->
+<!--                    </select>-->
+<!--                    <select id="select-font-size">-->
+<!--                      <option value="">글씨 크기</option>-->
+<!--                      <option value="1">10px</option>-->
+<!--                      <option value="2">13px</option>-->
+<!--                      <option value="3">16px</option>-->
+<!--                      <option value="4">18px</option>-->
+<!--                      <option value="5">24px</option>-->
+<!--                      <option value="6">32px</option>-->
+<!--                      <option value="7">48px</option>-->
+<!--                    </select>-->
+<!--                    <select id="select-font-color">-->
+<!--                      <option value="">글씨 색상</option>-->
+<!--                      <option value="#000000">검정</option>-->
+<!--                      <option value="#FFFFFF">흰색</option>-->
+<!--                      <option value="#CCCCCC">회색</option>-->
+<!--                      <option value="#F03E3E">빨강</option>-->
+<!--                      <option value="#1971C2">파랑</option>-->
+<!--                      <option value="#37B24D">녹색</option>-->
+<!--                    </select>-->
+<!--                    <select id="select-font-background">-->
+<!--                      <option value="rgba(0, 0, 0, 0)">형광펜</option>-->
+<!--                      <option value="#000000">검정</option>-->
+<!--                      <option value="#FFFFFF">흰색</option>-->
+<!--                      <option value="#CCCCCC">회색</option>-->
+<!--                      <option value="#F03E3E">빨강</option>-->
+<!--                      <option value="#1971C2">파랑</option>-->
+<!--                      <option value="#37B24D">녹색</option>-->
+<!--                    </select>-->
+<!--                    <button id="btn-bold">-->
+<!--                      <b>B</b>-->
+<!--                    </button>-->
+<!--                    <button id="btn-italic">-->
+<!--                      <i>I</i>-->
+<!--                    </button>-->
+<!--                    <button id="btn-underline">-->
+<!--                      <u>U</u>-->
+<!--                    </button>-->
+<!--                    <button id="btn-strike">-->
+<!--                      <s>S</s>-->
+<!--                    </button>-->
+<!--                    <button id="btn-ordered-list">-->
+<!--                      OL-->
+<!--                    </button>-->
+<!--                    <button id="btn-unordered-list">-->
+<!--                      UL-->
+<!--                    </button>-->
+<!--                    <button id="btn-image">-->
+<!--                      IMG-->
+<!--                    </button>-->
+<!--                  </div>-->
+<!--                  <div id="editor" contenteditable="true">-->
+<!--&lt;!&ndash;                    <input id="img-selector" type="file" accept="image/*"  th:field="*{anContent}"/>&ndash;&gt;-->
+<!--                  </div>-->
                   <!--new end-->
-                  <!--                    <textarea style="min-height: 270px; width: 100%;font-size: 15px;" name="content" placeholder="Content" th:field="*{anContent}"></textarea>-->
+                  <textarea style="min-height: 270px; width: 100%;font-size: 15px;" name="content" placeholder="Content" th:field="*{anContent}"></textarea>
                 </div>
               </div>
               <div class="actions_special">
@@ -439,6 +439,6 @@
     </div>
   </footer>
 </div>
-<script defer src="/js/editor.js"></script>
+<script type="text/javascript" src="/js/editor.js"></script>
 </body>
 </html>

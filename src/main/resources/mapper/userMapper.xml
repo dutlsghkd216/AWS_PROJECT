@@ -24,45 +24,45 @@
     </sql>
 
     <select id="findByUid" resultType="userDTO">
-        SELECT * FROM TBL_USER WHERE USER_ID=#{userId}
+        SELECT * FROM tbl_user WHERE USER_ID=#{userId}
     </select>
 
     <select id="findAll" resultType="userDTO">
-        SELECT * FROM TBL_USER
+        SELECT * FROM tbl_user
         <include refid="search"/>
         ORDER BY USER_ID DESC LIMIT #{cri.skip}, #{cri.amount}
     </select>
 
     <select id="findByUide" resultType="userDTO">
-        SELECT * FROM TBL_USER WHERE USER_ID=#{userId}
+        SELECT * FROM tbl_user WHERE USER_ID=#{userId}
     </select>
 
     <select id="findPW" resultType="String">
-        SELECT USER_PW FROM TBL_USER WHERE USER_ID=#{userId}
+        SELECT USER_PW FROM tbl_user WHERE USER_ID=#{userId}
     </select>
 
     <select id="selectAllCount" resultType="Long">
-        SELECT count(user_id) FROM TBL_USER
+        SELECT count(user_id) FROM tbl_user
         <include refid="search"/>
     </select>
 
     <insert id="register">
-        INSERT INTO TBL_USER(USER_ID,USER_PW,USER_NAME,USER_EMAIL,USER_BIRTH,USER_ROLE, USER_REGISTER_DATE,EMAIL_PREFIX,EMAIL_DNS)
+        INSERT INTO tbl_user(USER_ID,USER_PW,USER_NAME,USER_EMAIL,USER_BIRTH,USER_ROLE, USER_REGISTER_DATE,EMAIL_PREFIX,EMAIL_DNS)
         VALUES(#{userId}, #{userPw}, #{userName}, #{userEmail}, #{userBirth}, #{userRole}, NOW(),#{emailPrefix},#{emailDns})
     </insert>
 
     <delete id="delete">
-        DELETE FROM TBL_USER WHERE USER_ID=#{userId}
+        DELETE FROM tbl_user WHERE USER_ID=#{userId}
     </delete>
 
     <update id="update">
-        UPDATE TBL_USER
+        UPDATE tbl_user
         SET USER_EMAIL = #{userEmail}, EMAIL_PREFIX = #{emailPrefix}, EMAIL_DNS = #{emailDns}
         WHERE USER_ID = #{userId}
     </update>
 
     <update id="updatePW">
-        UPDATE TBL_USER
+        UPDATE tbl_user
         SET USER_PW = #{userPw}
         WHERE USER_ID = #{userId}
     </update>

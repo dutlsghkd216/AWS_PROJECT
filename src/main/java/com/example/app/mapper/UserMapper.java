@@ -5,9 +5,7 @@ import com.example.app.domain.dto.UserDTO;
 import com.example.app.domain.paging.Criteria;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
-import org.springframework.beans.factory.annotation.Autowired;
 
-import java.security.Principal;
 import java.util.List;
 
 @Mapper
@@ -17,6 +15,8 @@ public interface UserMapper {
 
     // 회원 조회 및 아이디중복체크
     public UserDTO findByUid(String userId);
+
+    public List<UserDTO> findByUide(String userId);
 
     // 회원 목록 조회
     public List<UserDTO> findAll(@Param("cri") Criteria criteria, @Param("search") Search search);

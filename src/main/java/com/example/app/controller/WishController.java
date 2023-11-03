@@ -1,6 +1,5 @@
 package com.example.app.controller;
 
-import com.example.app.domain.dto.LendDTO;
 import com.example.app.domain.dto.WishDTO;
 import com.example.app.service.WishService;
 import lombok.AllArgsConstructor;
@@ -8,7 +7,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;

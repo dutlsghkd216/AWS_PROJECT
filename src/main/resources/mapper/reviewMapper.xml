@@ -27,33 +27,35 @@
     </sql>
 
     <select id="select" resultType="reviewDTO">
-        SELECT * FROM TBL_REVIEW WHERE REV_ID = #{revId}
+        SELECT * FROM tbl_review WHERE REV_ID = #{revId}
     </select>
 
 
+
+
     <select id="selectAll" resultType="reviewDTO" >
-        SELECT * FROM TBL_REVIEW
+        SELECT * FROM tbl_review
         <include refid="search"/>
         ORDER BY REV_ID DESC LIMIT #{cri.skip}, #{cri.amount}
     </select>
 
 
     <select id="selectCountAll" resultType="Long">
-        SELECT COUNT(REV_ID) FROM TBL_REVIEW
+        SELECT COUNT(REV_ID) FROM tbl_review
         <include refid="search"/>
     </select>
 
     <insert id="insert">
-        insert into TBL_REVIEW(rev_title,user_id,rev_content,rev_register_date, rev_update_date)
+        insert into tbl_review(rev_title,user_id,rev_content,rev_register_date, rev_update_date)
         value(#{revTitle}, #{userId}, #{revContent},now(),now());
     </insert>
 
     <delete id="delete">
-        DELETE FROM TBL_REVIEW WHERE REV_ID = #{revId}
+        DELETE FROM tbl_review WHERE REV_ID = #{revId}
     </delete>
 
     <update id="update">
-        UPDATE TBL_REVIEW
+        UPDATE tbl_review
         SET rev_title = #{revTitle}, rev_content=#{revContent}, rev_update_date = now()
         WHERE rev_id = #{revId}
     </update>

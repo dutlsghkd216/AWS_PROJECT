@@ -3,64 +3,64 @@
 <mapper namespace="com.example.app.mapper.LendMapper">
     <select id="selectByLendSeq" resultType="LendDTO">
         SELECT L.*, B.BOOK_TITLE, B.AUTHOR, B.PUBLISHER, B.PUB_YEAR
-        FROM TBL_LEND L
-        JOIN TBL_BOOK B ON L.ISBN= B.ISBN
+        FROM tbl_lend L
+        JOIN tbl_book B ON L.ISBN= B.ISBN
         WHERE L.LEND_SEQ = #{lendSeq}
     </select>
 
     <select id="selectByUserId" parameterType="string" resultType="LendDTO">
         SELECT L.*, B.BOOK_TITLE, B.AUTHOR, B.PUBLISHER, B.PUB_YEAR
-        FROM TBL_LEND L
-        JOIN TBL_BOOK B ON L.ISBN= B.ISBN
+        FROM tbl_lend L
+        JOIN tbl_book B ON L.ISBN= B.ISBN
         WHERE L.USER_ID = #{userId}
     </select>
 
     <select id="selectByIsbn" parameterType="string" resultType="LendDTO">
         SELECT L.*, B.BOOK_TITLE, B.AUTHOR, B.PUBLISHER, B.PUB_YEAR
-        FROM TBL_LEND L
-        JOIN TBL_BOOK B ON L.ISBN= B.ISBN
+        FROM tbl_lend L
+        JOIN tbl_book B ON L.ISBN= B.ISBN
         WHERE L.ISBN = #{isbn}
     </select>
 
     <select id="selectOverDue" resultType="LendDTO">
         SELECT L.*, B.BOOK_TITLE, B.AUTHOR, B.PUBLISHER, B.PUB_YEAR
-        FROM TBL_LEND L
-        JOIN TBL_BOOK B ON L.ISBN= B.ISBN
+        FROM tbl_lend L
+        JOIN tbl_book B ON L.ISBN= B.ISBN
         WHERE NOW() > DUE_DATE;
     </select>
 
     <select id="selectAll" resultType="LendDTO">
         SELECT L.*, B.BOOK_TITLE, B.AUTHOR, B.PUBLISHER, B.PUB_YEAR
-        FROM TBL_LEND L
-        JOIN TBL_BOOK B ON L.ISBN= B.ISBN
+        FROM tbl_lend L
+        JOIN tbl_book B ON L.ISBN= B.ISBN
     </select>
     
     <insert id="insert">
-        INSERT INTO TBL_LEND(ISBN,USER_ID,DUE_DATE,LEND_STATUS)
+        INSERT INTO tbl_lend(ISBN,USER_ID,DUE_DATE,LEND_STATUS)
         VALUES(#{isbn},#{userId},DATE_ADD(NOW(), INTERVAL 15 DAY),'Lend')
     </insert>
 
     <delete id="delete">
-        DELETE FROM TBL_LEND WHERE LEND_SEQ = #{lendSeq}
+        DELETE FROM tbl_lend WHERE LEND_SEQ = #{lendSeq}
     </delete>
 
     <update id="extend">
-        UPDATE TBL_LEND SET DUE_DATE = DATE_ADD(DUE_DATE, INTERVAL 5 DAY), EXTENSION_CNT= EXTENSION_CNT+1
+        UPDATE tbl_lend SET DUE_DATE = DATE_ADD(DUE_DATE, INTERVAL 5 DAY), EXTENSION_CNT= EXTENSION_CNT+1
         WHERE ISBN = #{isbn} AND USER_ID = #{userId}
     </update>
 
 <!--
     <insert id="insert">
-        INSERT INTO TBL_LEND(ISBN,USER_ID,DUE_DATE,LEND_RETURN_YN)
+        INSERT INTO tbl_lend(ISBN,USER_ID,DUE_DATE,LEND_RETURN_YN)
         VALUES(#{isbn},#{userId},DATE_ADD(NOW(), INTERVAL 15 DAY),'N')
     </insert>
 
     <delete id="delete">
-        DELETE FROM TBL_LEND WHERE ISBN=#{bookISBN} AND USER_ID=#{userId}
+        DELETE FROM tbl_lend WHERE ISBN=#{bookISBN} AND USER_ID=#{userId}
     </delete>
 
     <update id="update">
-        UPDATE TBL_LEND SET DUE_DATE=DATE_ADD(DUE_DATE, INTERVAL 5 DAY), EXTENSION_CNT= EXTENSION_CNT+1
+        UPDATE tbl_lend SET DUE_DATE=DATE_ADD(DUE_DATE, INTERVAL 5 DAY), EXTENSION_CNT= EXTENSION_CNT+1
         WHERE ISBN=#{bookISBN} AND USER_ID=#{userId}
     </update>
 

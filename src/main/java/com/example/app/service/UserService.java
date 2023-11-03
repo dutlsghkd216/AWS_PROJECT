@@ -5,9 +5,7 @@ import com.example.app.domain.dto.UserDTO;
 import com.example.app.domain.paging.Criteria;
 import com.example.app.mapper.UserMapper;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -27,6 +25,9 @@ public class UserService {
     public UserDTO getUser(String userId) {
         return userMapper.findByUid(userId);
     }
+    public List<UserDTO> getUserDetail(String userId) {
+        return userMapper.findByUide(userId);
+    }
 
     // 회원 목록 조회
     public List<UserDTO> getAllUser(Criteria criteria, Search search) {
@@ -36,7 +37,6 @@ public class UserService {
 //        }
         return userMapper.findAll(criteria, search);
     }
-
     //    게시글 전체 개수 조회
     public Long getTotal(Search search){
         return userMapper.selectAllCount(search);
@@ -50,6 +50,12 @@ public class UserService {
     // 회원 삭제
     public void delete(String uId) {
         userMapper.delete(uId);
+    }
+
+    public void deleteUsers(List<String> userIds) {
+        for (String userId : userIds) {
+            userMapper.delete(userId);
+        }
     }
 
     // 회원 정보 수정

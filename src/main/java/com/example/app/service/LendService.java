@@ -1,6 +1,5 @@
 package com.example.app.service;
 
-import com.example.app.domain.dto.BookDTO;
 import com.example.app.domain.dto.LendDTO;
 import com.example.app.mapper.LendMapper;
 import lombok.RequiredArgsConstructor;

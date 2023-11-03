@@ -1,6 +1,5 @@
 package com.example.app.mapper;
 
-import com.example.app.domain.dto.BookDTO;
 import com.example.app.domain.dto.LendDTO;
 import org.apache.ibatis.annotations.Mapper;
 

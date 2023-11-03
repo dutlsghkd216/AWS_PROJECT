@@ -3,24 +3,24 @@
 <mapper namespace="com.example.app.mapper.WishMapper">
 
     <insert id="insert">
-        INSERT INTO TBL_WISH(WISH_TITLE,WISH_AUTHOR,WISH_PUBLISHER,WISH_YEAR,WISH_ISBN,USER_ID)
+        INSERT INTO tbl_wish(WISH_TITLE,WISH_AUTHOR,WISH_PUBLISHER,WISH_YEAR,WISH_ISBN,USER_ID)
         VALUE(#{wishTitle}, #{wishAuthor},#{wishPublisher}, #{wishYear}, #{wishIsbn}, #{userId})
     </insert>
 
     <select id="select" resultType="wishDTO">
-        SELECT * FROM TBL_WISH WHERE USER_ID = #{userId}
+        SELECT * FROM tbl_wish WHERE USER_ID = #{userId}
     </select>
 
     <select id="selectAll" resultType="wishDTO">
-        SELECT * FROM TBL_WISH
+        SELECT * FROM tbl_wish
     </select>
 
     <delete id="delete">
-        DELETE FROM TBL_WISH WHERE WISH_ID = #{wishId}
+        DELETE FROM tbl_wish WHERE WISH_ID = #{wishId}
     </delete>
 
     <update id="update">
-        UPDATE TBL_WISH
+        UPDATE tbl_wish
         SET WISH_TITLE = #{wishTitle}, WISH_AUTHOR = #{wishAuthor}, WISH_PUBLISHER = #{wishPublisher},
                         WISH_YEAR = #{wishYear}, WISH_ISBN=#{wishIsbn}, WISH_NOTE=#{wishNote}
         WHERE WISH_ID = #{wishId}

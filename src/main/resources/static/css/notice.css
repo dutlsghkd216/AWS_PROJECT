@@ -200,6 +200,7 @@ tr {
 }
 
 /* 페이징 */
+/* 페이징 */
 .pageInfo_area > ul {
     display: flex; /* 부모 요소를 플렉스 컨테이너로 설정합니다. */
     list-style: none; /* 목록 기호를 숨깁니다. */
@@ -235,3 +236,4 @@ tr {
     -webkit-background-clip: padding-box;
     background-clip: padding-box
 }
+
