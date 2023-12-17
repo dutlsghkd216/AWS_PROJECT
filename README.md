@@ -30,11 +30,11 @@ http://43.200.32.36:10000/main
 
 ## ▶️ 구성인원 
 
-### 정재원(조장) : BackEnd (웹 기획, BackEnd 도서,게시판,회원 CRUD구현, Spring Security 구현)
+### 정재원(조장) : BackEnd (웹 기획, BackEnd 도서,회원 CRUD구현, Spring Security 구현)
 
 ### 이주현(조원1) : FrontEnd (FN JS, 유스케이스, 요구사항분석 구현)
 
-### 황다은(조원2) : BackEnd (대여, 회원CRUD 페이지 구현 및 FN화면 구현)
+### 황다은(조원2) : BackEnd (BackEnd 대여 및 예약, 게시판,회원CRUD 페이지 구현 및 FN화면 구현)
 
 <br/>
 
