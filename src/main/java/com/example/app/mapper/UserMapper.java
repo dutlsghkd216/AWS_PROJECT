@@ -9,7 +9,6 @@ import org.apache.ibatis.annotations.Param;
 import java.util.List;
 
 @Mapper
-
 public interface UserMapper {
 
 
@@ -32,11 +31,15 @@ public interface UserMapper {
 
     // 회원 정보 수정
     public void update(UserDTO userDTO);
+    public void updateEmailAndRole(UserDTO userDTO);
 
     //비밀번호 조회
     public String findPW(String userId);
     // 비밀번호 변경
     public void updatePW(String userId, String userPw);
+
+    //아이디중복조회
+    public int idCheckByUserId(String userId);
 
 
 }

@@ -56,6 +56,11 @@ public class SimpleController {
         return "mypage/5-2myBook";
     }
 
+    @GetMapping("admin/booksetting")
+    public String goBookSetting(){
+        return "admin/5-6booksetting";
+    }
+
 
 
 }

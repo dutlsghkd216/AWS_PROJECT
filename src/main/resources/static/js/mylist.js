@@ -77,3 +77,30 @@ $(document).ready(function() {
     }
   });
 });
+
+$(document).ready(function() {
+  $.ajax({
+    type: "GET",
+    url: "/mypage/myreservelist", // 실제 엔드포인트로 수정
+    dataType: "json",
+    success: function(response) {
+        var tableBody = $("#reservetableBody");
+        tableBody.empty(); // 테이블 내용 비우기
+        for (var i = 0; i < response.length; i++) {
+            var reserveData = response[i];
+
+            var row = $("<tr>");
+            row.append("<td><input type='checkbox'></td>");
+            row.append("<td>" + reserveData.isbn + "</td>");
+            row.append("<td class='tdt'>" + reserveData.bookTitle + "</td>");
+            row.append("<td>" + reserveData.author + "</td>");
+            row.append("<td>" + reserveData.publisher + "</td>");
+            row.append("<td>" + reserveData.pubYear + "</td>");
+
+            tableBody.append(row);
+        }
+    },
+    error: function(xhr, status, error) {
+    }
+});
+  });

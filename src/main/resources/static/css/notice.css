@@ -83,6 +83,19 @@ i {
 
 }
 
+.body01{
+    display: flex;
+    justify-content: center;
+    border-radius: 0.5rem;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+
+}
+
+.doc-body{
+    width: 1000px;
+    margin: 50px auto;
+}
+
 .mb_info>.title_wrap h2 {
     margin: 0;
     line-height: 100px;
@@ -95,18 +108,30 @@ i {
     margin-top: 30px;
 }
 
+.count{
+    line-height: 50px;
+    color: gray;
+    min-width: 160px;
+}
+
+.listForm {
+    display: flex;
+    margin-bottom: 20px;
+}
+
 span.bunch {
-    display: inline-block;
-    vertical-align: middle;
+    margin: 0 5px;
 }
 
 #sFld {
     width: 90px;
     min-width: 85px;
-    height: 34px;
+    height: 34.5px;
     border: 1px solid #d1d0cf;
     background-color: #fff;
     line-height: 29px;
+    text-align: center;
+    margin: 0 5px;
 }
 
 input {
@@ -118,15 +143,14 @@ input {
     vertical-align: top;
     color: #4c4c4c;
     padding: 0 3px;
-    margin-bottom: 10px;
+    text-align: center;
 }
 
-.btn_search {
+.btn_search, .btn_write {
     width: auto;
     min-width: 50px;
     height: 36px;
     vertical-align: top;
-    margin-bottom: 10px;
     margin-left: -2px;
     line-height: 30px;
     text-align: center;
@@ -136,18 +160,9 @@ input {
     border: none;
 }
 
-.btn_write {
-    width: auto;
-    min-width: 50px;
-    height: 36px;
-    vertical-align: top;
-    margin-bottom: 10px;
-    margin-left: -2px;
-    line-height: 33px;
-    text-align: center;
-    background-color: navy;
-    border-radius: 5px;
-    border: none;
+.btn_write> a {
+    color: white;
+    font-size: 13px;
 }
 
 
@@ -196,7 +211,7 @@ tr {
 }
 
 .tdt {
-    width: 40%;
+    width: 30%;
 }
 
 /* 페이징 */
@@ -236,4 +251,3 @@ tr {
     -webkit-background-clip: padding-box;
     background-clip: padding-box
 }
-

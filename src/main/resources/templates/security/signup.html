@@ -12,8 +12,7 @@
     <link rel="stylesheet" href="/css/signup.css">
     <link rel="stylesheet" href="/css/footer.css">
     <link rel="stylesheet" href="/css/sidebar.css">
-
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
   <div class="wrapper">
@@ -298,61 +297,71 @@
       <div class="main_bottom">
         <div class="signup_top">
           <div class="signup_form">
-            <div class="container">
+            <div class="container1">
               <form th:action="@{/security/register}" method="post" th:object="${userDTO}">
-              <h2 class="signup_title">회원가입을 위해 정보를 입력해주세요.</h2>
-              <label class="signup_info_form" >* 아이디<br>
-                <input class="signup_id" name="userId" type="text" th:field="*{userId}"/>
-                <span id="availabilityMessage"></span>
-              </label>
-              <label class="signup_info_form" >* 비밀번호<br>
-                <input class="signup_pwd" type="password" name="userPw" th:field="*{userPw}"/>
-                <img class="input__icon" src="/img/eye.svg" alt="Toggle Password">
-              </label>
-              <label class="signup_info_form" >* 비밀번호 확인<br>
-                <input class="signup_pwd-confirm" type="password">
-                <img class="input__icon" src="/img/eye.svg" alt="Toggle Password">
-                <span id="passwordMatchMessage" class="error-message"></span>
-                <br><br>
-              </label>
-              <label class="signup_info_form" >* 이름<br>
-                <input id="signup_info" type="text" name="userName" th:field="*{userName}"/><br><br>
-              </label>
-                </label>
-                <label class="signup_info_form" style="color: lightgrey;margin: 0px 0px 15px 0px;">* 생년월일<br>
-                  <input class="signup_age" name="year" type="text" th:field="*{userBirth}" required/>년 &nbsp<input class="signup_age" name="month" type="text" th:field="*{userBirth}" required/>월 &nbsp<input class="signup_age" name="day" type="text" th:field="*{userBirth}" required/>일<br><br>
-                </label>
-                <label class="signup_info_form" for=>* 이메일<br>
-                  <input class="signup_email" type="text" name="emailPrefix" th:field="*{emailPrefix}" required>@
-                  <input class="signup_email" type='text' name="emailDns" th:field="*{emailDns}" required>
-                <select name="emailaddr" style="width: 100px; height: 32px;">
-                  <option value="" selected>직접입력</option>
-                  <option value="daum.net">daum.net</option>
-                  <option value="empal.com">empal.com</option>
-                  <option value="gmail.com">gmail.com</option>
-                  <option value="hanmail.net">hanmail.net</option>
-                  <option value="msn.com">msn.com</option>
-                  <option value="naver.com">naver.com</option>
-                  <option value="nate.com">nate.com</option>
-                </select><br><br>
-              </label>
-              <!-- 선택 영역 두번째 -->
-              <!-- name을 부여함으로 인하여 radio의 선택 가능한 것들을 하나의 그룹으로 묶어준다. -->
-                <div>
-                <div class="signup_info_form">* 회원유형</div><br>
-                  <input type="radio" class="radio" name="userRole" th:value="ROLE_USER" checked>&nbsp 일반 회원
-                  <input type="radio" class="radio" name="userRole" th:value="ROLE_ADMIN" >&nbsp 관리자
+                <h2 class="signup_title">회원가입을 위해 정보를 입력해주세요.</h2>
+                <div class="signup_info_form" >* 아이디<br>
+                  <input class="signup_id" name="userId" type="text" th:field="*{userId}"/>
+                  <span id="userIdError" class="error"></span>
                 </div>
-              <br>
-              <br>
-              <div>
-                <input type="checkbox" class="agree">&nbsp 이용약관 개인정보 수집 및 정보이용에 동의합니다.
-              </div>
-              <br>
-              <button class="signup_submit">가입하기</button>
-              <!-- 기능자체는 input의 타입을 button으로 하면 사용은 가능하지만, 굳이 button 태그를 사용하는 이유는 -->
-              <!-- 커스터마이징이 button 태그가 더 용이하기 때문이다. -->
-              <!-- <input type="button" value="가입하기"> -->
+                <div class="signup_info_form">* 비밀번호<br>
+                  <input class="signup_pwd" type="password" name="userPw" th:field="*{userPw}"/>
+                  <img class="input__icon" src="/img/eye.svg" alt="Toggle Password">
+                  <span id="passwordMatchMessage2" class="error-message"></span>
+                </div>
+                <div class="signup_info_form">* 비밀번호 확인<br>
+                  <input class="signup_pwd-confirm" name="userPwCheck" type="password">
+                  <img class="input__icon" src="/img/eye.svg" alt="Toggle Password">
+                  <span id="passwordMatchMessage" class="error-message"></span>
+                </div>
+                <div class="signup_info_form">* 이름<br>
+                  <input id="signup_info" type="text" name="userName" th:field="*{userName}"/><br><br>
+                </div>
+                <div class="signup_info_form">* 생년월일</div>
+                <div class="birth_form">
+                  <div class="modify1"><select id="signup_year" ></select> 년</div>
+                  <div class="modify1"><select id="signup_month" ></select> 월</div>
+                  <div class="modify1"><select id="signup_day" ></select> 일</div>
+                  <input type="hidden" id="userBirth" th:field="*{userBirth}">
+                </div>
+                <br>
+                <div class="signup_info_form">* 이메일<br>
+                  <div class="signup_info_form2">
+                    <div class="singup_email_form">
+                      <input class="signup_email" type="text" name="emailPrefix" id="emailPrefix" th:field="*{emailPrefix}" required> @ <input class="signup_email" type='text' name="emailDns" id="emailDns" th:field="*{emailDns}" required>
+                    </div>
+                    <div class="signup_domain_form">
+                      <select id="email_domain" name="email_domain">
+                        <option value="직접입력" selected>직접입력</option>
+                        <option value="daum.net">daum.net</option>
+                        <option value="empal.com">empal.com</option>
+                        <option value="gmail.com">gmail.com</option>
+                        <option value="hanmail.net">hanmail.net</option>
+                        <option value="msn.com">msn.com</option>
+                        <option value="naver.com">naver.com</option>
+                        <option value="nate.com">nate.com</option>
+                      </select><br><br>
+                    </div>
+                    <button class="code" type="button" id="emailVerification" style="cursor:pointer;">인증</button><br>
+                    <span id="userEmailError" class="error"></span>
+                  </div>
+                  <div class="modify5" id="modify5">
+                    <span class="content1">인증번호</span>
+                    <input type="password" class="modify6" id="verificationInput">
+                    <button class="code" type="button" id="submitVerification" style="cursor:pointer;">확인</button><br>
+                    <span id="userEmailError2" class="error"></span>
+                  </div>
+                  </div>
+                <div class="signup_info_form">* 회원유형<br><br>
+                <input type="radio" class="radio" name="userRole" th:value="ROLE_USER" checked>&nbsp 일반 회원
+                <input type="radio" class="radio" name="userRole" th:value="ROLE_ADMIN" >&nbsp 관리자
+                </div>
+            <br>
+            <br>
+            <div class="agreebox2">
+              <input type="checkbox" class="agree">&nbsp 이용약관 개인정보 수집 및 정보이용에 동의합니다.
+            </div>
+                <button class="signup_submit">가입하기</button>
               </form>
             </div>
           </div>
@@ -380,9 +389,38 @@
       </div>
     </footer>
   </div>
-  <script type="text/javascript" src="/js/email.js"></script>
   <script type="text/javascript" src="/js/signup_check_id.js"></script>
-  <script type="text/javascript" src="/js/signup_check_pwd.js"></script>
   <script type="text/javascript" src="/js/signup_pwd_eye.js"></script>
+  <script type="text/javascript" src="/js/signup_check_pwd.js"></script>
+  <script type="text/javascript" src="/js/birth.js"></script>
+  <script type="text/javascript" src="/js/email.js"></script>
+  <script type="text/javascript" src="/js/code.js"></script>
+<!--  <script type="text/javascript" src="/js/email_comfirm.js"></script>-->
+
+  <script>
+    function updateHiddenInput() {
+        const year = document.getElementById("signup_year").value;
+        const month = document.getElementById("signup_month").value;
+        const day = document.getElementById("signup_day").value;
+
+        // Format the date as yyyy-mm-dd
+        const formattedDate = `${year}-${month.toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}`;
+
+        // Set the value of the hidden input field
+        document.getElementById("userBirth").value = formattedDate;
+
+        // Log the result (you can remove this line, it's for demonstration purposes)
+        console.log("Formatted Date:", formattedDate);
+    }
+
+    // Attach the updateHiddenInput function to the change event of the selects
+    document.getElementById("signup_year").addEventListener("change", updateHiddenInput);
+    document.getElementById("signup_month").addEventListener("change", updateHiddenInput);
+    document.getElementById("signup_day").addEventListener("change", updateHiddenInput);
+
+    // Initial update
+    updateHiddenInput();
+  </script>
+  </script>
 </body>
 </html>

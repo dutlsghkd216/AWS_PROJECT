@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security/">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,11 +9,10 @@
   <link rel="stylesheet" href="/css/sub_header.css">
   <link rel="stylesheet" href="/css/sub_main.css">
   <link rel="stylesheet" href="/css/adminsetting.css">
-  <link rel="stylesheet" href="/css/popup.css">
-  <link rel="stylesheet" href="/css/mylistnotice.css">
+  <link rel="stylesheet" href="/css/popup_book.css">
+  <link rel="stylesheet" href="/css/booksetting.css">
   <link rel="stylesheet" href="/css/footer.css">
   <link rel="stylesheet" href="/css/sidebar.css">
-  <link rel="stylesheet" href="/css/booksetting.css">
 
 </head>
 
@@ -311,227 +309,194 @@
       </div>
       <div class="mt_info">
         <ul class="mt_menu">
-          <li class="mt_m" style="background-color: navy;"><a sec:authorize="hasRole('ADMIN')" th:href="@{/admin/adminsetting}"
-                                                              style="color: white">회원정보관리</a>
+          <li class="mt_m"><a th:href="@{/admin/adminsetting}">회원정보관리</a>
           </li>
           <li class="mt_m"><a href="/admin/5-4adminbook">도서정보관리</a></li>
-          <li class="mt_m"><a th:href="@{/admin/5-6booksetting}"
-          >도서예약관리</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="main_bottom">
-      <div class="mb_info">
-        <div class="table_header1">
-          <div class="all_count">전체 <span th:text="${totalPostCount}"></span> 건</div>
-          <div class="mt_search_area">
-            <form class="search_click" th:action="@{/admin/adminsetting}" method="get">
-              <input type="hidden" name="page" th:value="${criteria.pageNum}">
-              <div class="s_c">
-                <select name="type" style="width: 100px; height: 40px; text-align: center;">
-                  <option value="ua" th:selected="${search.type == 'ua'}">전체</option>
-                  <option value="u" th:selected="${search.type == 'u'}">일반회원</option>
-                  <option value="a"  th:selected="${search.type == 'a'}">관리자</option>
-                </select>
-                <input type="text" name="keyword"  th:value="${search.keyword}" placeholder="검색어를 입력해주세요"
-                       style="width: 300px; height: 40px; text-align: center;">
-                <button type="submit" style="width:100px; height: 40px;">검색</button>
-              </div>
-            </form>
-          </div>
-
-          <div class="delete_btn">
-            <a href="javascript:deleteSelectedUsers()">삭제</a>
-          </div>
-
+            <li class="mt_m" style="background-color: navy;"><a th:href="@{/admin/5-6booksetting}"
+                style="color: white">도서예약관리</a></li>
+          </ul>
         </div>
-        <table>
-          <thead>
-          <tr>
-            <th>선택</th>
-            <th>아이디</th>
-            <th>이메일</th>
-            <th>이름</th>
-            <th>생년월일</th>
-            <th>최초가입일</th>
-            <th style=" display: none;">회원유형</th>
-            <th>상세정보</th>
-          </tr>
-          </thead>
-          <tbody>
-          <th:block th:each="listUser:${listUser}">
-            <tr th:object="${listUser}">
-              <td><input type="checkbox" th:value="*{userId}"></td>
-              <td class="id1" th:text="*{userId}"></td>
-              <td class="tdt" th:text="*{userEmail}"></td>
-              <td th:text="*{userName}"></td>
-              <td th:text="*{userBirth}"></td>
-              <td th:text="*{userRegisterDate}"></td>
-              <td style=" display: none;" th:text="*{userRole}"></td>
-              <td>
-                <!--                  <button class="moreinfo_btn" ><a href="javascript:openPop()">상세정보</a></button>-->
-                <button class="moreinfo_btn" onclick="openPop(this)">상세정보</button>
-              </td>
-              <!--                  <a href="javascript:openPop()">상세정보</a>-->
-            </tr>
-            <!--10월 18일 팝업창 추가-->
-            <div class="popup_layer" id="popup_layer" style="display: none;">
-              <div class="popup_box">
-                <!--팝업 컨텐츠 영역-->
-                <div class="popup_cont">
-                  <div>
-                    <h3>▼ 상세정보를 입력해 주세요.</h3>
-                  </div>
-                  <div class="bookinfo1" style="border-top: 2px solid rgb(82, 82, 82);">
-                    <div class="bi_title">아이디</div>
-                    <div class="bi_text"><input type="text" id="userId" readonly></div>
-                  </div>
-                  <div class="bookinfo1">
-                    <div class="bi_title">이름</div>
-                    <div class="bi_text"><input type="text"  id="userNameField" readonly></div>
-                  </div>
-                  <div class="bookinfo1">
-                    <div class="bi_title">이메일</div>
-                    <div class="bi_text"><input type="text" id="userEmailField"></div>
-                  </div>
-                  <div class="bookinfo1">
-                    <div class="bi_title">생년월일</div>
-                    <div class="bi_text"><input type="text" id="userBirthField" readonly></div>
-                  </div>
-                  <div class="bookinfo1">
-                    <div class="bi_title">유형</div>
-                    <div class="bi_text"><input type="text" id="userRoleField"></div>
-                  </div>
-                  <div class="bookinfo1">
-                    <div class="bi_title">최초가입일</div>
-                    <div class="bi_text"><input type="text" id="userRegisterDateField" readonly></div>
-                  </div>
-                  <div class="bookinfo1" style="border-bottom: 4px double gray;">
-                    <div class="bi_title">대여현황</div>
-                    <div class="bi_text">
+      </div>
+      <div class="main_bottom">
+        <div class="mb_info">
+          <div class="table_header1">
+            <div class="all_count">전체 <span th:text="${totalPostCount}"></span> 건</div>
+            <div class="mt_search_area" style="margin: 0 180px 30px 5px;">
+              <form class="search_click" th:action="@{/admin/5-6booksetting}" method="get">
+                <input type="hidden" name="page" th:value="${criteria.pageNum}">
+                <div class="s_c">
+                  <div class="info1">대여장소</div>
+                  <select class="search_option" name="type" th:field="${search.type}">
+                    <option value="t" th:selected="${search.type == 'asb'}">전체</option>
+                    <option value="a" th:selected="${search.type == 'a'}">안심역 무인예약대출기</option>
+                    <option value="s" th:selected="${search.type == 's'}">신매역 무인예약대출기</option>
+                    <option value="b" th:selected="${search.type == 'b'}">반월당역 무인예약대출기</option>
+                  </select>
+                  <div class="info2">예약날짜</div>
+                  <div class="date_form">
+                    <div>
+                      <select id="signup_year" name="year" ></select> 년
+                    </div>
+                    <div>
+                      <select id="signup_month" name="month"></select> 월
+                    </div>
+                    <div>
+                      <select id="signup_day" name="day"></select> 일
                     </div>
                   </div>
+                  <input type="hidden" id="formattedDate" name="formattedDate" th:value="*{reserveDate}">
+                  <button type="submit" style="width:100px; height: 40px;">검색</button>
                 </div>
-                <!--                  팝업 버튼 영역-->
-                <div class="popup_btn">
-                  <button class="pop_btn"><a href="javascript:saveUserData();">저장</a></button>
-                  <button class="pop_btn"><a href="javascript:closePop();">닫기</a></button>
-                </div>
-
-              </div>
+              </form>
             </div>
-            <!---->
-          </th:block>
-          </tbody>
-        </table>
-        <div id="user_paging" class="dataTables_paginate" th:object="${criteria}">
-          <div class="pageInfo_area">
-            <ul id="pageInfo" class="pageInfo">
-              <!-- 이전페이지 버튼 -->
-              <li class="pageInfo_btn previous" th:if="${pageMaker.prev}">
-                <a class="paginate_button"
-                   th:href="@{/admin/adminsetting(pageNum=${pageMaker.startPage-1}, amount=${pageMaker.criteria.amount}, type=${search.type}, keyword=${search.keyword})}">
-                  < </a>
-              </li>
+          </div>
+          <table>
+            <thead>
+              <tr>
+                <th>예약번호</th>
+                <th>제목</th>
+                <th>저자</th>
+                <th>출판사</th>
+                <th>대여장소</th>
+                <th>예약날짜</th>
+                <th>회원ID</th>
+                <th>대여승인</th>
+              </tr>
+            </thead>
+            <tbody>
+             <th:block th:each="reserveList:${reserveList}">
+              <tr th:object="${reserveList}">
+                <td th:text="*{reserveSeq}"></td>
+                <td th:text="*{isbn}"></td>
+                <td th:text="*{bookTitle}"></td>
+                <td th:text="*{author}"></td>
+                <td th:text="*{location}"></td>
+                <td th:text="*{reserveDate}"></td>
+                <td th:text="*{userId}"></td>
+                <td class="reserve_btn">
+                  <form id="lendForm">
+                    <input type="hidden" id="isbn" name="isbn" th:value="*{isbn}">
+                    <input type="hidden" id="userId" name="userId" th:value="*{userId}">
+                    <input type="hidden" id="location" name="location" th:value="*{location}">
+                    <input type="hidden" id="reserveDate" name="reserveDate" th:value="*{reserveDate}">
+                    <button class="lendbtn" type="button" onclick="showConfirmation(this);">대여승인</button>
+                  </form>
+                </td>
+              </tr>
+             </th:block>
+            </tbody>
+          </table>
+<!--          페이징-->
+          <div class="pageInfo_wrap" th:object="${criteria}">
+            <div class="pageInfo_area">
+              <ul id="pageInfo" class="pageInfo" style="display: flex;list-style: none;padding: 0;justify-content: center;">
+                <!-- 이전페이지 버튼 -->
+                <li class="pageInfo_btn previous" th:if="${pageMaker.prev}" style="height: 90px;text-align: center;font-size: 0;">
+                  <a class="paginate_button"
+                     th:href="@{notice(pageNum=${pageMaker.startPage-1}, amount=${pageMaker.criteria.amount}, type=${search.type}, keyword=${search.keyword})}">
+                    < </a>
+                </li>
 
-              <!-- 페이지 번호 버튼 -->
-              <li th:each="num : ${#numbers.sequence(pageMaker.startPage, pageMaker.endPage)}"
-                  class="pageInfo_btn"
-                  th:style="${num == pageMaker.criteria.pageNum} ? 'font-weight: bold;' : ''">
-                <a class="paginate_button"
-                   th:href="@{/admin/adminsetting(pageNum=${num}, amount=${pageMaker.criteria.amount}, type=${search.type}, keyword=${search.keyword})}"
-                   th:text="${num}"></a>
-              </li>
+                <!-- 페이지 번호 버튼 -->
+                <li th:each="num : ${#numbers.sequence(pageMaker.startPage, pageMaker.endPage)}"
+                    class="pageInfo_btn"
+                    th:style="${num == pageMaker.criteria.pageNum} ? 'font-weight: bold;' : ''" style="height: 90px;text-align: center;font-size: 0;">
+                  <a class="paginate_button"
+                     th:href="@{notice(pageNum=${num}, amount=${pageMaker.criteria.amount}, type=${search.type}, keyword=${search.keyword})}"
+                     th:text="${num}"></a>
+                </li>
 
-              <!-- 다음페이지 버튼 -->
-              <li class="pageInfo_btn next" th:if="${pageMaker.next}">
-                <a class="paginate_button"
-                   th:href="@{/admin/adminsetting(pageNum=${pageMaker.endPage+1}, amount=${pageMaker.criteria.amount}, type=${search.type}, keyword=${search.keyword})}">
-                  > </a>
-              </li>
-            </ul>
+                <!-- 다음페이지 버튼 -->
+                <li class="pageInfo_btn next" th:if="${pageMaker.next}" style="height: 90px;text-align: center;font-size: 0;">
+                  <a class="paginate_button"
+                     th:href="@{notice(pageNum=${pageMaker.endPage + 1}, amount=${pageMaker.criteria.amount}, type=${search.type}, keyword=${search.keyword})}">
+                    > </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <form id="moveForm" method="get">
+            <!-- pageNum 값을 숫자로 변환하여 대체 -->
+            <input type="hidden" name="pageNum" th:attr="value=${pageMaker.criteria.pageNum}">
+            <!-- amount 값을 숫자로 변환하여 대체 -->
+            <input type="hidden" name="amount" th:attr="value=${pageMaker.criteria.amount}">
+          </form>
+        </div>
+      </div>
+    </div>
+    <footer class="footer_wrap">
+      <div class="footer_top">
+        <div class="ft_info">
+          <div class="ft_menu">
+            <div><a href="">개인정보처리방침</a></div>
+            <div><a href="">영상정보처리방침</a></div>
+            <div><a href="">이용약관</a></div>
+            <div><a href="">도서관서비스헌장</a></div>
+            <div><a href="">저작권보호정책</a></div>
+            <div><a href="">뷰어다운로드</a></div>
           </div>
         </div>
-        <form id="moveForm" method="get">
-          <!-- pageNum 값을 숫자로 변환하여 대체 -->
-          <input type="hidden" name="pageNum" th:attr="value=${pageMaker.criteria.pageNum}">
-          <!-- amount 값을 숫자로 변환하여 대체 -->
-          <input type="hidden" name="amount" th:attr="value=${pageMaker.criteria.amount}">
-        </form>
       </div>
-    </div>
-  </div>
-  <footer class="footer_wrap">
-    <div class="footer_top">
-      <div class="ft_info">
-        <div class="ft_menu">
-          <div><a href="">개인정보처리방침</a></div>
-          <div><a href="">영상정보처리방침</a></div>
-          <div><a href="">이용약관</a></div>
-          <div><a href="">도서관서비스헌장</a></div>
-          <div><a href="">저작권보호정책</a></div>
-          <div><a href="">뷰어다운로드</a></div>
+      <div class="footer_bottom">
+        <div class="fb_info">
+          <p> 대구 수성구 123 (비대면 도서관) 전화 053-123-3456 팩스 053-123-3457<br />Copyright ⓒ 비대면 도서관. All rights
+            reserved.</p>
         </div>
       </div>
-    </div>
-    <div class="footer_bottom">
-      <div class="fb_info">
-        <p> 대구 수성구 123 (비대면 도서관) 전화 053-123-3456 팩스 053-123-3457<br />Copyright ⓒ 비대면 도서관. All rights
-          reserved.</p>
-      </div>
-    </div>
-  </footer>
-</div>
-<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-<!--  <script type="text/javascript" src="/js/popup.js"></script>-->
-<script src="/js/userinfo.js"></script>
-</body>
-<script>
-  function deleteSelectedUsers() {
-    // 체크박스에서 선택한 사용자의 아이디를 가져옵니다.
-    var selectedUserIds = Array.from(document.querySelectorAll('input[type="checkbox"]:checked')).map(function(checkbox) {
-        return checkbox.value;
-    });
+    </footer>
+  </div>
+  <script src="/js/birth.js"></script>
+  <script src="/js/popup.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script th:inline="javascript">
+    function prepareDate() {
+        var year = document.getElementById('signup_year').value;
+        var month = document.getElementById('signup_month').value;
+        var day = document.getElementById('signup_day').value;
 
-    // 선택한 사용자가 없으면 함수를 종료합니다.
-    if (selectedUserIds.length === 0) {
-        alert('삭제할 사용자를 선택하세요.');
-        return;
+        // Format the date as yyyy-MM-dd
+        var formattedDate = year + '-' + (month.length < 2 ? '0' + month : month) + '-' + (day.length < 2 ? '0' + day : day);
+
+        // Set the formatted date to the hidden input field
+        document.getElementById('formattedDate').value = formattedDate;
+
+        return true; // Allow the form to be submitted
     }
 
-    // 각 사용자에 대해 DELETE 요청을 보냅니다.
-    selectedUserIds.forEach(function(userId) {
-        fetch('/admin/delete/' + userId, {
-            method: 'DELETE',
-        })
-        .then(function(response) {
-            if (!response.ok) {
-                throw new Error('Error deleting user');
-            }
-            return response.text();
-        })
-        .then(function(message) {
-            alert(message);
-            location.reload();  // 페이지를 새로고침하여 테이블을 업데이트합니다.
-        })
-        .catch(function(error) {
-            alert(error);
-        });
-    });
-}
-// 체크박스들을 가져옵니다.
-var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+  </script>
+  <script>
+    $(document).ready(function() {
+     $('.lendbtn').click(function() {
+         var lendForm = $(this).closest('form');
 
-// 각 체크박스에 대해 이벤트 리스너를 설정합니다.
-checkboxes.forEach(function(checkbox) {
-    checkbox.addEventListener('change', function(event) {
-        // 선택된 체크박스 외의 모든 체크박스를 해제합니다.
-        checkboxes.forEach(function(otherCheckbox) {
-            if (otherCheckbox !== checkbox) {
-                otherCheckbox.checked = false;
-            }
-        });
-    });
-});
-</script>
+         if(!confirm("대여를 승인하시겠습니까?")) {
+             return; // If not confirmed, stop there.
+         }
+
+         var lendData = {
+             isbn: lendForm.find('input[name="isbn"]').val(),
+             userId: lendForm.find('input[name="userId"]').val(),
+             location: lendForm.find('input[name="location"]').val(),
+             reserveDate: lendForm.find('input[name="reserveDate"]').val()
+         };
+
+         $.ajax({
+             type: 'POST',
+             url: '/books/lend',
+             data: JSON.stringify(lendData),
+             contentType: 'application/json',
+             success: function(response) {
+                 alert('대여 승인 완료: ' + response);
+                 location.reload();
+             },
+             error: function(request, status, error) {
+             location.reload();
+                 alert('에러 발생: ' + error);
+             }
+         });
+     });
+ });
+  </script>
+</body>
+
 </html>

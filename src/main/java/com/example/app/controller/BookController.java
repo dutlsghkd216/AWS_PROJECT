@@ -6,11 +6,11 @@ import com.example.app.domain.paging.Criteria;
 import com.example.app.domain.paging.PageMakerDTO;
 import com.example.app.service.BookService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
 
@@ -76,10 +76,15 @@ public class BookController {
         return new RedirectView("book/list");
     }
     //    도서 삭제
-    @GetMapping("remove")
-    public RedirectView remove(String isbn){
-        bookService.remove(isbn);
-        return new RedirectView("book/list");
+    @DeleteMapping("/remove/{isbn}")
+    public ResponseEntity<String> remove(@PathVariable String isbn){
+        try{
+            BookDTO book = bookService.getBook(isbn);
+            bookService.remove(isbn);
+            return ResponseEntity.ok('"'+book.getBookTitle()+'"'     + "책이 성공적으로 삭제되었습니다.");
+        }catch (Exception e){
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("삭제 실패!!");
+        }
     }
     //    도서 수정
     @PostMapping("modify")

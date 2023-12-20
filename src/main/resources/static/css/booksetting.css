@@ -1,0 +1,32 @@
+
+
+/* 대여장소부분 */
+.search_option {
+    width: 200px; 
+    height: 40px; 
+    text-align: center;
+}
+
+/* 예약날짜부분 */
+.date_form{
+    display: flex;
+    justify-content: space-around;
+    width: 350px;
+}
+
+
+#signup_year, #signup_month, #signup_day{
+    height: 40px;
+    margin: 0 auto;
+    font-size: 15px;
+    text-align: center;
+}
+
+.info1, .info2 {
+    width: 90px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    font-size: 15px;
+    font-weight: bold;
+}

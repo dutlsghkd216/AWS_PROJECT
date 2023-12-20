@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.app.mapper.ReserveMapper">
+
+    <sql id="search">
+        <if test="search.keyword != null">
+            <where>
+                <trim prefixOverrides="OR">
+                    <foreach item="type" collection="search.types">
+                        <trim prefix="OR">
+                            <choose>
+                                <when test="type == 'a'.toString()">
+                                    LOCATION = "안심역 무인예약대출기"
+                                </when>
+                                <when test="type == 's'.toString()">
+                                    LOCATION = "신매역 무인예약대출기"
+                                </when>
+                                <when test="type == 'b'.toString()">
+                                    LOCATION = "반월당역 무인예약대출기"
+                                </when>
+                            </choose>
+                        </trim>
+                    </foreach>
+                </trim>
+            </where>
+        </if>
+    </sql>
+
+    <select id="selectByReserveSeq" resultType="reserveDTO">
+        SELECT * FROM tbl_reservation WHERE reserve_seq = #{reserveSeq}
+    </select>
+
+    <select id="selectByUserid" resultType="reserveDTO">
+        SELECT R.*, B.BOOK_TITLE,B.AUTHOR, B.PUBLISHER,B.PUB_YEAR
+        FROM tbl_reservation R
+        JOIN tbl_book B ON R.ISBN= B.ISBN
+        WHERE R.user_id = #{userId} AND R.reserve_status = '예약'
+    </select>
+
+    <select id="selectAllByReserveDate" resultType="reserveDTO">
+        SELECT R.*, B.BOOK_TITLE,B.AUTHOR, B.PUBLISHER
+        FROM tbl_reservation R
+        JOIN tbl_book B ON R.ISBN= B.ISBN
+        <include refid="search"/>
+        WHERE reserve_date = #{reserveDate} and reserve_status = '예약'
+        ORDER BY reserve_seq DESC LIMIT #{cri.skip}, #{cri.amount}
+    </select>
+
+    <insert id="insert">
+        insert into tbl_reservation(isbn, user_id, reserve_date,location,reserve_make_date)
+        value(#{isbn}, #{userId}, #{reserveDate}, #{location}, now());
+    </insert>
+
+    <delete id="update">
+        UPDATE tbl_reservation
+        SET reserve_status = "취소"
+        WHERE reserve_seq = #{reserveSeq}
+    </delete>
+
+
+<!--    예약할 때 제약사항 확인 -->
+    <select id="countByIsbnAndUserId" resultType="int">
+        SELECT COUNT(*) FROM tbl_reservation
+        WHERE isbn = #{isbn} AND user_id = #{userId}
+    </select>
+
+    <select id="countByUserId" resultType="int">
+        SELECT COUNT(*) FROM tbl_reservation
+        WHERE user_id = #{userId}
+    </select>
+
+    <select id="selectCountAll" resultType="Long">
+        SELECT COUNT(reserve_seq) FROM tbl_reservation
+        <include refid="search"/>
+        WHERE reserve_date = #{reserveDate}
+    </select>
+
+
+
+</mapper>

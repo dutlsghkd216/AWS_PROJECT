@@ -129,26 +129,35 @@
   display: flex;
   border-bottom: 2px solid black;
   margin-top: 40px;
+  justify-content: space-between;
 }
 
 /* 전체 {회원수} 건 */
 .all_count {
   line-height: 60px;
+  width: 160px;
+  text-align: center;
+
 }
 
 /* 회원 검색창 */
 .mt_search_area {
   height: 40px;
-  margin-bottom: 20px;
-  margin: 0 160px 30px 160px;
+  margin-bottom: 30px;
+
 }
+
+.info3 {
+    display: flex;
+}
+
 
 /* 삭제 버튼 */
 .add_btn,
 .delete_btn {
   width: 110px;
   height: 40px;
-  margin-left: 10px;
+  margin : 0 10px;
   line-height: 40px;
   border: none;
   border-radius: 15px;
@@ -168,6 +177,7 @@
   display: flex;
   gap: 5px;
   flex-wrap: nowrap;
+  align-items: center;
 }
 
 .moreinfo_btn {
@@ -178,7 +188,10 @@
   border-radius: 15px;
   text-align: center;
   font-weight: bold;
+  font-size: 15px;
   background-color: rgb(85, 85, 85);
+  color: white;
+  cursor: pointer;
 }
 
 
@@ -204,15 +217,15 @@
   margin-bottom: 0;
 }
 
-button.lendbtn {
-    width: 60px;
-    height: 40px;
-    margin: 0;
-    padding: 0;
-    background-color: navy;
-    border: none;
-    border-radius: 30px;
-    color: white;
+.lend_btn>button {
+  width: 60px;
+  height: 40px;
+  margin: 0;
+  padding: 0;
+  background-color: navy;
+  border: none;
+  border-radius: 30px;
+  color: white;
 }
 
 .reserve_btn>button {
@@ -223,6 +236,10 @@ button.lendbtn {
   background-color: navy;
   border: none;
   border-radius: 30px;
+  color: white;
+}
+
+.reserve_btn>button>a{
   color: white;
 }
 

@@ -36,9 +36,15 @@
     </select>
     
     <insert id="insert">
-        INSERT INTO tbl_lend(ISBN,USER_ID,DUE_DATE,LEND_STATUS)
-        VALUES(#{isbn},#{userId},DATE_ADD(NOW(), INTERVAL 15 DAY),'Lend')
+        INSERT INTO tbl_lend(ISBN,USER_ID,DUE_DATE,LEND_STATUS,LOCATION,RESERVE_DATE)
+        VALUES(#{isbn},#{userId},DATE_ADD(#{reserveDate}, INTERVAL 15 DAY),'대여중',#{location},#{reserveDate})
     </insert>
+
+    <update id="updatelend">
+        UPDATE tbl_reservation
+        SET reserve_status = "대여"
+        WHERE user_id = #{userId} and isbn = #{isbn}
+    </update>
 
     <delete id="delete">
         DELETE FROM tbl_lend WHERE LEND_SEQ = #{lendSeq}

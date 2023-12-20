@@ -1,46 +1,28 @@
 .signup_top {
-    position: relative;
     max-width: 1260px;
-    height: 900px;
+    padding: 20px;
     overflow: hidden;
 }
 
 .signup_form {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    width: 670px;
-    height: 800px;
-    background: #FFFFFF;
+    width: 100%;
     border-radius: 0.5rem;
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-    margin: 0px;
-    padding: 0px 100px 0px 100px;
-    box-sizing: border-box;
     display: flex;
-    flex-direction: column;
-    flex-wrap: nowrap;
+    justify-content: center;
+
 }
 
 .signup_title {
-    width: 466px;
-    left: 725px;
-    top: 132px;
-    font-family: 'Noto Sans CJK KR';
-    font-style: normal;
-    font-weight: 700;
     font-size: 25px;
-    line-height: 47px;
-    color: #4F46E5;
-    justify-content: space-evenly;
-
-
+    text-align: center;
+    margin: 50px auto;
 }
 
 .submit_btn {
     display: flex;
     gap: 30px;
+    margin: 30px auto 50px;
 }
 
 
@@ -50,23 +32,30 @@
     height: 50px;
     left: 725px;
     top: 875px;
-    background-color: #FFFFFF;
     border-radius: 8px;
-    border: #0068FF solid 1px;
     display: block;
     margin: 0 auto;
     text-align: center;
 }
 
 .signup_submit_1 {
-    color: #0068FF
+    color: white;
+    background: navy;
+    border: none;
+    font-weight: bold;
+    font-size: 15px;
+    cursor: pointer;
 }
 
 .signup_submit_2 {
     color: red;
+    background-color: white;
+    border:1px solid red;
+    font-weight: bold;
+    cursor: pointer;
 }
 
-.signup_info,
+#signup_info,
 .signup_id {
     padding: 0px;
     border: none;
@@ -128,8 +117,8 @@
     height: 30px;
 }
 
-.signup_email,
-.signup_email_prefix {
+#signup_email,
+#signup_email_prefix {
     padding: 0px;
     border: none;
     border-bottom: 1px solid #CFCFCF;
@@ -207,8 +196,9 @@ input.agree {
 .mb_signup_wrap {
     width: 100%;
     margin: 0 auto;
-    border: 1px solid rgb(200, 200, 200, 0.5);
+    border: 1px solid rgb(200, 200, 200, 0.1);
     border-radius: 15px;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
 }
 
 .mb_signup_title {
@@ -291,9 +281,7 @@ input.agree {
     border: none;
     background-color: navy;
     border-radius: 15px;
-    color: white;
-    font-size: 15px;
-    font-weight: bold;
+    cursor: pointer;
 }
 
 .mb_signup_btn>a {

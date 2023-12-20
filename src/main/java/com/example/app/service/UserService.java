@@ -32,9 +32,9 @@ public class UserService {
     // 회원 목록 조회
     public List<UserDTO> getAllUser(Criteria criteria, Search search) {
         // 권한 확인 로직 (여기서는 예시로 ROLE_ADMIN을 가진 사용자만 조회 가능하도록)
-//        if (!isAdmin()) {
-//            throw new AccessDeniedException("권한이 없습니다.");
-//        }
+        //        if (!isAdmin()) {
+        //            throw new AccessDeniedException("권한이 없습니다.");
+        //        }
         return userMapper.findAll(criteria, search);
     }
     //    게시글 전체 개수 조회
@@ -52,18 +52,15 @@ public class UserService {
         userMapper.delete(uId);
     }
 
-    public void deleteUsers(List<String> userIds) {
-        for (String userId : userIds) {
-            userMapper.delete(userId);
-        }
-    }
-
     // 회원 정보 수정
     @Transactional
     public void modify(UserDTO userDTO) {
         userMapper.update(userDTO);
     }
-
+    @Transactional
+    public void updateEmailAndRole(UserDTO userDTO) {
+        userMapper.updateEmailAndRole(userDTO);
+    }
 
     // 비밀번호 조회
     public String getUserPW(String userId){
@@ -72,5 +69,11 @@ public class UserService {
     // 비밀번호 변경
     public void updatePW(String userId,String userPw){
         userMapper.updatePW(userId, userPw);
+    }
+
+    //아이디중복조회
+    public boolean isUserIdExist(String userId) {
+        int count = userMapper.idCheckByUserId(userId);
+        return count > 0;
     }
 }

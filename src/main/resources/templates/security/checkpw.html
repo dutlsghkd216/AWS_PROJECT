@@ -327,7 +327,7 @@
           <div class="mb_signup_wrap">
             <form th:action="@{/security/checkpw}" method="post">
             <div class="mb_signup_title">비밀번호 확인</div>
-            <div class="mb_signup_info1" th:text="'&quot;' + ${#strings.escapeXml(principal.name)} + '&quot; 님의 회원정보를 안전하게 보호하기 위해\n비밀번호를 한번 더 확인해 주세요.'"></div>
+            <div class="mb_signup_info1" th:text="'&quot;' + ${#strings.escapeXml(principal.name)} + '&quot; 님의 회원정보를 안전하게 보호하기 위해 비밀번호를 한번 더 확인해 주세요.'"></div>
             <div class="mb_signup_info2">
               <div class="mb_signup1">▶ 비밀번호</div>
               <input class="signup_pwd" type="password" style="width: 330px; height: 30px" name="currentPassword" id="currentPassword">

@@ -316,10 +316,10 @@
       <div class="main_bottom">
         <div class="mb_info">
           <div class="table_header">
-            <div>
+            <div class="count">
               전체 <span th:text="${totalPostCount}"></span> 건
             </div>
-            <form name="searchForm" th:action="@{/reviews/3-2review}" method="get">
+            <form name="listForm" th:action="@{/reviews/3-2review}" method="get">
               <input type="hidden" name="page" th:value="*{pageNum}">
               <span class="bunch">
                 <select name="type" id="sFld">
@@ -335,7 +335,7 @@
                 <button type="submit" class="btn_search">검색</button>
               </span>
               <span class="bunch">
-                <div class="btn_write">
+                <div class="btn_write" style="display:inline-block;">
                 <a th:href="@{write}" style="color: white; font-size: 13px;" >글쓰기</a>
                 </div>
               </span>

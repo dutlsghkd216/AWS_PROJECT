@@ -60,8 +60,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //                .antMatchers("/boards/notice","/boards/3-4post").permitAll()
                 .antMatchers("/security/register").permitAll()
                 .antMatchers("/boards/notice").permitAll()
+                .antMatchers("/security/mailconfirm","/security/checkCode").permitAll()
                 .antMatchers("/boards/3-3post").hasRole("ADMIN")
-                .antMatchers("/books/hopeadd","/books/lend").hasAnyRole("ADMIN","USER")
+                .antMatchers("/books/hopeadd","/books/lend","/books/reserve").hasAnyRole("ADMIN","USER")
                 .antMatchers("/reviews/write", "/reviews/3-8modify").hasAnyRole("ADMIN","USER")
                 .antMatchers("/mypage/**","/security/**").hasAnyRole("ADMIN","USER")
 

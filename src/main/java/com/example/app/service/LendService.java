@@ -36,10 +36,12 @@ public class LendService {
     // 대여하기
     public void write(LendDTO lendDTO){
         lendMapper.insert(lendDTO);
+        lendMapper.updatelend(lendDTO);
     }/*
     * public void write(String userId, String isbn){
     * lendMapper.insert(userId, isbn);}
     * */
+    // 도서 예약 수정(update)
 
     // 반납하기
     public void remove(Long lendSeq){

@@ -29,7 +29,6 @@
 
 /* 배너글씨와 검색창 */
 .mt_info {
-  width: 700px;
   position: absolute;
   top: 60%;
   left: 50%;
@@ -106,30 +105,15 @@ option {
 }
 
 .n_area {
-  width: 170px;
-  height: 170px;
-  margin-top: 90px;
-  line-height: 30px;
-  text-align: center;
-  background-color: rgba(255, 255, 255, 0.8);
-  /* box-shadow: 6px 2px 2px 0px gray; */
-  border-radius: 50%;
+width : 230px;
+height : 140px;
+margin-top: 90px;
+line-height : 30px;
+border-bottom: 5px solid rgba(255, 255, 255, 0.7);
+cursor: pointer;
 }
 
 .n_area>a {
-  color: black;
+  color : white;
   font-weight: bold;
-}
-
-
-.n_area:nth-child(1):hover,
-.n_area:nth-child(2):hover,
-.n_area:nth-child(3):hover {
-  background-color: gray;
-}
-
-.n_area:nth-child(1)>a:hover,
-.n_area:nth-child(2)>a:hover,
-.n_area:nth-child(3)>a:hover {
-  color: white;
 }

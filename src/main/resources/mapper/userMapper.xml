@@ -61,9 +61,21 @@
         WHERE USER_ID = #{userId}
     </update>
 
+    <update id="updateEmailAndRole">
+        UPDATE tbl_user
+        SET USER_EMAIL = #{userEmail},
+        USER_ROLE = #{userRole}
+        WHERE USER_ID = #{userId}
+    </update>
+
+
     <update id="updatePW">
         UPDATE tbl_user
         SET USER_PW = #{userPw}
         WHERE USER_ID = #{userId}
     </update>
+
+    <select id="idCheckByUserId" resultType="int">
+        SELECT COUNT(*) FROM tbl_user WHERE USER_ID = #{userId}
+    </select>
 </mapper>

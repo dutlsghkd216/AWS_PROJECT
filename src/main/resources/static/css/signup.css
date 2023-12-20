@@ -1,63 +1,52 @@
 .signup_top{
-    position: relative;
     max-width: 1260px;
-    height: 100vh;
+    padding: 20px;
     overflow: hidden;
 }
 
 .signup_form {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    width: 670px;
-    height: 850px;
-    background: #FFFFFF;
+    width: 100%;
     border-radius: 0.5rem;
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-    margin:0px;
-    padding: 0px 100px 0px 100px;
-    box-sizing: border-box;
     display: flex;
-    flex-direction: column;
-    flex-wrap: nowrap;
+    justify-content: center;
+
 }
 
+.container1{
+    width: 800px;
+}
+
+/* h2 */
 .signup_title {
-    width: 466px;
-    left: 725px;
-    top: 132px;
-    font-family: 'Noto Sans CJK KR';
-    font-style: normal;
-    font-weight: 700;
     font-size: 25px;
-    line-height: 47px;
-    color: #4F46E5;
-    justify-content: space-evenly;
-
-
+    text-align: center;
+    margin: 50px auto;
 }
 
+/* 가입하기 버튼 */
 .signup_submit {
     width: 400px;
     height: 50px;
-    left: 725px;
-    top: 875px;
-    background-color: #FFFFFF;
-    color: royalblue;
+    background-color: navy;
+    color: white;
+    font-weight: bold;
+    font-size: 15px;
     border-radius: 8px;
-    border: #0068FF solid 1px;
-    display: block; 
-    margin: 0 auto; 
+    border: none;
+    display: block;
+    margin: 30px auto 50px;
     text-align: center;
+    cursor: pointer;
 }
 
 #signup_info, .signup_id{
     padding: 0px;
     border: none;
     border-bottom: 1px solid #CFCFCF;
-    width: 470px;
+    width: 600px;
     height: 30px;
+    margin-bottom: 5px;
 }
 
 /* .signup_id{
@@ -96,11 +85,12 @@
     padding: 0px;
     border: none;
     border-bottom: 1px solid #CFCFCF;
-    width: 435px;
+    width: 570px;
     height: 30px;
+    margin-bottom: 5px;
 }
 
-.signup_email, #signup_email_prefix{
+#emailPrefix, #emailDns{
     padding: 0px;
     border: none;
     border-bottom: 1px solid #CFCFCF;
@@ -110,11 +100,12 @@
 }
 
 #email_domain{
-    width: 100px; 
-    height: 30px;
+    width: 100px;
+    height: 35px;
+    text-align: center;
 }
 
-.signup_age{
+#signup_age{
     padding: 0px;
     border: none;
     border-bottom: 1px solid #CFCFCF;
@@ -125,21 +116,22 @@
 .signup_info_form {
     /* 아이디, 비밀번호, 이름, 생년월일, 이메일, 회원유형 글씨 색상 */
     color: lightgrey;
-    margin: 0px 0px 15px 0px;
+    margin: 0px 100px 20px;
 }
 
 .signup_info_form2{
     display: flex;
-    justify-content: center
-    ;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+
 }
 .signup_domain_form{
     margin-left: 10px;
+    height: 35px;
+    margin-bottom: 5px;
 }
 
-#email_domain{
-    text-align: center;
-}
 
 .radio {
     align-items: center;
@@ -158,17 +150,42 @@ input.agree {
 
 .birth_form{
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
     margin-top: 10px;
 
 }
 
+.modify1{
+    width: 170px;
+}
 
 #signup_year, #signup_month, #signup_day{
-    width: 90px;
-    height: 30px;
+    width: 120px;
+    height: 35px;
     margin: 0 auto;
     font-size: 15px;
     text-align: center;
 }
 
+/* 인증번호 전송, 인증번호 확인 버튼 */
+.code {
+    width: 100px;
+    height: 35px;
+    cursor: pointer;
+
+}
+
+/* 약관동의 */
+.modify2{
+    margin: 10px 195px 0;
+}
+
+/* 인증번호입력input창 */
+.modify5{
+    display: none;
+
+}
+.modify6{
+    width: 350px;
+    margin-right: 20px;
+}

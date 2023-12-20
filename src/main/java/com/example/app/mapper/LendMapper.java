@@ -29,6 +29,8 @@ public interface LendMapper {
     /*
     * public void insert(@Param("userId) String userId, @Param("isbn") String isbn);
     * */
+    // 도서 예약 수정(update)
+    public void updatelend(LendDTO lendDTO);
 
     // 도서 반납
     public void delete(Long lendSeq);

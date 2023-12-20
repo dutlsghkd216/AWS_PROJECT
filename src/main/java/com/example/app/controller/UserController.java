@@ -5,8 +5,11 @@ import com.example.app.domain.dto.Search;
 import com.example.app.domain.dto.UserDTO;
 import com.example.app.domain.paging.Criteria;
 import com.example.app.domain.paging.PageMakerDTO;
+import com.example.app.service.RegisterMail;
 import com.example.app.service.UserService;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
@@ -14,25 +17,31 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
 
+import javax.servlet.http.HttpSession;
 import java.security.Principal;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Controller
 @RequiredArgsConstructor
+@Slf4j
 public class UserController {
     private final UserService userService;
     private final PasswordEncoder passwordEncoder;
+    private final RegisterMail registerMail;
 
-//    @GetMapping("/all")
-//    public List<UserDTO> getAllUsers(){
-//        return userService.getAllUser();
-//    }
+    //    @GetMapping("/all")
+    //    public List<UserDTO> getAllUsers(){
+    //        return userService.getAllUser();
+    //    }
 
     @GetMapping("/getUserInfo")
     public ResponseEntity<List<UserDTO>> getUserInfo(@RequestParam("userId") String userId) {
@@ -86,8 +95,32 @@ public class UserController {
         userService.write(userDTO);
         System.out.println(userDTO);
         redirectAttributes.addFlashAttribute("uId", userDTO.getUserId());
-//        추가후 새로고침을해도 redirect로 인해 list로 가더라도 계속 추가되지않는다.
+        //        추가후 새로고침을해도 redirect로 인해 list로 가더라도 계속 추가되지않는다.
         return new RedirectView("security/login");
+    }
+
+    //    회원가입 이메일 인증
+    @PostMapping("/security/mailconfirm")
+    @ResponseBody
+    public String mailConfirm(@RequestBody Map<String, String> body, HttpSession session) throws Exception {
+        String email = body.get("email");
+        String code = registerMail.sendSimpleMessage(email);
+        session.setAttribute("code", code); //세션에 코드값 저장
+        System.out.println("인증코드 : " + code);
+        return code;
+    }
+
+    @PostMapping("/security/checkCode")
+    @ResponseBody
+    boolean checkCode(@RequestBody Map<String, String> body, HttpSession session) {
+        String inputCode = body.get("code");
+        String sessionCode = (String) session.getAttribute("code"); // session에서 code 가져오기
+
+        if (inputCode.equals(sessionCode)) { // 사용자가 입력한 코드와 session의 코드가 같은지 확인
+            return true;
+        } else {
+            return false;
+        }
     }
 
     @PostMapping("/mypage/modify")
@@ -140,7 +173,7 @@ public class UserController {
     public UserDTO goCheckPw(Model model, Principal principal) {
         model.addAttribute("principal",principal);
         return userService.getUser(principal.getName())
-;    }
+                ;    }
     @PostMapping("/security/checkpw")
     public String checkPW(@RequestParam("currentPassword") String currentPassword, Principal principal,Model model) {
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
@@ -170,5 +203,51 @@ public class UserController {
     @GetMapping("/security/login")
     public void loginForm(){
     }
+
+    //아이디중복체크
+    @PostMapping("/idCheck")
+    @ResponseBody
+    public Map<String, String> checkUserId(@RequestBody Map<String, String> userIdMap) {
+        Map<String, String> result = new HashMap<>();
+        String userId = userIdMap.get("userId");
+        if (userService.isUserIdExist(userId)) {
+            result.put("message", "이미 사용중인 아이디입니다.");
+            result.put("status", "fail");
+        } else {
+            result.put("message", "사용 가능한 아이디입니다.");
+            result.put("status", "success");
+        }
+        return result;
+    }
+
+    // ㄱ관리자페이지에서 회원 삭제
+    @DeleteMapping("/admin/delete/{userId}")
+    public ResponseEntity<String> deleteUser(@PathVariable String userId) {
+        try {
+            userService.delete(userId);
+            return ResponseEntity.ok("회원이 성공적으로 삭제되었습니다.");
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error deleting user");
+        }
+    }
+
+    // 관리자 페이지에서 회원 수정
+    @PostMapping("/admin/saveUserData")
+    public ResponseEntity<String> saveUserData(@RequestBody UserDTO userData) throws JsonProcessingException {
+        try {
+            userService.updateEmailAndRole(userData);
+            String jsonMessage = new ObjectMapper().writeValueAsString(Collections.singletonMap("message", "User data saved successfully"));
+            return ResponseEntity.ok(jsonMessage);
+        } catch (Exception e) {
+            String jsonError = new ObjectMapper().writeValueAsString(Collections.singletonMap("error", "Error saving user data"));
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(jsonError);
+        }
+    }
+//        @PostMapping("/admin/saveUserData")
+//        public RedirectView saveUserData(UserDTO userData) {
+//                userService.updateEmailAndRole(userData);
+//                return new RedirectView("admin/adminsetting");
+//        }
+
 
 }

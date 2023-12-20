@@ -19,6 +19,8 @@ public class LendDTO {
     private String author;
     private String publisher;
     private int pubYear;
+    private String location;
+    private String reserveDate;
 
 
 }

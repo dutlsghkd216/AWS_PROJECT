@@ -80,11 +80,13 @@
     margin-top: 15px;
     margin-bottom: 15px;
     font-size: 24px;
+    color: #0155c7;
 }
 
 .doc-body>ul {
     margin-top: 10px;
     margin-bottom: 10px;
+    border-bottom: 3px dashed #ebe6e6;
 }
 
 .doc-body>ul>li {
@@ -94,7 +96,9 @@
 }
 
 
-.sm_box>.con {}
+.sm_box{
+    border-bottom: 3px dashed #ebe6e6;
+}
 
 .con {
     padding-top: 15px;
