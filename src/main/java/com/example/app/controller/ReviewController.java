@@ -77,7 +77,7 @@ public class ReviewController {
     @GetMapping("/remove")
     public RedirectView remove(Long revId){
         reviewService.delete(revId);
-        return new RedirectView("reviews/3-2review");
+        return new RedirectView("3-2review");
     }
     // 게시글 수정
     @PostMapping("/3-8modify")
