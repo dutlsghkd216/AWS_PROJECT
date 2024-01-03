@@ -15,6 +15,7 @@ function openPop(row) {
         var currentDate = getCurrentDate();
         document.getElementById('signup_year').value = currentDate.year;
         document.getElementById('signup_month').value = currentDate.month;
+
         document.getElementById('signup_day').value = currentDate.day;
 
         function getCurrentDate() {
